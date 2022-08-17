@@ -2,21 +2,19 @@ import DataTable, { createTheme } from 'react-data-table-component'
 import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
 import { useNavigate } from 'react-router-dom'
 
-import { columns } from 'utils/constants'
-
 createTheme('solarized', {
   action: {
     hover: 'rgb(230, 244, 255)',
   },
 })
 
-const CusTable = ({ inventory }) => {
+const CusTable = ({ inventory, columns, touch = false }) => {
   const navigate = useNavigate()
 
   const table = (
     <DataTable
       theme='solarized'
-      onRowClicked={(row) => navigate(`/People/${row.id}`, { state: row })}
+      onRowClicked={(row) => touch && navigate(`/products/${row.id}`, { state: row })}
       columns={columns}
       defaultSortFieldId={1}
       data={inventory}

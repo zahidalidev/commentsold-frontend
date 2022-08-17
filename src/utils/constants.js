@@ -1,5 +1,6 @@
 import Login from 'container/auth/login'
 import Inventory from 'container/inventory'
+import Products from 'container/products'
 
 export const routeList = [
   {
@@ -9,6 +10,10 @@ export const routeList = [
   {
     path: '/inventory',
     component: <Inventory />,
+  },
+  {
+    path: '/products',
+    component: <Products />,
   },
 ]
 
@@ -26,7 +31,7 @@ export const inputFields = [
   },
 ]
 
-export const columns = [
+export const inventoryColumns = [
   {
     name: 'Name',
     selector: (row) => row.name,
@@ -60,6 +65,24 @@ export const columns = [
   {
     name: 'Cost',
     selector: (row) => row.cost,
+    sortable: true,
+  },
+]
+
+export const productsColumns = [
+  {
+    name: 'Name',
+    selector: (row) => row.name,
+    sortable: true,
+  },
+  {
+    name: 'Style',
+    selector: (row) => row.style,
+    sortable: true,
+  },
+  {
+    name: 'Brand',
+    selector: (row) => row.brand,
     sortable: true,
   },
 ]

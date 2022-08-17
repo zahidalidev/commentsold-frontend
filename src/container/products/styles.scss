@@ -1,0 +1,11 @@
+.inventory-container {
+  display: flex;
+  justify-content: center;
+  background-color: #fcfbfa;
+
+  .mat-paper {
+    width: 94%;
+    margin: 10vh 3vh 0vh 3vh;
+    padding: 3vh;
+  }
+}

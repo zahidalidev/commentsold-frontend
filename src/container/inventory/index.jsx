@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent'
 import AppBar from 'components/appbar'
 import Table from 'components/table'
 import Select from 'components/select'
+import { inventoryColumns } from 'utils/constants'
 
 import 'container/inventory/styles.scss'
 
@@ -58,7 +59,7 @@ const Inventory = () => {
               </div>
             </CardContent>
             <header className='card-seperator' />
-            <Table inventory={inventory} />
+            <Table inventory={inventory} columns={inventoryColumns} />
           </Card>
         </Paper>
       </div>
