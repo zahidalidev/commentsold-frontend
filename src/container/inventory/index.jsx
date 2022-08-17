@@ -3,6 +3,8 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Card from '@mui/joy/Card'
 import CardContent from '@mui/material/CardContent'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import Table from 'components/table'
@@ -10,40 +12,29 @@ import Select from 'components/select'
 import { inventoryColumns } from 'utils/constants'
 
 import 'container/inventory/styles.scss'
+import { useEffect, useState } from 'react'
+import { getToken } from 'utils/helpers'
+import { getInventories } from 'services/inventory'
 
 const Inventory = () => {
-  const inventory = [
-    {
-      id: 0,
-      name: 'product1',
-      sku: 'sku',
-      quantity: 10,
-      color: 'red',
-      size: '121',
-      price: 123,
-      cost: 120,
-    },
-    {
-      id: 2,
-      name: 'product1',
-      sku: 'sku',
-      quantity: 10,
-      color: 'red',
-      size: '121',
-      price: 123,
-      cost: 120,
-    },
-    {
-      id: 3,
-      name: 'product1',
-      sku: 'sku',
-      quantity: 10,
-      color: 'red',
-      size: '121',
-      price: 123,
-      cost: 120,
-    },
-  ]
+  const [inventories, setInventories] = useState([])
+
+  const navigate = useNavigate()
+
+  const handleInventories = async () => {
+    try {
+      const token = getToken()
+      const { data } = await getInventories(token)
+      setInventories(data)
+    } catch (error) {
+      toast.error('Session expired')
+      navigate('/login')
+    }
+  }
+
+  useEffect(() => {
+    handleInventories()
+  }, [])
 
   return (
     <>
@@ -51,7 +42,7 @@ const Inventory = () => {
       <div className='container-fluid inventory-container'>
         <Paper className='mat-paper' elevation={2}>
           <Card>
-            <Typography variant='h5'>Total Products ({inventory.length})</Typography>
+            <Typography variant='h5'>Total Products ({inventories.length})</Typography>
             <CardContent className='mat-card-header'>
               <TextField className='text-field' size='small' label='Search' variant='outlined' />
               <div className='select'>
@@ -59,7 +50,7 @@ const Inventory = () => {
               </div>
             </CardContent>
             <header className='card-seperator' />
-            <Table data={inventory} columns={inventoryColumns} />
+            <Table data={inventories} columns={inventoryColumns} />
           </Card>
         </Paper>
       </div>

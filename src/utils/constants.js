@@ -98,7 +98,7 @@ export const productFields = [
 export const inventoryColumns = [
   {
     name: 'Name',
-    selector: (row) => row.name,
+    selector: (row) => row.product.product_name,
     sortable: true,
   },
   {
@@ -123,12 +123,12 @@ export const inventoryColumns = [
   },
   {
     name: 'Price',
-    selector: (row) => row.price,
+    selector: (row) => row.price_cents,
     sortable: true,
   },
   {
     name: 'Cost',
-    selector: (row) => row.cost,
+    selector: (row) => row.cost_cents,
     sortable: true,
   },
 ]
@@ -136,52 +136,54 @@ export const inventoryColumns = [
 export const orderColumns = [
   {
     name: 'Customer name',
-    selector: (row) => row.customerName,
+    selector: (row) => row.name,
     sortable: true,
   },
   {
     name: 'Email address',
-    selector: (row) => row.emailAddress,
+    selector: (row) => row.email,
     sortable: true,
   },
   {
     name: 'Product name',
-    selector: (row) => row.productName,
+    selector: (row) => row.product.product_name,
     sortable: true,
   },
   {
     name: 'Color',
-    selector: (row) => row.color,
+    selector: (row) => row.product.inventories.reduce((acc, item) => `${item.color}, ${acc}`, ''),
     sortable: true,
+    grow: 2,
   },
   {
     name: 'Size',
-    selector: (row) => row.size,
+    selector: (row) => row.product.inventories.reduce((acc, item) => `${item.size}, ${acc}`, ''),
     sortable: true,
+    width: '10rem',
   },
   {
     name: 'Order status',
-    selector: (row) => row.orderStatus,
+    selector: (row) => row.order_status,
     sortable: true,
   },
   {
     name: 'Order total',
-    selector: (row) => row.orderTotal,
+    selector: (row) => row.total_cents,
     sortable: true,
   },
   {
     name: 'Transaction id',
-    selector: (row) => row.transactionId,
+    selector: (row) => row.transaction_id,
     sortable: true,
   },
   {
     name: 'Shipper',
-    selector: (row) => row.shipper,
+    selector: (row) => row.shipper_name,
     sortable: true,
   },
   {
     name: 'Tracking number',
-    selector: (row) => row.trackingNumber,
+    selector: (row) => row.tracking_number,
     sortable: true,
   },
 ]

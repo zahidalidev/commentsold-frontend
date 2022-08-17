@@ -3,70 +3,38 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Card from '@mui/joy/Card'
 import CardContent from '@mui/material/CardContent'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import Table from 'components/table'
 import Select from 'components/select'
 import { orderColumns } from 'utils/constants'
+import { getToken } from 'utils/helpers'
+import { useEffect, useState } from 'react'
+import { getAllOrders } from 'services/order'
 
 import 'container/order/styles.scss'
 import 'container/inventory/styles.scss'
 
 const Order = () => {
-  const orders = [
-    {
-      id: 0,
-      customerName: 'Fareed',
-      emailAddress: 'fareed@gmail.com',
-      productName: 'demo',
-      color: 'red',
-      size: '121',
-      orderStatus: 'pending',
-      orderTotal: 1222,
-      transactionId: '28328y3213oivh2gyg',
-      shipper: 'usama',
-      trackingNumber: 'askhdgasgy978',
-    },
-    {
-      id: 1,
-      customerName: 'Fareed',
-      emailAddress: 'fareed@gmail.com',
-      productName: 'demo',
-      color: 'red',
-      size: '121',
-      orderStatus: 'pending',
-      orderTotal: 1222,
-      transactionId: '28328y3213oivh2gyg',
-      shipper: 'usama',
-      trackingNumber: 'askhdgasgy978',
-    },
-    {
-      id: 2,
-      customerName: 'Fareed',
-      emailAddress: 'fareed@gmail.com',
-      productName: 'demo',
-      color: 'red',
-      size: '121',
-      orderStatus: 'pending',
-      orderTotal: 1222,
-      transactionId: '28328y3213oivh2gyg',
-      shipper: 'usama',
-      trackingNumber: 'askhdgasgy978',
-    },
-    {
-      id: 3,
-      customerName: 'Fareed',
-      emailAddress: 'fareed@gmail.com',
-      productName: 'demo',
-      color: 'red',
-      size: '121',
-      orderStatus: 'pending',
-      orderTotal: 1222,
-      transactionId: '28328y3213oivh2gyg',
-      shipper: 'usama',
-      trackingNumber: 'askhdgasgy978',
-    },
-  ]
+  const navigate = useNavigate()
+  const [orders, setOrders] = useState([])
+
+  const handleOrders = async () => {
+    try {
+      const token = getToken()
+      const { data } = await getAllOrders(token)
+      setOrders(data)
+    } catch (error) {
+      toast.error('Session expired')
+      navigate('/login')
+    }
+  }
+
+  useEffect(() => {
+    handleOrders()
+  }, [])
 
   return (
     <>

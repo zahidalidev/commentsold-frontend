@@ -37,7 +37,7 @@ const Login = () => {
   useEffect(() => {
     const token = getToken()
     if (token) {
-      navigate('/products')
+      navigate(window.location.href)
     }
   }, [])
 

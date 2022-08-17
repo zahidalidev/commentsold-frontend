@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const userEndpoint = `${process.env.REACT_APP_BASE_URL}v1`
+const productEndpoint = `${process.env.REACT_APP_BASE_URL}v1`
 
-export const getAllProducts = (token) => axios.get(`${userEndpoint}/products`, {
+export const getAllProducts = (token) => axios.get(`${productEndpoint}/products`, {
   headers: {
     'access-token': token,
   },
 })
 
-export const getUsers = () => axios.get(userEndpoint)
+export const getUsers = () => axios.get(productEndpoint)
