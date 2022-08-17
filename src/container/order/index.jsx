@@ -13,7 +13,7 @@ import 'container/order/styles.scss'
 import 'container/inventory/styles.scss'
 
 const Order = () => {
-  const inventory = [
+  const orders = [
     {
       id: 0,
       customerName: 'Fareed',
@@ -75,9 +75,9 @@ const Order = () => {
         <Paper className='mat-paper' elevation={2}>
           <Card>
             <div className='order-sale'>
-              <Typography variant='h5'>Total Sale ({inventory.length})</Typography>
+              <Typography variant='h5'>Total Sale ({orders.length})</Typography>
               <Typography className='avg-sale' variant='h5'>
-                Average Sale ({inventory.length})
+                Average Sale ({orders.length})
               </Typography>
             </div>
             <CardContent className='mat-card-header'>
@@ -87,7 +87,7 @@ const Order = () => {
               </div>
             </CardContent>
             <header className='card-seperator' />
-            <Table data={inventory} columns={orderColumns} />
+            <Table data={orders} columns={orderColumns} />
           </Card>
         </Paper>
       </div>
