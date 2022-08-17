@@ -1,3 +1,6 @@
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+
 import Login from 'container/auth/login'
 import Inventory from 'container/inventory'
 import Products from 'container/products'
@@ -69,6 +72,10 @@ export const inventoryColumns = [
   },
 ]
 
+const handleProductAction = (type, id) => {
+  console.log('product action: ', type, id)
+}
+
 export const productsColumns = [
   {
     name: 'Name',
@@ -83,6 +90,26 @@ export const productsColumns = [
   {
     name: 'Brand',
     selector: (row) => row.brand,
+    sortable: true,
+  },
+  {
+    name: 'Edit',
+    selector: (row) => (
+      <EditOutlinedIcon
+        sx={{ color: '#01225a' }}
+        onClick={() => handleProductAction('edit', row.id)}
+      />
+    ),
+    sortable: true,
+  },
+  {
+    name: 'Remove',
+    selector: (row) => (
+      <DeleteOutlineOutlinedIcon
+        sx={{ color: '#FF3333' }}
+        onClick={() => handleProductAction('remove', row.id)}
+      />
+    ),
     sortable: true,
   },
 ]

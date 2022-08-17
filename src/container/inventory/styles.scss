@@ -1,7 +1,10 @@
+$back: #fcfbfa;
+$border: #949494;
+
 .inventory-container {
   display: flex;
   justify-content: center;
-  background-color: #fcfbfa;
+  background-color: back;
 
   .mat-paper {
     width: 94%;
@@ -22,7 +25,7 @@
 
     .card-seperator {
       margin-top: 1rem;
-      border-bottom: 1px solid #949494;
+      border-bottom: 1px solid $border;
     }
   }
 }

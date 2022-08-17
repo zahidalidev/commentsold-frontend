@@ -1,11 +1,25 @@
+$back: #fcfbfa;
+$primary: #01225a;
+
 .inventory-container {
   display: flex;
   justify-content: center;
-  background-color: #fcfbfa;
+  background-color: $back;
 
   .mat-paper {
-    width: 94%;
-    margin: 10vh 3vh 0vh 3vh;
-    padding: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 78%;
+    padding: 8vh;
+
+    .mat-card {
+      width: 100%;
+    }
+
+    .add-button {
+      background-color: $primary;
+    }
   }
 }

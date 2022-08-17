@@ -1,5 +1,6 @@
 import Paper from '@mui/material/Paper'
 import Card from '@mui/joy/Card'
+import Button from '@mui/material/Button'
 
 import AppBar from 'components/appbar'
 import Table from 'components/table'
@@ -34,7 +35,10 @@ const Products = () => {
       <AppBar />
       <div className='container-fluid inventory-container'>
         <Paper className='mat-paper' elevation={2}>
-          <Card>
+          <Button className='add-button' variant='contained' size='large'>
+            Add Product
+          </Button>
+          <Card className='mat-card'>
             <Table inventory={products} columns={productsColumns} touch />
           </Card>
         </Paper>
