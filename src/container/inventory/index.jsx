@@ -59,7 +59,7 @@ const Inventory = () => {
               </div>
             </CardContent>
             <header className='card-seperator' />
-            <Table inventory={inventory} columns={inventoryColumns} />
+            <Table data={inventory} columns={inventoryColumns} />
           </Card>
         </Paper>
       </div>

@@ -1,10 +1,8 @@
-$back: #fcfbfa;
-$primary: #01225a;
+@import 'variables' ;
 
-.inventory-container {
+.product-container {
   display: flex;
   justify-content: center;
-  background-color: $back;
 
   .mat-paper {
     display: flex;

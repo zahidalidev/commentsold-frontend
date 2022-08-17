@@ -8,7 +8,7 @@ createTheme('solarized', {
   },
 })
 
-const CusTable = ({ inventory, columns, touch = false }) => {
+const CusTable = ({ data, columns, touch = false }) => {
   const navigate = useNavigate()
 
   const table = (
@@ -17,7 +17,7 @@ const CusTable = ({ inventory, columns, touch = false }) => {
       onRowClicked={(row) => touch && navigate(`/products/${row.id}`, { state: row })}
       columns={columns}
       defaultSortFieldId={1}
-      data={inventory}
+      data={data}
       pagination
       highlightOnHover
       pointerOnHover
@@ -31,7 +31,7 @@ const CusTable = ({ inventory, columns, touch = false }) => {
     </Skeleton>
   )
 
-  return inventory.length !== 0 ? table : skeleton
+  return data.length !== 0 ? table : skeleton
 }
 
 export default CusTable

@@ -1,10 +1,8 @@
-$back: #fcfbfa;
-$border: #949494;
+@import 'variables' ;
 
 .inventory-container {
   display: flex;
   justify-content: center;
-  background-color: back;
 
   .mat-paper {
     width: 94%;

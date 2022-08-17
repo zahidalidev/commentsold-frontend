@@ -33,13 +33,13 @@ const Products = () => {
   return (
     <>
       <AppBar />
-      <div className='container-fluid inventory-container'>
+      <div className='container-fluid product-container'>
         <Paper className='mat-paper' elevation={2}>
           <Button className='add-button' variant='contained' size='large'>
             Add Product
           </Button>
           <Card className='mat-card'>
-            <Table inventory={products} columns={productsColumns} touch />
+            <Table data={products} columns={productsColumns} touch />
           </Card>
         </Paper>
       </div>

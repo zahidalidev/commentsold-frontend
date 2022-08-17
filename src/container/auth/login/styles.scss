@@ -1,8 +1,4 @@
-$background: #f8f8f8;
-$error: #FF3333;
-$primary: #01225a;
-$secondary: #54b9e8;
-$disable: #d8d8d8;
+@import 'variables' ;
 
 .container {
   display: flex;
