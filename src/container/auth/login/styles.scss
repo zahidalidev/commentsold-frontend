@@ -26,6 +26,7 @@
     .heading {
       color: $primary;
       font-weight: 500;
+      text-transform: capitalize;
     }
 
     .text-field {
@@ -37,6 +38,7 @@
       width: 45vh;
       margin-top: 2rem;
       background-color: $primary;
+      text-transform: uppercase;
     }
 
     .submit-button:disabled {

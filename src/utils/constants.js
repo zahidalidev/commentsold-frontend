@@ -4,6 +4,7 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import Login from 'container/auth/login'
 import Inventory from 'container/inventory'
 import Products from 'container/products'
+import Product from 'container/product'
 
 export const routeList = [
   {
@@ -18,6 +19,10 @@ export const routeList = [
     path: '/products',
     component: <Products />,
   },
+  {
+    path: '/product/:action',
+    component: <Product />,
+  },
 ]
 
 export const inputFieldsInitialValues = { email: '', password: '' }
@@ -25,12 +30,62 @@ export const inputFields = [
   {
     id: 0,
     type: 'email',
+    name: 'email',
     label: 'Enter email address',
   },
   {
     id: 1,
     type: 'password',
+    name: 'password',
     label: 'Enter password',
+  },
+]
+
+export const productFieldsInitialValues = {
+  productName: '',
+  description: '',
+  style: '',
+  brand: '',
+  productType: '',
+  shippingPrice: '',
+  note: '',
+}
+
+export const productFields = [
+  {
+    id: 0,
+    label: 'Product name',
+    name: 'productName',
+  },
+  {
+    id: 1,
+    label: 'Description',
+    name: 'description',
+  },
+  {
+    id: 2,
+    label: 'Style',
+    name: 'style',
+  },
+  {
+    id: 3,
+    label: 'Brand',
+    name: 'brand',
+  },
+  {
+    id: 4,
+    label: 'Product type',
+    name: 'productType',
+  },
+  {
+    id: 5,
+    label: 'Shipping price',
+    name: 'shippingPrice',
+  },
+  {
+    id: 6,
+    label: 'Note',
+    name: 'note',
   },
 ]
 

@@ -7,8 +7,35 @@ export const validateLogin = (values) => {
   }
   if (!values.password) {
     errors.password = 'Required'
-  } else if (values.password.length < 5) {
-    errors.password = 'Password should contain atleast 5 characters'
+  } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/i.test(values.password)) {
+    errors.password = 'Enter at least one numeric digit, uppercase and lowercase letter'
   }
+  return errors
+}
+
+export const validateProduct = (values) => {
+  const errors = {}
+  if (!values.productName) {
+    errors.productName = 'Product name is required'
+  }
+  if (!values.description) {
+    errors.description = 'Product description is required'
+  }
+  if (!values.style) {
+    errors.style = 'Product style is required'
+  }
+  if (!values.brand) {
+    errors.brand = 'Product brand is required'
+  }
+  if (!values.productType) {
+    errors.productType = 'Product type is required'
+  }
+  if (!values.shippingPrice) {
+    errors.shippingPrice = 'Shipping price is required'
+  }
+  if (!values.note) {
+    errors.note = 'Product note is required'
+  }
+
   return errors
 }
