@@ -1,5 +1,5 @@
 {
-  "name": "temp",
+  "name": "commentsold-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,7 +9,17 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@testing-library/react-hooks": "3.4.1",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "formik": "^2.2.9",
+    "node-sass": "^6.0.1",
+    "recoil": "^0.7.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,5 +44,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.22.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
