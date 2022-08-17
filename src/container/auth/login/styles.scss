@@ -1,0 +1,71 @@
+$background: #f8f8f8;
+$error: #FF3333;
+$primary: #01225a;
+$secondary: #54b9e8;
+$disable: #d8d8d8;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background;
+
+  .mat-paper {
+    align-items: center;
+    padding: 2rem;
+    width: 50vh;
+    margin-bottom: 5rem;
+  }
+
+  .mat-card {
+    align-items: center;
+
+    .mat-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .heading {
+      color: $primary;
+      font-weight: 500;
+    }
+
+    .text-field {
+      margin-top: 1rem;
+      width: 45vh;
+    }
+
+    .submit-button {
+      width: 45vh;
+      margin-top: 2rem;
+      background-color: $primary;
+    }
+
+    .submit-button:disabled {
+      background-color: $disable;
+    }
+
+    .submit-button:hover {
+      background-color: $secondary;
+    }
+
+    .warn-typography {
+      color: $error;
+      align-self: flex-start;
+      margin-top: 5px;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .container {
+      background-color: white;
+    }
+
+    .mat-paper {
+      box-shadow: none;
+    }
+  }
+
+}
