@@ -1,0 +1,29 @@
+.inventory-container {
+  display: flex;
+  justify-content: center;
+  background-color: #fcfbfa;
+
+  .mat-paper {
+    width: 94%;
+    margin: 10vh 3vh 0vh 3vh;
+    padding: 3vh;
+
+    .mat-card-header {
+      display: flex;
+      flex-direction: row;
+      padding: 0px;
+      margin-top: 2rem;
+
+      .select {
+        width: 30rem;
+        margin-left: 1rem;
+      }
+    }
+
+    .card-seperator {
+      margin-top: 1rem;
+      border-bottom: 1px solid #949494;
+    }
+  }
+
+}
