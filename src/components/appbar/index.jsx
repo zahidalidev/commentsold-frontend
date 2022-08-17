@@ -15,7 +15,7 @@ const MatAppBar = () => (
           Comment Sold
         </Typography>
         <Button color='inherit'>Inventory</Button>
-        <Button color='inherit'>Shop</Button>
+        <Button color='inherit'>Products</Button>
         <Button color='inherit'>Orders</Button>
       </Toolbar>
     </AppBar>
