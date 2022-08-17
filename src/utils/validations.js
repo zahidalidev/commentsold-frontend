@@ -7,7 +7,7 @@ export const validateLogin = (values) => {
   }
   if (!values.password) {
     errors.password = 'Required'
-  } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/i.test(values.password)) {
+  } else if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/i.test(values.password)) {
     errors.password = 'Enter at least one numeric digit, uppercase and lowercase letter'
   }
   return errors

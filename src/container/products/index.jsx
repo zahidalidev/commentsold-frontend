@@ -1,44 +1,37 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Paper from '@mui/material/Paper'
 import Card from '@mui/joy/Card'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { useRecoilState } from 'recoil'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import Table from 'components/table'
 import { productsColumns } from 'utils/constants'
-import { userTokenStateAtom } from 'store'
 
 import 'container/products/styles.scss'
+import { getToken } from 'utils/helpers'
+import { getAllProducts } from 'services/products'
 
 const Products = () => {
-  const user = useRecoilState(userTokenStateAtom)[0]
+  const [products, setProducts] = useState([])
+  const navigate = useNavigate()
+
+  const handleProducts = async () => {
+    try {
+      const token = getToken()
+      const { data } = await getAllProducts(token)
+      setProducts(data)
+    } catch (error) {
+      toast.error('Session expired')
+      navigate('/login')
+    }
+  }
 
   useEffect(() => {
-    console.log('prod user: ', user)
+    handleProducts()
   }, [])
-
-  const products = [
-    {
-      id: 0,
-      name: 'product1',
-      style: 'sku',
-      brand: 10,
-    },
-    {
-      id: 1,
-      name: 'product1',
-      style: 'sku',
-      brand: 10,
-    },
-    {
-      id: 2,
-      name: 'product1',
-      style: 'sku',
-      brand: 10,
-    },
-  ]
 
   return (
     <>

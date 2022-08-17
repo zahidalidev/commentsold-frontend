@@ -7,6 +7,7 @@ import Products from 'container/products'
 import Product from 'container/product'
 import Order from 'container/order'
 
+export const TOKEN = 'token'
 export const routeList = [
   {
     path: '/login',
@@ -192,7 +193,7 @@ const handleProductAction = (type, id) => {
 export const productsColumns = [
   {
     name: 'Name',
-    selector: (row) => row.name,
+    selector: (row) => row.product_name,
     sortable: true,
   },
   {

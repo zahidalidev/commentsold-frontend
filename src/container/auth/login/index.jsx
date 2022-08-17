@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import Card from '@mui/joy/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
@@ -7,26 +7,39 @@ import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import { Formik } from 'formik'
 import _ from 'lodash'
-import { useRecoilState } from 'recoil'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { inputFields, inputFieldsInitialValues } from 'utils/constants'
 import { validateLogin } from 'utils/validations'
-import { userTokenStateAtom } from 'store'
+import LoadingModal from 'components/loadingModal'
+import { login } from 'services/user'
 
 import 'container/auth/login/styles.scss'
-import LoadingModal from 'components/loadingModal'
+import { getToken, saveToken } from 'utils/helpers'
 
 const Login = () => {
   const navigate = useNavigate()
   const [loading, setloading] = useState(false)
-  const setToken = useRecoilState(userTokenStateAtom)[1]
 
-  const handleLogin = (values) => {
-    setToken(values)
+  const handleLogin = async (values) => {
     setloading(true)
-    navigate('/products')
+    try {
+      const { data } = await login(values)
+      saveToken(data.token)
+      navigate('/products')
+    } catch (error) {
+      toast.error('Login error!')
+    }
+    setloading(false)
   }
+
+  useEffect(() => {
+    const token = getToken()
+    if (token) {
+      navigate('/products')
+    }
+  }, [])
 
   return (
     <div className='container-fluid container'>
