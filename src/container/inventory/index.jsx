@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField'
 import Card from '@mui/joy/Card'
 import CardContent from '@mui/material/CardContent'
 
+import AppBar from 'components/appbar'
 import Table from 'components/table'
 import Select from 'components/select'
 
@@ -44,21 +45,24 @@ const Inventory = () => {
   ]
 
   return (
-    <div className='container-fluid inventory-container'>
-      <Paper className='mat-paper' elevation={2}>
-        <Card>
-          <Typography variant='h5'>Total Products ({inventory.length})</Typography>
-          <CardContent className='mat-card-header'>
-            <TextField className='text-field' size='small' label='Search' variant='outlined' />
-            <div className='select'>
-              <Select />
-            </div>
-          </CardContent>
-          <header className='card-seperator' />
-          <Table inventory={inventory} />
-        </Card>
-      </Paper>
-    </div>
+    <>
+      <AppBar />
+      <div className='container-fluid inventory-container'>
+        <Paper className='mat-paper' elevation={2}>
+          <Card>
+            <Typography variant='h5'>Total Products ({inventory.length})</Typography>
+            <CardContent className='mat-card-header'>
+              <TextField className='text-field' size='small' label='Search' variant='outlined' />
+              <div className='select'>
+                <Select />
+              </div>
+            </CardContent>
+            <header className='card-seperator' />
+            <Table inventory={inventory} />
+          </Card>
+        </Paper>
+      </div>
+    </>
   )
 }
 

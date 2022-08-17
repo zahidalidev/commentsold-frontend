@@ -1,0 +1,11 @@
+$primary: #01225a;
+$secondary: #54b9e8;
+
+.appbar-box {
+  flex-grow: 1;
+  background-color: $primary !important;
+
+  .appbar-name {
+    flex-grow: 1;
+  }
+}
