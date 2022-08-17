@@ -43,7 +43,9 @@ const Product = () => {
                 validate={validateProduct}
                 onSubmit={handleProduct}
               >
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({
+                  values, errors, touched, handleChange, handleBlur, handleSubmit,
+                }) => (
                   <form className='mat-form' onSubmit={handleSubmit}>
                     {productFields.map((field) => (
                       <Fragment key={field.id.toString()}>
