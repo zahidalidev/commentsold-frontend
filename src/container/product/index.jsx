@@ -9,7 +9,7 @@ import { Formik } from 'formik'
 import _ from 'lodash'
 
 import { productFields, productFieldsInitialValues } from 'utils/constants'
-import { validateProduct } from 'utils/validate'
+import { validateProduct } from 'utils/validations'
 
 import 'container/product/styles.scss'
 import 'container/auth/login/styles.scss'

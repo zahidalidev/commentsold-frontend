@@ -5,6 +5,7 @@ import Login from 'container/auth/login'
 import Inventory from 'container/inventory'
 import Products from 'container/products'
 import Product from 'container/product'
+import Order from 'container/order'
 
 export const routeList = [
   {
@@ -14,6 +15,10 @@ export const routeList = [
   {
     path: '/inventory',
     component: <Inventory />,
+  },
+  {
+    path: '/order',
+    component: <Order />,
   },
   {
     path: '/products',
@@ -123,6 +128,59 @@ export const inventoryColumns = [
   {
     name: 'Cost',
     selector: (row) => row.cost,
+    sortable: true,
+  },
+]
+
+export const orderColumns = [
+  {
+    name: 'Customer name',
+    selector: (row) => row.customerName,
+    sortable: true,
+  },
+  {
+    name: 'Email address',
+    selector: (row) => row.emailAddress,
+    sortable: true,
+  },
+  {
+    name: 'Product name',
+    selector: (row) => row.productName,
+    sortable: true,
+  },
+  {
+    name: 'Color',
+    selector: (row) => row.color,
+    sortable: true,
+  },
+  {
+    name: 'Size',
+    selector: (row) => row.size,
+    sortable: true,
+  },
+  {
+    name: 'Order status',
+    selector: (row) => row.orderStatus,
+    sortable: true,
+  },
+  {
+    name: 'Order total',
+    selector: (row) => row.orderTotal,
+    sortable: true,
+  },
+  {
+    name: 'Transaction id',
+    selector: (row) => row.transactionId,
+    sortable: true,
+  },
+  {
+    name: 'Shipper',
+    selector: (row) => row.shipper,
+    sortable: true,
+  },
+  {
+    name: 'Tracking number',
+    selector: (row) => row.trackingNumber,
     sortable: true,
   },
 ]
