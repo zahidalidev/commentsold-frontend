@@ -206,22 +206,18 @@ export const productsColumns = [
     sortable: true,
   },
   {
-    name: 'Edit',
+    name: 'Action',
     selector: (row) => (
-      <EditOutlinedIcon
-        sx={{ color: '#01225a' }}
-        onClick={() => handleProductAction('edit', row.id)}
-      />
-    ),
-    sortable: true,
-  },
-  {
-    name: 'Remove',
-    selector: (row) => (
-      <DeleteOutlineOutlinedIcon
-        sx={{ color: '#FF3333' }}
-        onClick={() => handleProductAction('remove', row.id)}
-      />
+      <div>
+        <DeleteOutlineOutlinedIcon
+          sx={{ color: '#FF3333' }}
+          onClick={() => handleProductAction('remove', row.id)}
+        />
+        <EditOutlinedIcon
+          sx={{ color: '#01225a', marginLeft: '1rem' }}
+          onClick={() => handleProductAction('edit', row.id)}
+        />
+      </div>
     ),
     sortable: true,
   },
