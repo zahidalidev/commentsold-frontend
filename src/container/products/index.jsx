@@ -1,6 +1,7 @@
 import Paper from '@mui/material/Paper'
 import Card from '@mui/joy/Card'
 import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 
 import AppBar from 'components/appbar'
 import Table from 'components/table'
@@ -35,6 +36,9 @@ const Products = () => {
       <AppBar />
       <div className='container-fluid product-container'>
         <Paper className='mat-paper' elevation={2}>
+          <Typography className='product-heading' variant='h4'>
+            User Products
+          </Typography>
           <Button className='add-button' variant='contained' size='large'>
             Add Product
           </Button>

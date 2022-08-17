@@ -13,6 +13,11 @@
     padding: 8vh;
     margin-top: 5rem;
 
+    .product-heading {
+      align-self: center;
+      color: $primary;
+    }
+
     .mat-card {
       width: 100%;
     }
