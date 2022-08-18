@@ -10,9 +10,9 @@ import AppBar from 'components/appbar'
 import Table from 'components/table'
 import Select from 'components/select'
 import { orderColumns } from 'utils/constants'
-import { getToken } from 'utils/helpers'
+import { formatNumbers, getToken } from 'utils/helpers'
 import { useEffect, useState } from 'react'
-import { getAllOrders } from 'services/order'
+import getAllOrders from 'services/order'
 
 import 'container/orders/styles.scss'
 import 'container/inventory/styles.scss'
@@ -46,10 +46,10 @@ const Orders = () => {
           <Card>
             <div className='order-sale'>
               <Typography className='sale' variant='h5'>
-                Total Sale ({parseInt(orders.totalSale, 10)} cents)
+                Total Sale ({formatNumbers(parseInt(orders.totalSale, 10))} cents)
               </Typography>
               <Typography className='avg-sale sale' variant='h5'>
-                Average Sale ({parseInt(orders.average, 10)} cents)
+                Average Sale ({formatNumbers(parseInt(orders.average, 10))} cents)
               </Typography>
             </div>
             <CardContent className='mat-card-header'>

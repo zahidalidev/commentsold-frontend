@@ -127,43 +127,36 @@ export const inventoryColumns = [
     name: 'Name',
     selector: (row) => row.product?.product_name,
     sortable: true,
-    wrap: true,
   },
   {
     name: 'SKU',
     selector: (row) => row.sku,
     sortable: true,
-    wrap: true,
   },
   {
     name: 'Quantity',
     selector: (row) => row.quantity,
     sortable: true,
-    wrap: true,
   },
   {
     name: 'Color',
     selector: (row) => row.color,
     sortable: true,
-    wrap: true,
   },
   {
     name: 'Size',
     selector: (row) => row.size,
     sortable: true,
-    wrap: true,
   },
   {
     name: 'Price',
     selector: (row) => row.price_cents,
     sortable: true,
-    wrap: true,
   },
   {
     name: 'Cost',
     selector: (row) => row.cost_cents,
     sortable: true,
-    wrap: true,
   },
 ]
 
@@ -172,7 +165,7 @@ export const orderColumns = [
     name: 'Customer name',
     selector: (row) => row.name,
     sortable: true,
-    grow: 1.5,
+    grow: 1.8,
     wrap: true,
   },
   {
@@ -207,12 +200,14 @@ export const orderColumns = [
     name: 'Order status',
     selector: (row) => row.order_status,
     sortable: true,
+    grow: 1.5,
     wrap: true,
   },
   {
     name: 'Order total',
     selector: (row) => row.total_cents,
     sortable: true,
+    grow: 1.5,
     wrap: true,
   },
   {
@@ -232,7 +227,7 @@ export const orderColumns = [
     name: 'Tracking number',
     selector: (row) => row.tracking_number,
     sortable: true,
-    grow: 1.3,
+    grow: 2,
     wrap: true,
   },
 ]

@@ -57,19 +57,16 @@ const Products = () => {
       name: 'Name',
       selector: (row) => row.product_name,
       sortable: true,
-      wrap: true,
     },
     {
       name: 'Style',
       selector: (row) => row.style,
       sortable: true,
-      wrap: true,
     },
     {
       name: 'Brand',
       selector: (row) => row.brand,
       sortable: true,
-      wrap: true,
     },
     {
       name: 'Action',
@@ -82,7 +79,6 @@ const Products = () => {
           <EditOutlinedIcon className='edit-icon' onClick={() => handleAction('update', row.id)} />
         </>
       ),
-      sortable: true,
     },
   ]
 

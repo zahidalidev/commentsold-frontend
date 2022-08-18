@@ -5,3 +5,5 @@ export const saveToken = (token) => localStorage.setItem(TOKEN, JSON.stringify(t
 export const getToken = () => JSON.parse(localStorage.getItem(TOKEN))
 
 export const removeToken = () => localStorage.removeItem(TOKEN)
+
+export const formatNumbers = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')

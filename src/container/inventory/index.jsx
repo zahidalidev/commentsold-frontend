@@ -10,7 +10,7 @@ import AppBar from 'components/appbar'
 import Table from 'components/table'
 import { inventoryColumns } from 'utils/constants'
 import { useEffect, useState } from 'react'
-import { getToken } from 'utils/helpers'
+import { formatNumbers, getToken } from 'utils/helpers'
 import getInventories from 'services/inventory'
 import SelectThresh from 'components/selectThresh'
 
@@ -55,7 +55,7 @@ const Inventory = () => {
       <div className='container-fluid inventory-container'>
         <Paper className='mat-paper' elevation={2}>
           <Card>
-            <Typography variant='h5'>Total Products ({inventories.count})</Typography>
+            <Typography variant='h5'>Total Products ({formatNumbers(parseInt(inventories.count, 10))})</Typography>
             <CardContent className='mat-card-header'>
               <TextField
                 onChange={(e) => setName(e.target.value)}

@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import LoadingModal from 'components/loadingModal'
-import { login } from 'services/user'
+import login from 'services/user'
 import { inputFields, inputFieldsInitialValues } from 'utils/constants'
 import { validateLogin } from 'utils/validations'
 import { getToken, saveToken } from 'utils/helpers'
