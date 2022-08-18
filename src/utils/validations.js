@@ -15,8 +15,8 @@ export const validateLogin = (values) => {
 
 export const validateProduct = (values) => {
   const errors = {}
-  if (!values.productName) {
-    errors.productName = 'Product name is required'
+  if (!values.product_name) {
+    errors.product_name = 'Product name is required'
   }
   if (!values.description) {
     errors.description = 'Product description is required'
@@ -27,14 +27,17 @@ export const validateProduct = (values) => {
   if (!values.brand) {
     errors.brand = 'Product brand is required'
   }
-  if (!values.productType) {
-    errors.productType = 'Product type is required'
+  if (!values.product_type) {
+    errors.product_type = 'Product type is required'
   }
-  if (!values.shippingPrice) {
-    errors.shippingPrice = 'Shipping price is required'
+  if (!values.shipping_price) {
+    errors.shipping_price = 'Shipping price is required'
   }
   if (!values.note) {
     errors.note = 'Product note is required'
+  }
+  if (!values.url) {
+    errors.note = 'Product url is required'
   }
 
   return errors

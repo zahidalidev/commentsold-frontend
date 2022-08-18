@@ -48,21 +48,11 @@ export const inputFields = [
   },
 ]
 
-export const productFieldsInitialValues = {
-  productName: '',
-  description: '',
-  style: '',
-  brand: '',
-  productType: '',
-  shippingPrice: '',
-  note: '',
-}
-
 export const productFields = [
   {
     id: 0,
     label: 'Product name',
-    name: 'productName',
+    name: 'product_name',
   },
   {
     id: 1,
@@ -82,17 +72,22 @@ export const productFields = [
   {
     id: 4,
     label: 'Product type',
-    name: 'productType',
+    name: 'product_type',
   },
   {
     id: 5,
     label: 'Shipping price',
-    name: 'shippingPrice',
+    name: 'shipping_price',
   },
   {
     id: 6,
     label: 'Note',
     name: 'note',
+  },
+  {
+    id: 6,
+    label: 'Image url',
+    name: 'url',
   },
 ]
 

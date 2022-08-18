@@ -7,97 +7,129 @@ import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import { Formik } from 'formik'
 import _ from 'lodash'
+import { toast } from 'react-toastify'
 
-import { productFields, productFieldsInitialValues } from 'utils/constants'
+import { productFields } from 'utils/constants'
 import { validateProduct } from 'utils/validations'
+import { addProducts, getProduct, updateProducts } from 'services/products'
+import LoadingModal from 'components/loadingModal'
+import AppBar from 'components/appbar'
+import { getToken } from 'utils/helpers'
+import { useNavigate } from 'react-router-dom'
 
 import 'container/product/styles.scss'
 import 'container/auth/login/styles.scss'
 
 const Product = () => {
   const [action, setAction] = useState()
-  const [uploadedImage, setUploadedImage] = useState(null)
+  const [loading, setloading] = useState(false)
+  const [currentProductId, setcurrentProductId] = useState('')
+  const navigate = useNavigate()
+  const [productFieldsInitialValues, setInitialValues] = useState({
+    product_name: '',
+    description: '',
+    style: '',
+    brand: '',
+    product_type: '',
+    shipping_price: '',
+    note: '',
+    url: '',
+  })
 
-  useEffect(() => {
-    setAction(window.location.pathname.split('/')[2])
-  }, [window.location.pathname])
-
-  const handleProduct = () => {
-    const image = uploadedImage
-    if (!image) {
-      console.log('upload image!!')
+  const getProductById = async (id) => {
+    try {
+      const token = getToken()
+      const { data } = await getProduct(id, token)
+      setInitialValues(data)
+    } catch (error) {
+      toast.error('Error: Product details not found')
     }
   }
 
+  useEffect(() => {
+    const params = window.location.pathname.split('/')
+    setAction(params[2])
+    if (params[2] === 'update') {
+      getProductById(params[3])
+      setcurrentProductId(params[3])
+    }
+  }, [window.location.pathname])
+
+  const handleProduct = async (values) => {
+    setloading(true)
+    try {
+      const token = getToken()
+      if (action === 'add') {
+        await addProducts(values, token)
+      } else {
+        await updateProducts(values, currentProductId, token)
+      }
+      toast.success(`Product ${action === 'add' ? 'added' : 'updated'}`)
+      navigate('/products')
+    } catch (error) {
+      toast.error(`Error: Product not ${action === 'add' ? 'added' : 'updated'}`)
+    }
+    setloading(false)
+  }
+
   return (
-    <div className='container-fluid container'>
-      <div className='container'>
-        <Paper className='mat-paper' elevation={2}>
-          <Card className='mat-card'>
-            <Typography className='heading' variant='h4'>
-              {action} Product
-            </Typography>
-            <CardContent className='mat-card-content'>
-              <Formik
-                initialValues={productFieldsInitialValues}
-                validate={validateProduct}
-                onSubmit={handleProduct}
-              >
-                {({
-                  values, errors, touched, handleChange, handleBlur, handleSubmit,
-                }) => (
-                  <form className='mat-form' onSubmit={handleSubmit}>
-                    {productFields.map((field) => (
-                      <Fragment key={field.id.toString()}>
-                        <TextField
-                          className='text-field'
-                          fullWidth
-                          label={field.label}
-                          variant='outlined'
-                          type='text'
-                          name={field.name}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values[field.name]}
-                        />
-                        <Typography className='warn-typography'>
-                          {errors[field.name] && touched[field.name] && errors[field.name]}
-                        </Typography>
-                      </Fragment>
-                    ))}
-
-                    <Button
-                      className='upload-btn'
-                      variant='outlined'
-                      fullWidth
-                      size='large'
-                      component='label'
-                    >
-                      Upload Image
-                      <input
-                        onChange={(e) => setUploadedImage(e.target.files.item(0))}
-                        hidden
-                        type='file'
-                      />
-                    </Button>
-
-                    <Button
-                      className='submit-button'
-                      type='submit'
-                      disabled={!_.isEmpty(errors)}
-                      variant='contained'
-                      size='large'
-                    >
-                      {action}
-                    </Button>
-                  </form>
-                )}
-              </Formik>
-            </CardContent>
-          </Card>
-        </Paper>
+    <>
+      <AppBar />
+      <div className='container-fluid container'>
+        <LoadingModal show={loading} />
+        <div className='container'>
+          <Paper className='mat-paper' elevation={2}>
+            <Card className='mat-card'>
+              <Typography className='heading' variant='h4'>
+                {action} Product
+              </Typography>
+              <CardContent className='mat-card-content'>
+                <Formik
+                  initialValues={productFieldsInitialValues}
+                  enableReinitialize
+                  validate={validateProduct}
+                  onSubmit={handleProduct}
+                >
+                  {({
+                    values, errors, touched, handleChange, handleBlur, handleSubmit,
+                  }) => (
+                    <form className='mat-form' onSubmit={handleSubmit}>
+                      {productFields.map((field) => (
+                        <Fragment key={field.name}>
+                          <TextField
+                            className='text-field'
+                            fullWidth
+                            label={field.label}
+                            variant='outlined'
+                            type='text'
+                            name={field.name}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values[field.name]}
+                          />
+                          <Typography className='warn-typography'>
+                            {errors[field.name] && touched[field.name] && errors[field.name]}
+                          </Typography>
+                        </Fragment>
+                      ))}
+                      <Button
+                        className='submit-button'
+                        type='submit'
+                        disabled={!_.isEmpty(errors)}
+                        variant='contained'
+                        size='large'
+                      >
+                        {action}
+                      </Button>
+                    </form>
+                  )}
+                </Formik>
+              </CardContent>
+            </Card>
+          </Paper>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

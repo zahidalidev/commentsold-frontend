@@ -35,12 +35,11 @@ const Products = () => {
       setProducts(oldProd)
       toast.error('Error: Product not deleted!')
     }
-
     setConfirmModal(false)
   }
 
   const handleAction = (type, id) => {
-    if (type === 'edit') navigate(`/product/edit/${id}`)
+    if (type === 'update') navigate(`/product/update/${id}`)
     else {
       setcurrentProductId(id)
       setConfirmModal(true)
@@ -73,7 +72,7 @@ const Products = () => {
           />
           <EditOutlinedIcon
             sx={{ color: '#01225a', marginLeft: '1rem' }}
-            onClick={() => handleAction('edit', row.id)}
+            onClick={() => handleAction('update', row.id)}
           />
         </div>
       ),
@@ -112,7 +111,7 @@ const Products = () => {
                 <Typography noWrap className='product-heading' variant='h4'>
                   User Products
                 </Typography>
-                <Button className='add-button' variant='outlined'>
+                <Button onClick={() => navigate('/product/add')} className='add-button' variant='outlined'>
                   Add Product
                 </Button>
               </div>
