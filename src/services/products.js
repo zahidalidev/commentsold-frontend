@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const productEndpoint = `${process.env.REACT_APP_BASE_URL}v1`
 
-export const getAllProducts = (token, rowsPerPage, pageNumber) => axios.get(`${productEndpoint}/products/?limit=${rowsPerPage}&page=${pageNumber}`, {
+export const getAllProducts = (token, rowsPerPage, pageNumber, sortBy) => axios.get(`${productEndpoint}/products/?limit=${rowsPerPage}&page=${pageNumber}&sort_column=${sortBy.sortColumn}&sort_order=${sortBy.sortOrder}`, {
   headers: {
     'access-token': token,
   },

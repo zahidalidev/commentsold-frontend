@@ -176,6 +176,12 @@ export const inventoryColumns = [
   },
 ]
 
+export const productColumns = {
+  Name: 'product_name',
+  Style: 'style',
+  Brand: 'brand',
+}
+
 export const orderColumns = [
   {
     name: 'Customer name',

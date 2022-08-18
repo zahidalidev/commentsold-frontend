@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import ConfirmModal from 'components/confirmationAlert'
-import { defaultPageCount } from 'utils/constants'
+import { defaultPageCount, productColumns } from 'utils/constants'
 import { getToken } from 'utils/helpers'
 import { getAllProducts, removeProducts } from 'services/products'
 import Table from 'components/table'
@@ -24,6 +24,10 @@ const Products = () => {
   const [currentProductId, setcurrentProductId] = useState(false)
   const [pageNumber, setPageNumber] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
+  const [sortBy, setSortBy] = useState({
+    sortColumn: 'product_name',
+    sortOrder: 'asc',
+  })
   const navigate = useNavigate()
 
   const handleRemoveProduct = async () => {
@@ -86,7 +90,9 @@ const Products = () => {
   const handleProducts = async () => {
     try {
       const token = getToken()
-      const { data } = await getAllProducts(token, rowsPerPage, pageNumber)
+      const tempSortBy = { ...sortBy }
+      tempSortBy.sortColumn = productColumns[tempSortBy.sortColumn]
+      const { data } = await getAllProducts(token, rowsPerPage, pageNumber, tempSortBy)
       setProducts(data)
     } catch (error) {
       toast.error(error)
@@ -96,7 +102,7 @@ const Products = () => {
 
   useEffect(() => {
     handleProducts()
-  }, [rowsPerPage, pageNumber])
+  }, [rowsPerPage, pageNumber, sortBy])
 
   return (
     <>
@@ -128,6 +134,7 @@ const Products = () => {
               columns={productsColumns}
               setPageNumber={setPageNumber}
               setRowsPerPage={setRowsPerPage}
+              setSortBy={setSortBy}
             />
           </Card>
         </Paper>
