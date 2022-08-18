@@ -20,21 +20,23 @@ import 'container/inventory/styles.scss'
 const Order = () => {
   const navigate = useNavigate()
   const [orders, setOrders] = useState([])
+  const [pageNumber, setPageNumber] = useState(1)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
 
   const handleOrders = async () => {
     try {
       const token = getToken()
-      const { data } = await getAllOrders(token)
+      const { data } = await getAllOrders(token, rowsPerPage, pageNumber)
       setOrders(data)
     } catch (error) {
-      toast.error('Session expired')
+      toast.error(error)
       navigate('/login')
     }
   }
 
   useEffect(() => {
     handleOrders()
-  }, [])
+  }, [rowsPerPage, pageNumber])
 
   return (
     <>
@@ -43,9 +45,11 @@ const Order = () => {
         <Paper className='mat-paper' elevation={2}>
           <Card>
             <div className='order-sale'>
-              <Typography className='sale' variant='h5'>Total Sale ({orders.length})</Typography>
+              <Typography className='sale' variant='h5'>
+                Total Sale ({orders.totalSale.toFixed(2)})
+              </Typography>
               <Typography className='avg-sale sale' variant='h5'>
-                Average Sale ({orders.length})
+                Average Sale ({orders.average.toFixed(2)})
               </Typography>
             </div>
             <CardContent className='mat-card-header'>
@@ -55,7 +59,12 @@ const Order = () => {
               </div>
             </CardContent>
             <header className='card-seperator' />
-            <Table data={orders} columns={orderColumns} />
+            <Table
+              data={orders}
+              columns={orderColumns}
+              setPageNumber={setPageNumber}
+              setRowsPerPage={setRowsPerPage}
+            />
           </Card>
         </Paper>
       </div>

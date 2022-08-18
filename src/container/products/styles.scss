@@ -34,6 +34,17 @@
   }
 }
 
+.delete-icon {
+  color: $error;
+  cursor: pointer
+}
+
+.edit-icon {
+  color: $primary;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 450px) {
   .product-container {
     width: 95% !important;

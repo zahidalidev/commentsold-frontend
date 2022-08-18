@@ -19,7 +19,7 @@ import 'container/inventory/styles.scss'
 const Inventory = () => {
   const [inventories, setInventories] = useState([])
   const [pageNumber, setPageNumber] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(15)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
 
   const navigate = useNavigate()
 
@@ -44,7 +44,7 @@ const Inventory = () => {
       <div className='container-fluid inventory-container'>
         <Paper className='mat-paper' elevation={2}>
           <Card>
-            <Typography variant='h5'>Total Products ({inventories.length})</Typography>
+            <Typography variant='h5'>Total Products ({inventories.count})</Typography>
             <CardContent className='mat-card-header'>
               <TextField className='text-field' size='small' label='Search' variant='outlined' />
               <div className='select'>

@@ -21,6 +21,8 @@ const Products = () => {
   const [products, setProducts] = useState([])
   const [confirmModal, setConfirmModal] = useState(false)
   const [currentProductId, setcurrentProductId] = useState(false)
+  const [pageNumber, setPageNumber] = useState(1)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
   const navigate = useNavigate()
 
   const handleRemoveProduct = async () => {
@@ -65,16 +67,16 @@ const Products = () => {
     {
       name: 'Action',
       selector: (row) => (
-        <div>
+        <>
           <DeleteOutlineOutlinedIcon
-            sx={{ color: '#FF3333' }}
+            className='delete-icon'
             onClick={() => handleAction('remove', row.id)}
           />
           <EditOutlinedIcon
-            sx={{ color: '#01225a', marginLeft: '1rem' }}
+            className='edit-icon'
             onClick={() => handleAction('update', row.id)}
           />
-        </div>
+        </>
       ),
       sortable: true,
     },
@@ -83,7 +85,7 @@ const Products = () => {
   const handleProducts = async () => {
     try {
       const token = getToken()
-      const { data } = await getAllProducts(token)
+      const { data } = await getAllProducts(token, rowsPerPage, pageNumber)
       setProducts(data)
     } catch (error) {
       toast.error('Session expired')
@@ -93,7 +95,7 @@ const Products = () => {
 
   useEffect(() => {
     handleProducts()
-  }, [])
+  }, [rowsPerPage, pageNumber])
 
   return (
     <>
@@ -111,12 +113,21 @@ const Products = () => {
                 <Typography noWrap className='product-heading' variant='h4'>
                   User Products
                 </Typography>
-                <Button onClick={() => navigate('/product/add')} className='add-button' variant='outlined'>
+                <Button
+                  onClick={() => navigate('/product/add')}
+                  className='add-button'
+                  variant='outlined'
+                >
                   Add Product
                 </Button>
               </div>
             </CardContent>
-            <Table data={products} columns={productsColumns} touch />
+            <Table
+              data={products}
+              columns={productsColumns}
+              setPageNumber={setPageNumber}
+              setRowsPerPage={setRowsPerPage}
+            />
           </Card>
         </Paper>
       </div>

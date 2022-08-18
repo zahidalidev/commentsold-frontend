@@ -18,9 +18,8 @@ const CusTable = ({
       data={data.rows}
       pagination
       highlightOnHover
-      pointerOnHover
       paginationTotalRows={data.count}
-      paginationPerPage={15}
+      paginationPerPage={10}
       paginationServer
       onChangePage={(number) => setPageNumber(number)}
       onChangeRowsPerPage={(number) => setRowsPerPage(number)}
