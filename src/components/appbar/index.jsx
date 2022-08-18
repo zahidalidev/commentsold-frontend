@@ -1,11 +1,11 @@
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
 import Button from '@mui/material/Button'
+import Toolbar from '@mui/material/Toolbar'
 import { useNavigate } from 'react-router-dom'
 
-import { removeToken } from 'utils/helpers'
 import { menu } from 'utils/constants'
+import { removeToken } from 'utils/helpers'
 
 import 'components/appbar/styles.scss'
 

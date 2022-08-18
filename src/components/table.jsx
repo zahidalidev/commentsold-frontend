@@ -17,6 +17,8 @@ const CusTable = ({
       paginationServer
       onChangePage={(number) => setPageNumber(number)}
       onChangeRowsPerPage={(number) => setRowsPerPage(number)}
+      paginationIconFirstPage={false}
+      paginationIconLastPage={false}
     />
   )
 

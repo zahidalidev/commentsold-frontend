@@ -4,7 +4,6 @@ const orderEndpoint = `${process.env.REACT_APP_BASE_URL}v1`
 
 const getAllOrders = (token, rowsPerPage, pageNumber, name, orderStatus, shipper) => {
   const page = pageNumber - 1
-  console.log(pageNumber)
   let searchUrl = `${orderEndpoint}/orders/?limit=${rowsPerPage}&page=${page}`
 
   if (name) {

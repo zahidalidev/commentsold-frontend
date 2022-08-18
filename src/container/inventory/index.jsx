@@ -1,18 +1,18 @@
+import Card from '@mui/joy/Card'
+import CardContent from '@mui/material/CardContent'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
-import Card from '@mui/joy/Card'
-import CardContent from '@mui/material/CardContent'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import Table from 'components/table'
-import { inventoryColumns } from 'utils/constants'
-import { useEffect, useState } from 'react'
 import { formatNumbers, getToken } from 'utils/helpers'
 import getInventories from 'services/inventory'
+import { inventoryColumns } from 'utils/constants'
 import SelectThresh from 'components/selectThresh'
+import { useEffect, useState } from 'react'
 
 import 'container/inventory/styles.scss'
 

@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react'
-import Paper from '@mui/material/Paper'
-import Card from '@mui/joy/Card'
 import Button from '@mui/material/Button'
+import Card from '@mui/joy/Card'
+import CardContent from '@mui/material/CardContent'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
+import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import { toast } from 'react-toastify'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
-import CardContent from '@mui/material/CardContent'
 
 import AppBar from 'components/appbar'
-import Table from 'components/table'
+import ConfirmModal from 'components/confirmationAlert'
 import { getToken } from 'utils/helpers'
 import { getAllProducts, removeProducts } from 'services/products'
+import Table from 'components/table'
 
 import 'container/products/styles.scss'
-import ConfirmModal from 'components/confirmationAlert'
 
 const Products = () => {
   const [products, setProducts] = useState({})

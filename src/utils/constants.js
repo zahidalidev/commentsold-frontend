@@ -1,8 +1,8 @@
-import Login from 'container/auth/login'
 import Inventory from 'container/inventory'
+import Login from 'container/auth/login'
+import Orders from 'container/orders'
 import Products from 'container/products'
 import Product from 'container/product'
-import Orders from 'container/orders'
 
 export const TOKEN = 'token'
 

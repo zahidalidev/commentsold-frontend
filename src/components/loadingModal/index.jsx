@@ -1,6 +1,6 @@
-import Modal from '@mui/material/Modal'
-import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
+import CircularProgress from '@mui/material/CircularProgress'
+import Modal from '@mui/material/Modal'
 
 import 'components/loadingModal/styles.scss'
 

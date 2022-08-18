@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react'
 import Card from '@mui/joy/Card'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
+import Form from 'components/form'
+import { getToken, saveToken } from 'utils/helpers'
 import LoadingModal from 'components/loadingModal'
 import login from 'services/user'
 import { loginFields, loginFieldsInitialValues } from 'utils/constants'
 import { validateLogin } from 'utils/validations'
-import { getToken, saveToken } from 'utils/helpers'
-import Form from 'components/form'
 
 import 'container/auth/login/styles.scss'
 

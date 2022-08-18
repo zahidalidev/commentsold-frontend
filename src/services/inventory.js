@@ -5,6 +5,7 @@ const inventoryEndpoint = `${process.env.REACT_APP_BASE_URL}v1`
 const getInventories = (token, rowsPerPage, pageNumber, name, operator, price) => {
   const page = pageNumber - 1
   let searchUrl = `${inventoryEndpoint}/inventories/?limit=${rowsPerPage}&page=${page}`
+
   if (name) {
     searchUrl += `&name=${name}`
   }
