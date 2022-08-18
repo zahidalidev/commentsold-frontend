@@ -18,7 +18,7 @@ import 'container/products/styles.scss'
 import ConfirmModal from 'components/confirmationAlert'
 
 const Products = () => {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState({})
   const [confirmModal, setConfirmModal] = useState(false)
   const [currentProductId, setcurrentProductId] = useState(false)
   const [pageNumber, setPageNumber] = useState(1)
@@ -26,16 +26,20 @@ const Products = () => {
   const navigate = useNavigate()
 
   const handleRemoveProduct = async () => {
-    const oldProd = [...products]
+    const oldProd = { ...products }
     try {
-      const tmepProducts = oldProd.filter((item) => item.id !== currentProductId)
+      const rows = oldProd.rows.filter((item) => item.id !== currentProductId)
+      const tmepProducts = {
+        rows,
+        count: (oldProd.count -= 1),
+      }
       setProducts(tmepProducts)
 
       const token = getToken()
       await removeProducts(currentProductId, token)
     } catch (error) {
       setProducts(oldProd)
-      toast.error('Error: Product not deleted!')
+      toast.error(error)
     }
     setConfirmModal(false)
   }
@@ -72,10 +76,7 @@ const Products = () => {
             className='delete-icon'
             onClick={() => handleAction('remove', row.id)}
           />
-          <EditOutlinedIcon
-            className='edit-icon'
-            onClick={() => handleAction('update', row.id)}
-          />
+          <EditOutlinedIcon className='edit-icon' onClick={() => handleAction('update', row.id)} />
         </>
       ),
       sortable: true,
@@ -88,7 +89,7 @@ const Products = () => {
       const { data } = await getAllProducts(token, rowsPerPage, pageNumber)
       setProducts(data)
     } catch (error) {
-      toast.error('Session expired')
+      toast.error(error)
       navigate('/login')
     }
   }

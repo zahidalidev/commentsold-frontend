@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import Table from 'components/table'
-// import Select from 'components/select'
 import { inventoryColumns } from 'utils/constants'
 import { useEffect, useState } from 'react'
 import { getToken } from 'utils/helpers'
@@ -18,7 +17,7 @@ import SelectThresh from 'components/selectThresh'
 import 'container/inventory/styles.scss'
 
 const Inventory = () => {
-  const [inventories, setInventories] = useState([])
+  const [inventories, setInventories] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
@@ -30,7 +29,7 @@ const Inventory = () => {
       const { data } = await getInventories(token, rowsPerPage, pageNumber)
       setInventories(data)
     } catch (error) {
-      toast.error('Session expired')
+      toast.error(error)
       navigate('/login')
     }
   }
@@ -49,7 +48,6 @@ const Inventory = () => {
             <CardContent className='mat-card-header'>
               <TextField className='text-field' size='small' label='Search' variant='outlined' />
               <div className='select'>
-                {/* <Select /> */}
                 <SelectThresh />
               </div>
             </CardContent>

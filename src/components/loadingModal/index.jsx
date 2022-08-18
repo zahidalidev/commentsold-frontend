@@ -5,7 +5,7 @@ import Box from '@mui/material/Box'
 import 'components/loadingModal/styles.scss'
 
 const LoadingModal = ({ show }) => (
-  <Modal open={show} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
+  <Modal open={show}>
     <Box className='modal-box'>
       <CircularProgress />
     </Box>

@@ -1,11 +1,5 @@
-import DataTable, { createTheme } from 'react-data-table-component'
+import DataTable from 'react-data-table-component'
 import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
-
-createTheme('solarized', {
-  action: {
-    hover: 'rgb(230, 244, 255)',
-  },
-})
 
 const CusTable = ({
   data, columns, setPageNumber, setRowsPerPage,

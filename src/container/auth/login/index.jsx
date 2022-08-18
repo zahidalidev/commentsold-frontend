@@ -10,13 +10,13 @@ import _ from 'lodash'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { inputFields, inputFieldsInitialValues } from 'utils/constants'
-import { validateLogin } from 'utils/validations'
 import LoadingModal from 'components/loadingModal'
 import { login } from 'services/user'
+import { inputFields, inputFieldsInitialValues } from 'utils/constants'
+import { validateLogin } from 'utils/validations'
+import { getToken, saveToken } from 'utils/helpers'
 
 import 'container/auth/login/styles.scss'
-import { getToken, saveToken } from 'utils/helpers'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -29,7 +29,7 @@ const Login = () => {
       saveToken(data.token)
       navigate('/products')
     } catch (error) {
-      toast.error('Login error!')
+      toast.error(error)
     }
     setloading(false)
   }

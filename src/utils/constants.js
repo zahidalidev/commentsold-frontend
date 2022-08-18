@@ -5,6 +5,7 @@ import Product from 'container/product'
 import Order from 'container/order'
 
 export const TOKEN = 'token'
+
 export const routeList = [
   {
     path: '/login',
@@ -32,7 +33,37 @@ export const routeList = [
   },
 ]
 
+export const menu = [
+  {
+    name: 'Inventory',
+    path: '/inventory',
+  },
+  {
+    name: 'Products',
+    path: '/products',
+  },
+  {
+    name: 'Orders',
+    path: '/order',
+  },
+]
+
+export const thresholdOptions = [
+  { value: '<', label: '<' },
+  { value: '>', label: '>' },
+  { value: '=', label: '=' },
+]
+
+export const selectOptions = [
+  { value: 'Pending', label: 'Pending' },
+  { value: 'Paid', label: 'Paid' },
+  { value: 'Fulfulled', label: 'Fulfulled' },
+  { value: 'Shipped', label: 'Shipped' },
+  { value: 'Open', label: 'Open' },
+]
+
 export const inputFieldsInitialValues = { email: '', password: '' }
+
 export const inputFields = [
   {
     id: 0,

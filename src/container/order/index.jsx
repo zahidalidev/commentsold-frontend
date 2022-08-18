@@ -19,7 +19,7 @@ import 'container/inventory/styles.scss'
 
 const Order = () => {
   const navigate = useNavigate()
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
@@ -46,10 +46,10 @@ const Order = () => {
           <Card>
             <div className='order-sale'>
               <Typography className='sale' variant='h5'>
-                Total Sale ({orders.totalSale.toFixed(2)})
+                Total Sale ({parseInt(orders.totalSale, 10).toFixed(2)})
               </Typography>
               <Typography className='avg-sale sale' variant='h5'>
-                Average Sale ({orders.average.toFixed(2)})
+                Average Sale ({parseInt(orders.average, 10).toFixed(2)})
               </Typography>
             </div>
             <CardContent className='mat-card-header'>

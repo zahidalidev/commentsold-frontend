@@ -6,13 +6,25 @@ import Typography from '@mui/material/Typography'
 import 'components/confirmationAlert/styles.scss'
 
 const ConfirmModal = ({ show, deleteProduct, setConfirmModal }) => (
-  <Modal open={show} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
+  <Modal open={show}>
     <Box className='modal-confirm-box'>
       <Typography variant='h6'>Delete Product</Typography>
-      <Button onClick={deleteProduct} className='submit-button' type='submit' variant='outlined' size='large'>
+      <Button
+        onClick={deleteProduct}
+        className='submit-button'
+        type='submit'
+        variant='outlined'
+        size='large'
+      >
         Yes
       </Button>
-      <Button onClick={() => setConfirmModal(false)} className='submit-button' type='submit' variant='outlined' size='large'>
+      <Button
+        onClick={() => setConfirmModal(false)}
+        className='submit-button'
+        type='submit'
+        variant='outlined'
+        size='large'
+      >
         No
       </Button>
     </Box>

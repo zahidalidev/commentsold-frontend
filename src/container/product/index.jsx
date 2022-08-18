@@ -8,14 +8,14 @@ import Typography from '@mui/material/Typography'
 import { Formik } from 'formik'
 import _ from 'lodash'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
-import { productFields } from 'utils/constants'
-import { validateProduct } from 'utils/validations'
 import { addProducts, getProduct, updateProducts } from 'services/products'
 import LoadingModal from 'components/loadingModal'
 import AppBar from 'components/appbar'
 import { getToken } from 'utils/helpers'
-import { useNavigate } from 'react-router-dom'
+import { productFields } from 'utils/constants'
+import { validateProduct } from 'utils/validations'
 
 import 'container/product/styles.scss'
 import 'container/auth/login/styles.scss'
@@ -42,7 +42,7 @@ const Product = () => {
       const { data } = await getProduct(id, token)
       setInitialValues(data)
     } catch (error) {
-      toast.error('Error: Product details not found')
+      toast.error(error)
     }
   }
 
@@ -67,7 +67,7 @@ const Product = () => {
       toast.success(`Product ${action === 'add' ? 'added' : 'updated'}`)
       navigate('/products')
     } catch (error) {
-      toast.error(`Error: Product not ${action === 'add' ? 'added' : 'updated'}`)
+      toast.error(error)
     }
     setloading(false)
   }
