@@ -1,12 +1,7 @@
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Card from '@mui/joy/Card'
-import CardContent from '@mui/material/CardContent'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import { Formik } from 'formik'
-import _ from 'lodash'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
@@ -16,9 +11,10 @@ import AppBar from 'components/appbar'
 import { getToken } from 'utils/helpers'
 import { productFields } from 'utils/constants'
 import { validateProduct } from 'utils/validations'
+import Form from 'components/form'
 
-import 'container/product/styles.scss'
 import 'container/auth/login/styles.scss'
+import 'container/product/styles.scss'
 
 const Product = () => {
   const [action, setAction] = useState()
@@ -83,48 +79,13 @@ const Product = () => {
               <Typography className='heading' variant='h4'>
                 {action} Product
               </Typography>
-              <CardContent className='mat-card-content'>
-                <Formik
-                  initialValues={productFieldsInitialValues}
-                  enableReinitialize
-                  validate={validateProduct}
-                  onSubmit={handleProduct}
-                >
-                  {({
-                    values, errors, touched, handleChange, handleBlur, handleSubmit,
-                  }) => (
-                    <form className='mat-form' onSubmit={handleSubmit}>
-                      {productFields.map((field) => (
-                        <Fragment key={field.name}>
-                          <TextField
-                            className='text-field'
-                            fullWidth
-                            label={field.label}
-                            variant='outlined'
-                            type='text'
-                            name={field.name}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values[field.name]}
-                          />
-                          <Typography className='warn-typography'>
-                            {errors[field.name] && touched[field.name] && errors[field.name]}
-                          </Typography>
-                        </Fragment>
-                      ))}
-                      <Button
-                        className='submit-button'
-                        type='submit'
-                        disabled={!_.isEmpty(errors)}
-                        variant='contained'
-                        size='large'
-                      >
-                        {action}
-                      </Button>
-                    </form>
-                  )}
-                </Formik>
-              </CardContent>
+              <Form
+                fieldsInitialValues={productFieldsInitialValues}
+                handleSubmition={handleProduct}
+                action={action}
+                validate={validateProduct}
+                fields={productFields}
+              />
             </Card>
           </Paper>
         </div>

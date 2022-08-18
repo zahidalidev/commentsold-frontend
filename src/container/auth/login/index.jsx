@@ -1,20 +1,16 @@
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Card from '@mui/joy/Card'
-import CardContent from '@mui/material/CardContent'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import { Formik } from 'formik'
-import _ from 'lodash'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import LoadingModal from 'components/loadingModal'
 import login from 'services/user'
-import { inputFields, inputFieldsInitialValues } from 'utils/constants'
+import { loginFields, loginFieldsInitialValues } from 'utils/constants'
 import { validateLogin } from 'utils/validations'
 import { getToken, saveToken } from 'utils/helpers'
+import Form from 'components/form'
 
 import 'container/auth/login/styles.scss'
 
@@ -50,47 +46,13 @@ const Login = () => {
             <Typography className='heading' variant='h3'>
               Login
             </Typography>
-            <CardContent className='mat-card-content'>
-              <Formik
-                initialValues={inputFieldsInitialValues}
-                validate={validateLogin}
-                onSubmit={handleLogin}
-              >
-                {({
-                  values, errors, touched, handleChange, handleBlur, handleSubmit,
-                }) => (
-                  <form className='mat-form' onSubmit={handleSubmit}>
-                    {inputFields.map((field) => (
-                      <Fragment key={field.id.toString()}>
-                        <TextField
-                          className='text-field'
-                          fullWidth
-                          label={field.label}
-                          variant='outlined'
-                          type={field.type}
-                          name={field.name}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values[field.name]}
-                        />
-                        <Typography className='warn-typography'>
-                          {errors[field.name] && touched[field.name] && errors[field.name]}
-                        </Typography>
-                      </Fragment>
-                    ))}
-                    <Button
-                      className='submit-button'
-                      type='submit'
-                      disabled={!_.isEmpty(errors)}
-                      variant='contained'
-                      size='large'
-                    >
-                      Login
-                    </Button>
-                  </form>
-                )}
-              </Formik>
-            </CardContent>
+            <Form
+              fieldsInitialValues={loginFieldsInitialValues}
+              handleSubmition={handleLogin}
+              action='Login'
+              validate={validateLogin}
+              fields={loginFields}
+            />
           </Card>
         </Paper>
       </div>

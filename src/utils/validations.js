@@ -37,7 +37,7 @@ export const validateProduct = (values) => {
     errors.note = 'Product note is required'
   }
   if (!values.url) {
-    errors.note = 'Product url is required'
+    errors.url = 'Product url is required'
   }
 
   return errors
