@@ -18,13 +18,15 @@ import 'container/inventory/styles.scss'
 
 const Inventory = () => {
   const [inventories, setInventories] = useState([])
+  const [pageNumber, setPageNumber] = useState(1)
+  const [rowsPerPage, setRowsPerPage] = useState(15)
 
   const navigate = useNavigate()
 
   const handleInventories = async () => {
     try {
       const token = getToken()
-      const { data } = await getInventories(token)
+      const { data } = await getInventories(token, rowsPerPage, pageNumber)
       setInventories(data)
     } catch (error) {
       toast.error('Session expired')
@@ -34,7 +36,7 @@ const Inventory = () => {
 
   useEffect(() => {
     handleInventories()
-  }, [])
+  }, [pageNumber, rowsPerPage])
 
   return (
     <>
@@ -50,7 +52,12 @@ const Inventory = () => {
               </div>
             </CardContent>
             <header className='card-seperator' />
-            <Table data={inventories} columns={inventoryColumns} />
+            <Table
+              data={inventories}
+              columns={inventoryColumns}
+              setPageNumber={setPageNumber}
+              setRowsPerPage={setRowsPerPage}
+            />
           </Card>
         </Paper>
       </div>
