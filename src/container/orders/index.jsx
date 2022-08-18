@@ -9,7 +9,12 @@ import { useNavigate } from 'react-router-dom'
 import AppBar from 'components/appbar'
 import { formatNumbers, getToken } from 'utils/helpers'
 import getAllOrders from 'services/order'
-import { orderColumns, orderStatusOptions, shipperNameOptions } from 'utils/constants'
+import {
+  orderColumns,
+  defaultPageCount,
+  orderStatusOptions,
+  shipperNameOptions,
+} from 'utils/constants'
 import Select from 'components/select'
 import Table from 'components/table'
 import { useEffect, useState } from 'react'
@@ -21,7 +26,7 @@ const Orders = () => {
   const navigate = useNavigate()
   const [orders, setOrders] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
   const [orderStatus, setOrderStatus] = useState('')
   const [shipper, setShipper] = useState('')
   const [search, setSearch] = useState('')

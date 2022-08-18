@@ -1,4 +1,5 @@
 import DataTable from 'react-data-table-component'
+import { defaultPageCount } from 'utils/constants'
 import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
 
 const CusTable = ({
@@ -13,7 +14,7 @@ const CusTable = ({
       pagination
       highlightOnHover
       paginationTotalRows={data.count}
-      paginationPerPage={10}
+      paginationPerPage={defaultPageCount}
       paginationServer
       onChangePage={(number) => setPageNumber(number)}
       onChangeRowsPerPage={(number) => setRowsPerPage(number)}

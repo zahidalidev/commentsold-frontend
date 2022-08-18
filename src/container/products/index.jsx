@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import ConfirmModal from 'components/confirmationAlert'
+import { defaultPageCount } from 'utils/constants'
 import { getToken } from 'utils/helpers'
 import { getAllProducts, removeProducts } from 'services/products'
 import Table from 'components/table'
@@ -22,7 +23,7 @@ const Products = () => {
   const [confirmModal, setConfirmModal] = useState(false)
   const [currentProductId, setcurrentProductId] = useState(false)
   const [pageNumber, setPageNumber] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
   const navigate = useNavigate()
 
   const handleRemoveProduct = async () => {

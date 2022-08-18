@@ -10,7 +10,7 @@ import AppBar from 'components/appbar'
 import Table from 'components/table'
 import { formatNumbers, getToken } from 'utils/helpers'
 import getInventories from 'services/inventory'
-import { inventoryColumns } from 'utils/constants'
+import { inventoryColumns, defaultPageCount } from 'utils/constants'
 import SelectThresh from 'components/selectThresh'
 import { useEffect, useState } from 'react'
 
@@ -19,7 +19,7 @@ import 'container/inventory/styles.scss'
 const Inventory = () => {
   const [inventories, setInventories] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [operator, setOperator] = useState('lt')

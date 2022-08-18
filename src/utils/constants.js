@@ -5,6 +5,7 @@ import Products from 'container/products'
 import Product from 'container/product'
 
 export const TOKEN = 'token'
+export const defaultPageCount = 10
 
 export const routeList = [
   {
