@@ -3,7 +3,7 @@ import { defaultPageCount } from 'utils/constants'
 import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
 
 const CusTable = ({
-  data, count, columns, setPageNumber, setRowsPerPage,
+  data, count, columns, setPageNumber, setRowsPerPage, setSortBy,
 }) => {
   const table = (
     <DataTable
@@ -13,16 +13,17 @@ const CusTable = ({
       data={data}
       pagination
       highlightOnHover
-      paginationTotalRows={data.count}
+      paginationTotalRows={count}
       paginationPerPage={defaultPageCount}
       paginationServer
       onChangePage={(number) => setPageNumber(number)}
       onChangeRowsPerPage={(number) => setRowsPerPage(number)}
       paginationIconFirstPage={false}
       paginationIconLastPage={false}
+      sortServer
+      onSort={(column, order) => setSortBy({ sortColumn: column.name, sortOrder: order })}
     />
   )
-
   const skeleton = (
     <Skeleton>
       <Table rows={5} cols={[<u key='a' />]} />

@@ -6,11 +6,11 @@ export const getAllProducts = (rowsPerPage, pageNumber) => (
     .catch(() => {})
 )
 
-export const getProduct = (id, token) => (
+export const getProduct = (id) => (
   instance.get(`/products/${id}`)
     .then(response => response.data)
     .catch(() => {})
-})
+)
 
 export const removeProducts = (id, token) => instance.delete(`/products/${id}`, {
   headers: {
