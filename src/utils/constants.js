@@ -54,12 +54,19 @@ export const thresholdOptions = [
   { value: 'eq', label: '=' },
 ]
 
-export const selectOptions = [
+export const orderStatusOptions = [
   { value: 'Pending', label: 'Pending' },
   { value: 'Paid', label: 'Paid' },
   { value: 'Fulfulled', label: 'Fulfulled' },
   { value: 'Shipped', label: 'Shipped' },
   { value: 'Open', label: 'Open' },
+]
+
+export const shipperNameOptions = [
+  { value: 'USPS', label: 'USPS' },
+  { value: 'DHL', label: 'DHL' },
+  { value: 'FedEx', label: 'FedEx' },
+  { value: 'UPS', label: 'UPS' },
 ]
 
 export const inputFieldsInitialValues = { email: '', password: '' }
@@ -184,14 +191,14 @@ export const orderColumns = [
   },
   {
     name: 'Color',
-    selector: (row) => row.product.inventories.reduce((acc, item) => `${item.color}, ${acc}`, ''),
+    selector: (row) => row.product.inventories.reduce((acc, item) => `${item.color}${acc && ','} ${acc}`, ''),
     sortable: true,
     grow: 3,
     wrap: true,
   },
   {
     name: 'Size',
-    selector: (row) => row.product.inventories.reduce((acc, item) => `${item.size}, ${acc}`, ''),
+    selector: (row) => row.product.inventories.reduce((acc, item) => `${item.size}${acc && ','} ${acc}`, ''),
     sortable: true,
     width: '10rem',
     wrap: true,

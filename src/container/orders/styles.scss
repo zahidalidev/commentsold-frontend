@@ -10,3 +10,26 @@
     margin-left: 1rem;
   }
 }
+
+.order-select {
+  display: table;
+  width: 100%;
+
+  .select-wrapper {
+    display: table;
+    float: left;
+    flex-direction: row;
+
+    .select-drop {
+      margin-top: 1rem;
+      float: left;
+      width: 15rem;
+      margin-right: 1rem;
+    }
+
+    .text-field {
+      margin-right: 1rem;
+      margin-top: 1rem;
+    }
+  }
+}

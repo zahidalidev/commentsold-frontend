@@ -1,16 +1,10 @@
-import makeAnimated from 'react-select/animated'
 import Select from 'react-select'
 
-import { selectOptions } from 'utils/constants'
-
-const animatedComponents = makeAnimated()
-
-const AppSelect = ({ handleFilter }) => (
+const AppSelect = ({ selectOptions, placeHolder, setValue }) => (
   <Select
-    components={animatedComponents}
-    placeholder='Filter'
+    placeholder={placeHolder}
     options={selectOptions}
-    onChange={handleFilter}
+    onChange={(e) => setValue(e.value)}
   />
 )
 
