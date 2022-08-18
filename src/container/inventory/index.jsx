@@ -8,11 +8,12 @@ import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import Table from 'components/table'
-import Select from 'components/select'
+// import Select from 'components/select'
 import { inventoryColumns } from 'utils/constants'
 import { useEffect, useState } from 'react'
 import { getToken } from 'utils/helpers'
 import { getInventories } from 'services/inventory'
+import SelectThresh from 'components/selectThresh'
 
 import 'container/inventory/styles.scss'
 
@@ -48,7 +49,8 @@ const Inventory = () => {
             <CardContent className='mat-card-header'>
               <TextField className='text-field' size='small' label='Search' variant='outlined' />
               <div className='select'>
-                <Select />
+                {/* <Select /> */}
+                <SelectThresh />
               </div>
             </CardContent>
             <header className='card-seperator' />

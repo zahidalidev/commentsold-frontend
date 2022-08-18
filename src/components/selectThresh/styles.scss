@@ -1,0 +1,31 @@
+@import 'variables' ;
+
+.thresh-select-container {
+  border: 1px solid $grey;
+  border-radius: 5px;
+  padding: 1px;
+  width: fit-content;
+
+  .thresh-field {
+    height: 2.2rem;
+    padding-left: 10px;
+    border: none;
+    font-size: 16px;
+  }
+
+  .thresh-field:focus, input:focus{
+    outline: none;
+  }
+
+  .thresh-select {
+    height: 2rem;
+    padding-left: 10px;
+    border: none;
+    background: none;
+    width: 3rem;
+  }
+
+  .thresh-select:focus, input:focus{
+    outline: none;
+  }
+}
