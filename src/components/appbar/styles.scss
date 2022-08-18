@@ -1,10 +1,10 @@
 @import 'variables' ;
 
 .appbar-box {
-  flex-grow: 1;
+  align-items: flex-end;
   background-color: $primary !important;
 
-  .appbar-name {
-    flex-grow: 1;
+  .app-menu {
+    font-size: 1.5vh;
   }
 }

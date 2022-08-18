@@ -36,8 +36,8 @@ const Login = () => {
 
   useEffect(() => {
     const token = getToken()
-    if (token) {
-      navigate(window.location.href)
+    if (!token) {
+      navigate('/login')
     }
   }, [])
 
@@ -50,7 +50,7 @@ const Login = () => {
             <Typography className='heading' variant='h3'>
               Login
             </Typography>
-            <CardContent>
+            <CardContent className='mat-card-content'>
               <Formik
                 initialValues={inputFieldsInitialValues}
                 validate={validateLogin}

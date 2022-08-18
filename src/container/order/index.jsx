@@ -43,8 +43,8 @@ const Order = () => {
         <Paper className='mat-paper' elevation={2}>
           <Card>
             <div className='order-sale'>
-              <Typography variant='h5'>Total Sale ({orders.length})</Typography>
-              <Typography className='avg-sale' variant='h5'>
+              <Typography className='sale' variant='h5'>Total Sale ({orders.length})</Typography>
+              <Typography className='avg-sale sale' variant='h5'>
                 Average Sale ({orders.length})
               </Typography>
             </div>

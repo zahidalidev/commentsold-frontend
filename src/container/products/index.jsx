@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+import CardContent from '@mui/material/CardContent'
 
 import AppBar from 'components/appbar'
 import Table from 'components/table'
@@ -19,32 +20,31 @@ import ConfirmModal from 'components/confirmationAlert'
 const Products = () => {
   const [products, setProducts] = useState([])
   const [confirmModal, setConfirmModal] = useState(false)
-  const [currentAction, setcurrentAction] = useState(false)
   const [currentProductId, setcurrentProductId] = useState(false)
   const navigate = useNavigate()
 
-  const handleProductAction = async () => {
-    if (currentAction === 'edit') navigate(`/product/edit/${currentProductId}`)
-    else {
-      const oldProd = [...products]
-      try {
-        const tmepProducts = oldProd.filter((item) => item.id !== currentProductId)
-        setProducts(tmepProducts)
+  const handleRemoveProduct = async () => {
+    const oldProd = [...products]
+    try {
+      const tmepProducts = oldProd.filter((item) => item.id !== currentProductId)
+      setProducts(tmepProducts)
 
-        const token = getToken()
-        await removeProducts(currentProductId, token)
-      } catch (error) {
-        setProducts(oldProd)
-        toast.error('Error: Product not deleted!')
-      }
+      const token = getToken()
+      await removeProducts(currentProductId, token)
+    } catch (error) {
+      setProducts(oldProd)
+      toast.error('Error: Product not deleted!')
     }
+
     setConfirmModal(false)
   }
 
   const handleAction = (type, id) => {
-    setcurrentProductId(id)
-    setcurrentAction(type)
-    setConfirmModal(true)
+    if (type === 'edit') navigate(`/product/edit/${id}`)
+    else {
+      setcurrentProductId(id)
+      setConfirmModal(true)
+    }
   }
 
   const productsColumns = [
@@ -100,19 +100,23 @@ const Products = () => {
     <>
       <AppBar />
       <ConfirmModal
-        deleteProduct={handleProductAction}
+        deleteProduct={handleRemoveProduct}
         setConfirmModal={setConfirmModal}
         show={confirmModal}
       />
       <div className='container-fluid product-container'>
         <Paper className='mat-paper' elevation={2}>
-          <Typography className='product-heading' variant='h4'>
-            User Products
-          </Typography>
-          <Button className='add-button' variant='contained' size='large'>
-            Add Product
-          </Button>
           <Card className='mat-card'>
+            <CardContent className='mat-card-header'>
+              <div className='card-heading'>
+                <Typography noWrap className='product-heading' variant='h4'>
+                  User Products
+                </Typography>
+                <Button className='add-button' variant='outlined'>
+                  Add Product
+                </Button>
+              </div>
+            </CardContent>
             <Table data={products} columns={productsColumns} touch />
           </Card>
         </Paper>

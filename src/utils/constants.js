@@ -23,6 +23,10 @@ export const routeList = [
     component: <Products />,
   },
   {
+    path: '/product/:action',
+    component: <Product />,
+  },
+  {
     path: '/product/:action/:id',
     component: <Product />,
   },
@@ -95,7 +99,7 @@ export const productFields = [
 export const inventoryColumns = [
   {
     name: 'Name',
-    selector: (row) => row.product.product_name,
+    selector: (row) => row.product?.product_name,
     sortable: true,
   },
   {

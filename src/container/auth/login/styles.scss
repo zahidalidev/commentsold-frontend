@@ -9,6 +9,7 @@
 
   .mat-paper {
     align-items: center;
+    justify-content: center;
     padding: 2rem;
     width: 50vh;
     margin-bottom: 5rem;
@@ -16,6 +17,14 @@
 
   .mat-card {
     align-items: center;
+    justify-content: center;
+
+    .mat-card-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0px;
+    }
 
     .mat-form {
       display: flex;
@@ -59,11 +68,16 @@
   @media screen and (max-width: 450px) {
     .container {
       background-color: white;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .mat-paper {
       box-shadow: none;
+      padding: 0px;
+      width: 90%;
     }
   }
-
 }
