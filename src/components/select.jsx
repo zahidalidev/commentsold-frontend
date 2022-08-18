@@ -7,10 +7,8 @@ const animatedComponents = makeAnimated()
 
 const AppSelect = ({ handleFilter }) => (
   <Select
-    closeMenuOnSelect={false}
     components={animatedComponents}
     placeholder='Filter'
-    isMulti
     options={selectOptions}
     onChange={handleFilter}
   />

@@ -2,7 +2,7 @@ import Login from 'container/auth/login'
 import Inventory from 'container/inventory'
 import Products from 'container/products'
 import Product from 'container/product'
-import Order from 'container/order'
+import Orders from 'container/orders'
 
 export const TOKEN = 'token'
 
@@ -17,7 +17,7 @@ export const routeList = [
   },
   {
     path: '/orders',
-    component: <Order />,
+    component: <Orders />,
   },
   {
     path: '/products',
@@ -49,9 +49,9 @@ export const menu = [
 ]
 
 export const thresholdOptions = [
-  { value: '<', label: '<' },
-  { value: '>', label: '>' },
-  { value: '=', label: '=' },
+  { value: 'lt', label: '<' },
+  { value: 'gt', label: '>' },
+  { value: 'eq', label: '=' },
 ]
 
 export const selectOptions = [
@@ -170,6 +170,7 @@ export const orderColumns = [
     name: 'Email address',
     selector: (row) => row.email,
     sortable: true,
+    grow: 1.8,
   },
   {
     name: 'Product name',
@@ -180,7 +181,7 @@ export const orderColumns = [
     name: 'Color',
     selector: (row) => row.product.inventories.reduce((acc, item) => `${item.color}, ${acc}`, ''),
     sortable: true,
-    grow: 2,
+    grow: 3,
   },
   {
     name: 'Size',

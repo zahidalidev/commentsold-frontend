@@ -11,7 +11,7 @@ import Table from 'components/table'
 import { inventoryColumns } from 'utils/constants'
 import { useEffect, useState } from 'react'
 import { getToken } from 'utils/helpers'
-import { getInventories } from 'services/inventory'
+import getInventories from 'services/inventory'
 import SelectThresh from 'components/selectThresh'
 
 import 'container/inventory/styles.scss'
@@ -20,13 +20,24 @@ const Inventory = () => {
   const [inventories, setInventories] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  const [operator, setOperator] = useState('')
 
   const navigate = useNavigate()
 
   const handleInventories = async () => {
     try {
       const token = getToken()
-      const { data } = await getInventories(token, rowsPerPage, pageNumber)
+      const tempOperator = price ? operator : ''
+      const { data } = await getInventories(
+        token,
+        rowsPerPage,
+        pageNumber,
+        name,
+        tempOperator,
+        price,
+      )
       setInventories(data)
     } catch (error) {
       toast.error(error)
@@ -36,7 +47,7 @@ const Inventory = () => {
 
   useEffect(() => {
     handleInventories()
-  }, [pageNumber, rowsPerPage])
+  }, [pageNumber, rowsPerPage, price])
 
   return (
     <>
@@ -46,9 +57,15 @@ const Inventory = () => {
           <Card>
             <Typography variant='h5'>Total Products ({inventories.count})</Typography>
             <CardContent className='mat-card-header'>
-              <TextField className='text-field' size='small' label='Search' variant='outlined' />
+              <TextField
+                onChange={(e) => setName(e.target.value)}
+                className='text-field'
+                size='small'
+                label='Search by name'
+                variant='outlined'
+              />
               <div className='select'>
-                <SelectThresh />
+                <SelectThresh setPrice={setPrice} setOperator={setOperator} />
               </div>
             </CardContent>
             <header className='card-seperator' />

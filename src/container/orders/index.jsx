@@ -14,10 +14,10 @@ import { getToken } from 'utils/helpers'
 import { useEffect, useState } from 'react'
 import { getAllOrders } from 'services/order'
 
-import 'container/order/styles.scss'
+import 'container/orders/styles.scss'
 import 'container/inventory/styles.scss'
 
-const Order = () => {
+const Orders = () => {
   const navigate = useNavigate()
   const [orders, setOrders] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
@@ -46,10 +46,10 @@ const Order = () => {
           <Card>
             <div className='order-sale'>
               <Typography className='sale' variant='h5'>
-                Total Sale ({parseInt(orders.totalSale, 10).toFixed(2)})
+                Total Sale ({parseInt(orders.totalSale, 10)} cents)
               </Typography>
               <Typography className='avg-sale sale' variant='h5'>
-                Average Sale ({parseInt(orders.average, 10).toFixed(2)})
+                Average Sale ({parseInt(orders.average, 10)} cents)
               </Typography>
             </div>
             <CardContent className='mat-card-header'>
@@ -72,4 +72,4 @@ const Order = () => {
   )
 }
 
-export default Order
+export default Orders
