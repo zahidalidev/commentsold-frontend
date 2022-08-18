@@ -8,4 +8,8 @@ export const getAllProducts = (token) => axios.get(`${productEndpoint}/products`
   },
 })
 
-export const getUsers = () => axios.get(productEndpoint)
+export const removeProducts = (id, token) => axios.delete(`${productEndpoint}/products/${id}`, {
+  headers: {
+    'access-token': token,
+  },
+})

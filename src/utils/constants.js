@@ -1,6 +1,3 @@
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
-
 import Login from 'container/auth/login'
 import Inventory from 'container/inventory'
 import Products from 'container/products'
@@ -26,7 +23,7 @@ export const routeList = [
     component: <Products />,
   },
   {
-    path: '/product/:action',
+    path: '/product/:action/:id',
     component: <Product />,
   },
 ]
@@ -184,44 +181,6 @@ export const orderColumns = [
   {
     name: 'Tracking number',
     selector: (row) => row.tracking_number,
-    sortable: true,
-  },
-]
-
-const handleProductAction = (type, id) => {
-  console.log('product action: ', type, id)
-}
-
-export const productsColumns = [
-  {
-    name: 'Name',
-    selector: (row) => row.product_name,
-    sortable: true,
-  },
-  {
-    name: 'Style',
-    selector: (row) => row.style,
-    sortable: true,
-  },
-  {
-    name: 'Brand',
-    selector: (row) => row.brand,
-    sortable: true,
-  },
-  {
-    name: 'Action',
-    selector: (row) => (
-      <div>
-        <DeleteOutlineOutlinedIcon
-          sx={{ color: '#FF3333' }}
-          onClick={() => handleProductAction('remove', row.id)}
-        />
-        <EditOutlinedIcon
-          sx={{ color: '#01225a', marginLeft: '1rem' }}
-          onClick={() => handleProductAction('edit', row.id)}
-        />
-      </div>
-    ),
     sortable: true,
   },
 ]
