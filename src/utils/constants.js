@@ -16,7 +16,7 @@ export const routeList = [
     component: <Inventory />,
   },
   {
-    path: '/order',
+    path: '/orders',
     component: <Order />,
   },
   {
@@ -44,7 +44,7 @@ export const menu = [
   },
   {
     name: 'Orders',
-    path: '/order',
+    path: '/orders',
   },
 ]
 
