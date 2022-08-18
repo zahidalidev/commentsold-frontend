@@ -29,7 +29,14 @@ const Orders = () => {
   const handleOrders = async () => {
     try {
       const token = getToken()
-      const { data } = await getAllOrders(token, rowsPerPage, pageNumber, orderStatus, shipper)
+      const { data } = await getAllOrders(
+        token,
+        rowsPerPage,
+        pageNumber,
+        search,
+        orderStatus,
+        shipper,
+      )
       setOrders(data)
     } catch (error) {
       toast.error(error)
@@ -39,7 +46,7 @@ const Orders = () => {
 
   useEffect(() => {
     handleOrders()
-  }, [rowsPerPage, pageNumber, search])
+  }, [rowsPerPage, pageNumber, search, orderStatus, shipper])
 
   return (
     <>
@@ -68,10 +75,18 @@ const Orders = () => {
                 </div>
                 <div className='select-wrapper'>
                   <div className='select-drop'>
-                    <Select placeHolder='Filter by order status' setValue={setOrderStatus} selectOptions={orderStatusOptions} />
+                    <Select
+                      placeHolder='Filter by order status'
+                      setValue={setOrderStatus}
+                      selectOptions={orderStatusOptions}
+                    />
                   </div>
                   <div className='select-drop'>
-                    <Select placeHolder='Filter by shipper name' setValue={setShipper} selectOptions={shipperNameOptions} />
+                    <Select
+                      placeHolder='Filter by shipper name'
+                      setValue={setShipper}
+                      selectOptions={shipperNameOptions}
+                    />
                   </div>
                 </div>
               </div>
