@@ -3,14 +3,14 @@ import { defaultPageCount } from 'utils/constants'
 import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
 
 const CusTable = ({
-  data, columns, setPageNumber, setRowsPerPage,
+  data, count, columns, setPageNumber, setRowsPerPage,
 }) => {
   const table = (
     <DataTable
       theme='solarized'
       columns={columns}
       defaultSortFieldId={1}
-      data={data.rows}
+      data={data}
       pagination
       highlightOnHover
       paginationTotalRows={data.count}

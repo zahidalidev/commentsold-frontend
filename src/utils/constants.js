@@ -1,38 +1,5 @@
-import Inventory from 'container/inventory'
-import Login from 'container/auth/login'
-import Orders from 'container/orders'
-import Products from 'container/products'
-import Product from 'container/product'
-
 export const TOKEN = 'token'
 export const defaultPageCount = 10
-
-export const routeList = [
-  {
-    path: '/login',
-    component: <Login />,
-  },
-  {
-    path: '/inventory',
-    component: <Inventory />,
-  },
-  {
-    path: '/orders',
-    component: <Orders />,
-  },
-  {
-    path: '/products',
-    component: <Products />,
-  },
-  {
-    path: '/product/:action',
-    component: <Product />,
-  },
-  {
-    path: '/product/:action/:id',
-    component: <Product />,
-  },
-]
 
 export const menu = [
   {

@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Form from 'components/form'
-import { getToken, saveToken } from 'utils/helpers'
+import { getToken } from 'utils/helpers'
 import LoadingModal from 'components/loadingModal'
-import login from 'services/user'
+import login from 'api/user'
 import { loginFields, loginFieldsInitialValues } from 'utils/constants'
 import { validateLogin } from 'utils/validations'
 
@@ -21,8 +21,7 @@ const Login = () => {
   const handleLogin = async (values) => {
     setloading(true)
     try {
-      const { data } = await login(values)
-      saveToken(data.token)
+      await login(values)
       navigate('/products')
     } catch (error) {
       toast.error(error)
@@ -40,6 +39,7 @@ const Login = () => {
   return (
     <div className='container-fluid container'>
       <LoadingModal show={loading} />
+
       <div className='container'>
         <Paper className='mat-paper' elevation={2}>
           <Card className='mat-card'>

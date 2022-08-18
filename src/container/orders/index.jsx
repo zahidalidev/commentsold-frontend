@@ -8,13 +8,8 @@ import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import { formatNumbers, getToken } from 'utils/helpers'
-import getAllOrders from 'services/order'
-import {
-  orderColumns,
-  defaultPageCount,
-  orderStatusOptions,
-  shipperNameOptions,
-} from 'utils/constants'
+import getAllOrders from 'api/order'
+import { orderColumns, defaultPageCount, orderStatusOptions, shipperNameOptions } from 'utils/constants'
 import Select from 'components/select'
 import Table from 'components/table'
 import { useEffect, useState } from 'react'

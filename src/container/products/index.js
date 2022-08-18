@@ -13,13 +13,14 @@ import AppBar from 'components/appbar'
 import ConfirmModal from 'components/confirmationAlert'
 import { defaultPageCount } from 'utils/constants'
 import { getToken } from 'utils/helpers'
-import { getAllProducts, removeProducts } from 'services/products'
+import { getAllProducts, removeProducts } from 'api/products'
 import Table from 'components/table'
 
 import 'container/products/styles.scss'
 
 const Products = () => {
-  const [products, setProducts] = useState({})
+  const [products, setProducts] = useState([])
+  const [productsCount, setProductsCount] = useState(0)
   const [confirmModal, setConfirmModal] = useState(false)
   const [currentProductId, setcurrentProductId] = useState(false)
   const [pageNumber, setPageNumber] = useState(1)
@@ -27,14 +28,12 @@ const Products = () => {
   const navigate = useNavigate()
 
   const handleRemoveProduct = async () => {
-    const oldProd = { ...products }
+    const oldProd = [...products]
     try {
-      const rows = oldProd.rows.filter((item) => item.id !== currentProductId)
-      const tmepProducts = {
-        rows,
-        count: (oldProd.count -= 1),
-      }
-      setProducts(tmepProducts)
+      const rows = oldProd.filter((item) => item.id !== currentProductId)
+
+      setProductsCount(productsCount - 1)
+      setProducts(rows)
 
       const token = getToken()
       await removeProducts(currentProductId, token)
@@ -85,10 +84,12 @@ const Products = () => {
 
   const handleProducts = async () => {
     try {
-      const token = getToken()
-      const { data } = await getAllProducts(token, rowsPerPage, pageNumber)
-      setProducts(data)
+      const { count, rows } = await getAllProducts(rowsPerPage, pageNumber)
+
+      setProducts(rows)
+      setProductsCount(count)
     } catch (error) {
+      console.log(error)
       toast.error(error)
       navigate('/login')
     }
@@ -125,6 +126,7 @@ const Products = () => {
             </CardContent>
             <Table
               data={products}
+              count={productsCount}
               columns={productsColumns}
               setPageNumber={setPageNumber}
               setRowsPerPage={setRowsPerPage}

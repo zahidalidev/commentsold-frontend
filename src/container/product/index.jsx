@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
-import { addProducts, getProduct, updateProducts } from 'services/products'
+import { addProducts, getProduct, updateProducts } from 'api/products'
 import Form from 'components/form'
 import { getToken } from 'utils/helpers'
 import LoadingModal from 'components/loadingModal'
