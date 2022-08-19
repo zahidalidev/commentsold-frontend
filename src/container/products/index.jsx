@@ -1,7 +1,7 @@
 import {
   Box, Button, CardContent, Paper, Typography,
 } from '@mui/material'
-import { DeleteOutlineOutlinedIcon, EditOutlinedIcon } from '@mui/icons-material'
+import { DeleteOutlineOutlined, EditOutlined } from '@mui/icons-material'
 import Card from '@mui/joy/Card'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
@@ -91,11 +91,11 @@ const Products = () => {
       name: 'Action',
       selector: (row) => (
         <>
-          <DeleteOutlineOutlinedIcon
+          <DeleteOutlineOutlined
             className='delete-icon'
             onClick={() => handleAction('remove', row.id)}
           />
-          <EditOutlinedIcon className='edit-icon' onClick={() => handleAction('update', row.id)} />
+          <EditOutlined className='edit-icon' onClick={() => handleAction('update', row.id)} />
         </>
       ),
     },
