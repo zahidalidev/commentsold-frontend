@@ -19,35 +19,42 @@ export const inventoryColumns = [
     name: 'Name',
     selector: (row) => row.product?.product_name,
     sortable: true,
+    wrap: true,
   },
   {
     name: 'SKU',
     selector: (row) => row.sku,
     sortable: true,
+    wrap: true,
   },
   {
     name: 'Quantity',
     selector: (row) => row.quantity,
     sortable: true,
+    wrap: true,
   },
   {
     name: 'Color',
     selector: (row) => row.color,
     sortable: true,
+    wrap: true,
   },
   {
     name: 'Size',
     selector: (row) => row.size,
     sortable: true,
+    wrap: true,
   },
   {
     name: 'Price',
     selector: (row) => row.price_cents,
     sortable: true,
+    wrap: true,
   },
   {
     name: 'Cost',
     selector: (row) => row.cost_cents,
     sortable: true,
+    wrap: true,
   },
 ]

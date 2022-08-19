@@ -19,7 +19,7 @@ const Inventory = () => {
   const [pageNumber, setPageNumber] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
   const [name, setName] = useState('')
-  const [price, setPrice] = useState('')
+  const [price, setPrice] = useState(0)
   const [operator, setOperator] = useState('lt')
   const navigate = useNavigate()
   const [sortBy, setSortBy] = useState({
@@ -53,7 +53,7 @@ const Inventory = () => {
 
   useEffect(() => {
     handleInventories()
-  }, [pageNumber, rowsPerPage, price, name, sortBy])
+  }, [pageNumber, rowsPerPage, price, name, sortBy, operator])
 
   return (
     <>
