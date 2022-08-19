@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { defaultPageCount } from 'utils/constants/common'
 import { fetchAllProducts, removeProducts } from 'api/products'
+import { isEmpty } from 'lodash'
 import { productColumnsKeys } from 'utils/constants/product'
 import {
   AppBar, DeleteModal, LoadingModal, Table,
@@ -16,7 +17,6 @@ import {
 import { formatNumbers, getToken } from 'utils/helpers'
 
 import './styles.scss'
-import _ from 'lodash'
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -55,7 +55,7 @@ const Products = () => {
   const handleRemoveProduct = async () => {
     setloading(true)
     const data = await removeProducts(currentProductId)
-    if (!_.isEmpty(data)) {
+    if (!isEmpty(data)) {
       await handleProducts()
       toast.success('Product removed')
     } else {

@@ -3,7 +3,7 @@ import Card from '@mui/joy/Card'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
 
 import {
   addProducts, fetchProduct, updateProducts, fetchProductStyles, fetchProductBrands,
@@ -55,7 +55,7 @@ const Product = () => {
 
   const getProductById = async (id) => {
     const data = await fetchProduct(id)
-    if (!_.isEmpty(data)) {
+    if (!isEmpty(data)) {
       setInitialValues(data)
     }
   }
@@ -74,7 +74,7 @@ const Product = () => {
     setloading(true)
     if (action === 'add') {
       const data = await addProducts(values)
-      if (!_.isEmpty(data)) {
+      if (!isEmpty(data)) {
         toast.success(`Product ${action === 'add' ? 'added' : 'updated'}`)
         navigate('/products')
       } else {
@@ -82,7 +82,7 @@ const Product = () => {
       }
     } else {
       const data = await updateProducts(values, currentProductId)
-      if (!_.isEmpty(data)) {
+      if (!isEmpty(data)) {
         toast.success(`Product ${action === 'add' ? 'added' : 'updated'}`)
         navigate('/products')
       } else {

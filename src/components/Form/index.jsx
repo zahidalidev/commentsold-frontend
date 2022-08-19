@@ -4,7 +4,7 @@ import {
 } from '@mui/material'
 import { Fragment } from 'react'
 import { Formik } from 'formik'
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
 
 import './styles.scss'
 import { Select } from 'components'
@@ -59,7 +59,7 @@ const Form = ({
           <Button
             className='submit-button'
             type='submit'
-            disabled={!_.isEmpty(errors)}
+            disabled={!isEmpty(errors)}
             variant='contained'
             size='large'
           >
