@@ -1,12 +1,12 @@
 export const orderColumnsKeys = {
-  'Customer name': { columnName: 'name', tableName: 'products' },
-  'Email address': { columnName: 'email', tableName: 'products' },
+  'Customer name': { columnName: 'name', tableName: 'orders' },
+  'Email address': { columnName: 'email', tableName: 'orders' },
   'Product name': { columnName: 'product_name', tableName: 'products' },
-  'Order status': { columnName: 'order_status', tableName: 'products' },
-  'Order total': { columnName: 'total_cents', tableName: 'products' },
-  'Transaction id': { columnName: 'transaction_id', tableName: 'products' },
-  Shipper: { columnName: 'shipper_name', tableName: 'products' },
-  'Tracking number': { columnName: 'tracking_number', tableName: 'products' },
+  'Order status': { columnName: 'order_status', tableName: 'orders' },
+  'Order total': { columnName: 'total_cents', tableName: 'orders' },
+  'Transaction id': { columnName: 'transaction_id', tableName: 'orders' },
+  Shipper: { columnName: 'shipper_name', tableName: 'orders' },
+  'Tracking number': { columnName: 'tracking_number', tableName: 'orders' },
 }
 
 export const orderColumns = [

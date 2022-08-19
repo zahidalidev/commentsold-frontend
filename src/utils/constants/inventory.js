@@ -6,12 +6,12 @@ export const thresholdOptions = [
 
 export const inventoryColumnsKeys = {
   Name: { columnName: 'product_name', tableName: 'products' },
-  SKU: { columnName: 'sku', tableName: 'products' },
-  Quantity: { columnName: 'quantity', tableName: 'products' },
-  Color: { columnName: 'color', tableName: 'products' },
-  Size: { columnName: 'size', tableName: 'products' },
-  Price: { columnName: 'price_cents', tableName: 'products' },
-  Cost: { columnName: 'cost_cents', tableName: 'products' },
+  SKU: { columnName: 'sku', tableName: 'inventories' },
+  Quantity: { columnName: 'quantity', tableName: 'inventories' },
+  Color: { columnName: 'color', tableName: 'inventories' },
+  Size: { columnName: 'size', tableName: 'inventories' },
+  Price: { columnName: 'price_cents', tableName: 'inventories' },
+  Cost: { columnName: 'cost_cents', tableName: 'inventories' },
 }
 
 export const inventoryColumns = [
