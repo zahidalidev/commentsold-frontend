@@ -14,14 +14,14 @@ describe('SelectFilter Component', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should have select', async () => {
+  it('should have combobox', async () => {
     await waitFor(() => {
       const combobox = screen.getAllByRole('combobox')
       expect(combobox).toHaveLength(1)
     })
   })
 
-  it('should have optiions', async () => {
+  it('should have options', async () => {
     await waitFor(() => {
       const options = screen.getAllByRole('option')
       expect(options).toHaveLength(3)
