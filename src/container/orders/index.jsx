@@ -25,7 +25,7 @@ const Orders = () => {
   const [orderStatus, setOrderStatus] = useState('')
   const [shipper, setShipper] = useState('')
   const [search, setSearch] = useState('')
-  const [sales, setSales] = useState({})
+  const [sales, setSales] = useState({ totalSale: 0, average: 0 })
   const [sortBy, setSortBy] = useState({
     sortColumn: 'Customer name',
     sortOrder: 'asc',
@@ -71,10 +71,10 @@ const Orders = () => {
           <Card>
             <Box className='order-sale'>
               <Typography className='sale' variant='h5'>
-                Orders - Total Sale ({formatNumbers(parseInt(sales.totalSale, 10)) || 0 } cents)
+                Orders - Total Sale ({formatNumbers(parseInt(sales.totalSale, 10))} cents)
               </Typography>
               <Typography className='avg-sale sale' variant='h5'>
-                Average Sale ({formatNumbers(parseInt(sales.average, 10)) || 0 } cents)
+                Average Sale ({formatNumbers(parseInt(sales.average, 10))} cents)
               </Typography>
             </Box>
             <CardContent className='mat-card-header'>
