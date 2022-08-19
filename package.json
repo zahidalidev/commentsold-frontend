@@ -15,8 +15,7 @@
     "@nejcm/react-skeleton-emotion": "^3.0.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/react-hooks": "3.4.1",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/react-hooks": "^3.4.1",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "formik": "^2.2.9",
@@ -28,6 +27,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-select": "^5.4.0",
+    "react-testing-library": "^8.0.1",
     "react-toastify": "^9.0.8",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
@@ -57,6 +57,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.17.1",
+    "@testing-library/user-event": "^13.5.0",
     "eslint": "^8.22.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
