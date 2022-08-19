@@ -1,6 +1,6 @@
 import { render, screen, waitFor, act } from '@testing-library/react'
 
-import Products from 'container/products/index'
+import Products from 'container/products'
 import { TestApp } from 'utils/test'
 
 describe('Products Container', () => {
