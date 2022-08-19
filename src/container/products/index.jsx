@@ -1,11 +1,8 @@
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
+import {
+  Box, Button, CardContent, Paper, Typography,
+} from '@mui/material'
+import { DeleteOutlineOutlinedIcon, EditOutlinedIcon } from '@mui/icons-material'
 import Card from '@mui/joy/Card'
-import CardContent from '@mui/material/CardContent'
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
-import Paper from '@mui/material/Paper'
-import Typography from '@mui/material/Typography'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
