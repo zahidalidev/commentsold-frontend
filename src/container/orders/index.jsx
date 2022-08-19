@@ -8,11 +8,12 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
+import { defaultPageCount } from 'utils/constants/common'
 import { formatNumbers } from 'utils/helpers'
 import getAllOrders from 'api/order'
 import {
-  orderColumns, defaultPageCount, orderStatusOptions, shipperNameOptions, orderColumnsKeys,
-} from 'utils/constants'
+  orderColumns, orderColumnsKeys, orderStatusOptions, shipperNameOptions,
+} from 'utils/constants/order'
 import Select from 'components/select'
 import Table from 'components/table'
 import { useEffect, useState } from 'react'

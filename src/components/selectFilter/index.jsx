@@ -1,4 +1,4 @@
-import { thresholdOptions } from 'utils/constants'
+import { thresholdOptions } from 'utils/constants/inventory'
 
 import 'components/selectFilter/styles.scss'
 

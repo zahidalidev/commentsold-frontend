@@ -10,7 +10,7 @@ import Form from 'container/form'
 import { getToken } from 'utils/helpers'
 import LoadingModal from 'components/loadingModal'
 import login from 'api/user'
-import { loginFields, loginFieldsInitialValues } from 'utils/constants'
+import { loginFields, loginFieldsInitialValues } from 'utils/constants/login'
 import { validateLogin } from 'utils/validations'
 
 import 'container/auth/login/styles.scss'

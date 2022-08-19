@@ -12,11 +12,13 @@ import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import DeleteModal from 'components/deleteModal'
-import { defaultPageCount, productColumnsKeys } from 'utils/constants'
+import { defaultPageCount } from 'utils/constants/common'
 import { getAllProducts, removeProducts } from 'api/products'
+import { productColumnsKeys } from 'utils/constants/product'
 import Table from 'components/table'
 
 import 'container/products/styles.scss'
+import LoadingModal from 'components/loadingModal'
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -25,6 +27,7 @@ const Products = () => {
   const [currentProductId, setcurrentProductId] = useState(false)
   const [pageNumber, setPageNumber] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
+  const [loading, setloading] = useState(false)
   const [sortBy, setSortBy] = useState({
     sortColumn: 'Name',
     sortOrder: 'asc',
@@ -49,12 +52,14 @@ const Products = () => {
   }, [rowsPerPage, pageNumber, sortBy])
 
   const handleRemoveProduct = async () => {
+    setloading(true)
     try {
       await removeProducts(currentProductId)
       await handleProducts()
     } catch (error) {
       toast.error(error)
     }
+    setloading(false)
     setConfirmModal(false)
   }
 
@@ -99,6 +104,7 @@ const Products = () => {
   return (
     <>
       <AppBar />
+      <LoadingModal show={loading} />
       <DeleteModal
         deleteProduct={handleRemoveProduct}
         setConfirmModal={setConfirmModal}

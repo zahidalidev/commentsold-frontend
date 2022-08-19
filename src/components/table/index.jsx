@@ -1,5 +1,5 @@
 import DataTable from 'react-data-table-component'
-import { defaultPageCount } from 'utils/constants'
+import { defaultPageCount } from 'utils/constants/common'
 import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
 
 export default ({

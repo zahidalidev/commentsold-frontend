@@ -10,7 +10,7 @@ import AppBar from 'components/appbar'
 import { addProducts, getProduct, updateProducts } from 'api/products'
 import Form from 'container/form'
 import LoadingModal from 'components/loadingModal'
-import { productFields } from 'utils/constants'
+import { productFields } from 'utils/constants/product'
 import { validateProduct } from 'utils/validations'
 
 import 'container/auth/login/styles.scss'
