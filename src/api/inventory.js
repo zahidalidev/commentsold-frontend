@@ -9,8 +9,7 @@ const getInventories = (
   price,
   { name, sortOrder },
 ) => {
-  const page = pageNumber - 1
-  let searchUrl = `/inventories/?limit=${rowsPerPage}&page=${page}&sort_column=${name.columnName}&sort_table_name=${name.tableName}&sort_order=${sortOrder}`
+  let searchUrl = `/inventories/?limit=${rowsPerPage}&page=${pageNumber}&sort_column=${name.columnName}&sort_table_name=${name.tableName}&sort_order=${sortOrder}`
 
   if (searchValue) {
     searchUrl += `&name=${searchValue}`

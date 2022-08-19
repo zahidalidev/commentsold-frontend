@@ -16,10 +16,8 @@ export default ({
       paginationTotalRows={count}
       paginationPerPage={defaultPageCount}
       paginationServer
-      onChangePage={(number) => setPageNumber(number)}
+      onChangePage={(number) => setPageNumber(number - 1)}
       onChangeRowsPerPage={(number) => setRowsPerPage(number)}
-      paginationIconFirstPage={false}
-      paginationIconLastPage={false}
       sortServer
       onSort={(column, order) => setSortBy({ sortColumn: column.name, sortOrder: order })}
     />

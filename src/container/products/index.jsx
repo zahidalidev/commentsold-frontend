@@ -23,7 +23,7 @@ const Products = () => {
   const [productsCount, setProductsCount] = useState(0)
   const [confirmModal, setConfirmModal] = useState(false)
   const [currentProductId, setcurrentProductId] = useState(false)
-  const [pageNumber, setPageNumber] = useState(1)
+  const [pageNumber, setPageNumber] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
   const [loading, setloading] = useState(false)
   const [sortBy, setSortBy] = useState({

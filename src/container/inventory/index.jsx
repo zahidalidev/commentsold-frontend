@@ -16,7 +16,7 @@ import './styles.scss'
 const Inventory = () => {
   const [inventories, setInventories] = useState({})
   const [inventoriesCount, setInventoriesCount] = useState(0)
-  const [pageNumber, setPageNumber] = useState(1)
+  const [pageNumber, setPageNumber] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')

@@ -20,7 +20,7 @@ const Orders = () => {
   const navigate = useNavigate()
   const [orders, setOrders] = useState({})
   const [ordersCount, setOrdersCount] = useState({})
-  const [pageNumber, setPageNumber] = useState(1)
+  const [pageNumber, setPageNumber] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
   const [orderStatus, setOrderStatus] = useState('')
   const [shipper, setShipper] = useState('')

@@ -29,4 +29,10 @@ describe('Inventory Container', () => {
       expect(textbox).toHaveLength(1)
     })
   })
+
+  it('should have heading', async () => {
+    await waitFor(() => {
+      expect(screen.getAllByRole('heading').length).toBe(1)
+    })
+  })
 })

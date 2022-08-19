@@ -17,7 +17,7 @@ describe('Login Container', () => {
     })
   })
 
-  it('should login heading', async () => {
+  it('should have heading', async () => {
     await waitFor(() => {
       expect(screen.getByRole('heading')).toBeInTheDocument()
     })
