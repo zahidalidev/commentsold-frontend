@@ -16,6 +16,7 @@ import { productColumnsKeys } from 'utils/constants/product'
 import {
   AppBar, DeleteModal, LoadingModal, Table,
 } from 'components'
+import { getToken } from 'utils/helpers'
 
 import './styles.scss'
 
@@ -34,15 +35,18 @@ const Products = () => {
   const navigate = useNavigate()
 
   const handleProducts = async () => {
-    try {
-      const tempSortBy = { ...sortBy }
-      tempSortBy.name = productColumnsKeys[tempSortBy.sortColumn]
-      const { count, rows } = await getAllProducts(rowsPerPage, pageNumber, tempSortBy)
+    const tempSortBy = { ...sortBy }
+    tempSortBy.name = productColumnsKeys[tempSortBy.sortColumn]
+    const { count, rows } = await getAllProducts(rowsPerPage, pageNumber, tempSortBy)
+
+    if (count !== undefined) {
       setProducts(rows)
       setProductsCount(count)
-    } catch (error) {
-      toast.error(error)
-      navigate('/login')
+    } else {
+      const token = getToken()
+      if (!token) {
+        navigate('/login')
+      }
     }
   }
 

@@ -4,11 +4,10 @@ import CardContent from '@mui/material/CardContent'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 import { defaultPageCount } from 'utils/constants/common'
-import { formatNumbers } from 'utils/helpers'
+import { formatNumbers, getToken } from 'utils/helpers'
 import getAllOrders from 'api/order'
 import {
   orderColumns, orderColumnsKeys, orderStatusOptions, shipperNameOptions,
@@ -35,28 +34,30 @@ const Orders = () => {
   })
 
   const handleOrders = async () => {
-    try {
-      const tempSortBy = { ...sortBy }
-      tempSortBy.name = orderColumnsKeys[tempSortBy.sortColumn]
-      const {
-        count, rows, totalSale, average,
-      } = await getAllOrders(
-        rowsPerPage,
-        pageNumber,
-        search,
-        orderStatus,
-        shipper,
-        tempSortBy,
-      )
+    const tempSortBy = { ...sortBy }
+    tempSortBy.name = orderColumnsKeys[tempSortBy.sortColumn]
+    const {
+      count, rows, totalSale, average,
+    } = await getAllOrders(
+      rowsPerPage,
+      pageNumber,
+      search,
+      orderStatus,
+      shipper,
+      tempSortBy,
+    )
+    if (count !== undefined) {
       setOrders(rows)
       setOrdersCount(count)
       setSales({
         totalSale,
         average,
       })
-    } catch (error) {
-      toast.error(error)
-      navigate('/login')
+    } else {
+      const token = getToken()
+      if (!token) {
+        navigate('/login')
+      }
     }
   }
 

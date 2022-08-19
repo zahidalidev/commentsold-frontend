@@ -1,4 +1,5 @@
 import instance from 'api'
+// import { toast } from 'react-toastify'
 
 const getInventories = (
   rowsPerPage,
@@ -26,7 +27,7 @@ const getInventories = (
   return instance
     .get(searchUrl)
     .then((response) => response.data)
-    .catch(() => {})
+    .catch(() => ({}))
 }
 
 export default getInventories

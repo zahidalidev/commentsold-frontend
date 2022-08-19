@@ -26,6 +26,6 @@ const getAllOrders = (
   return instance
     .get(searchUrl)
     .then((response) => response.data)
-    .catch(() => {})
+    .catch(() => ({}))
 }
 export default getAllOrders

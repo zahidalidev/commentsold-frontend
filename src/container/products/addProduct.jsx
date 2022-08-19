@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import _ from 'lodash'
 
 import { addProducts, getProduct, updateProducts } from 'api/products'
 import { productFields } from 'utils/constants/product'
@@ -32,8 +33,10 @@ const Product = () => {
 
   const getProductById = async (id) => {
     try {
-      const { data } = await getProduct(id)
-      setInitialValues(data)
+      const data = await getProduct(id)
+      if (!_.isEmpty(data)) {
+        setInitialValues(data)
+      }
     } catch (error) {
       toast.error(error)
     }
