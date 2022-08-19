@@ -42,9 +42,11 @@
   }
 
   .mat-card {
+    display: flex;
     align-items: center;
-    justify-content: center;
     margin-top: 1rem;
+    background: none;
+    flex-direction: column;
 
     .heading {
       color: $primary;

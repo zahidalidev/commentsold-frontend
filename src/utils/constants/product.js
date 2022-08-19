@@ -54,3 +54,7 @@ export const productColumnsKeys = {
   Style: { columnName: 'style', tableName: 'products' },
   Brand: { columnName: 'brand', tableName: 'products' },
 }
+
+export const productStyleOptions = [
+  { value: 'Pending', label: 'Pending' },
+]
