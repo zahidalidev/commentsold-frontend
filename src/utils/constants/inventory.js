@@ -18,7 +18,6 @@ export const inventoryColumns = [
   {
     name: 'Name',
     selector: (row) => row.product?.product_name,
-    sortable: true,
     wrap: true,
   },
   {
