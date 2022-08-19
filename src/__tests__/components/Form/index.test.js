@@ -4,7 +4,7 @@ import Form from 'components/Form'
 import { TestApp } from 'utils/test'
 
 describe('Form Component', () => {
-  const Form = (
+  const form = (
     <Form
       fieldsInitialValues={{ product_name: '' }}
       handleSubmition={() => null}
@@ -21,7 +21,7 @@ describe('Form Component', () => {
     />
   )
 
-  beforeEach(() => render(Form))
+  beforeEach(() => render(form, { wrapper: TestApp }))
 
   it('should render correctly', () => {
     expect.assertions(1)
