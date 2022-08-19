@@ -7,7 +7,7 @@ const AppSelect = ({
     placeholder={placeHolder}
     options={selectOptions}
     onChange={(e) => setValue(e.value)}
-    value={{ value, label: value }}
+    value={value && { value, label: value }}
   />
 )
 

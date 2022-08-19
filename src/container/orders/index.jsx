@@ -93,6 +93,7 @@ const Orders = () => {
                     <Select
                       placeHolder='Filter by order status'
                       setValue={setOrderStatus}
+                      value={orderStatus}
                       selectOptions={orderStatusOptions}
                     />
                   </Box>
@@ -101,6 +102,7 @@ const Orders = () => {
                       placeHolder='Filter by shipper name'
                       setValue={setShipper}
                       selectOptions={shipperNameOptions}
+                      value={shipper}
                     />
                   </Box>
                 </Box>
