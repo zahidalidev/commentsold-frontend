@@ -1,23 +1,24 @@
 @import 'variables' ;
 
-.thresh-select-container {
+.filter-select-container {
   border: 1px solid $grey;
   border-radius: 5px;
   padding: 1px;
   width: fit-content;
+  white-space: nowrap;
 
-  .thresh-field {
+  .filter-field {
     height: 2.1rem;
     padding-left: 10px;
     border: none;
     font-size: 16px;
   }
 
-  .thresh-field:focus, input:focus{
+  .filter-field:focus, input:focus{
     outline: none;
   }
 
-  .thresh-select {
+  .filter-select {
     height: 2rem;
     padding-left: 10px;
     border: none;
@@ -25,7 +26,7 @@
     width: 3rem;
   }
 
-  .thresh-select:focus, input:focus{
+  .filter-select:focus, input:focus{
     outline: none;
   }
 }

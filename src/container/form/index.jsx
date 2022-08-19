@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import _ from 'lodash'
 
-import 'components/form/styles.scss'
+import 'container/form/styles.scss'
 
 const Form = ({
   fieldsInitialValues, handleSubmition, action, validate, fields,

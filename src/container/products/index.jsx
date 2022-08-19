@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Card from '@mui/joy/Card'
 import CardContent from '@mui/material/CardContent'
@@ -103,11 +104,11 @@ const Products = () => {
         setConfirmModal={setConfirmModal}
         show={confirmModal}
       />
-      <div className='container-fluid product-container'>
+      <Box className='container-fluid product-container'>
         <Paper className='mat-paper' elevation={2}>
           <Card className='mat-card'>
             <CardContent className='mat-card-header'>
-              <div className='card-heading'>
+              <Box className='card-heading'>
                 <Typography noWrap className='product-heading' variant='h4'>
                   User Products
                 </Typography>
@@ -118,7 +119,7 @@ const Products = () => {
                 >
                   Add Product
                 </Button>
-              </div>
+              </Box>
             </CardContent>
             <Table
               data={products}
@@ -130,7 +131,7 @@ const Products = () => {
             />
           </Card>
         </Paper>
-      </div>
+      </Box>
     </>
   )
 }

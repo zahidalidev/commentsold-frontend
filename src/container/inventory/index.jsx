@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Card from '@mui/joy/Card'
 import CardContent from '@mui/material/CardContent'
 import Paper from '@mui/material/Paper'
@@ -11,7 +12,7 @@ import Table from 'components/table'
 import { formatNumbers } from 'utils/helpers'
 import getInventories from 'api/inventory'
 import { inventoryColumns, defaultPageCount, inventoryColumnsKeys } from 'utils/constants'
-import SelectThresh from 'components/selectThresh'
+import SelectFilter from 'components/selectFilter'
 import { useEffect, useState } from 'react'
 
 import 'container/inventory/styles.scss'
@@ -58,7 +59,7 @@ const Inventory = () => {
   return (
     <>
       <AppBar />
-      <div className='container-fluid inventory-container'>
+      <Box className='container-fluid inventory-container'>
         <Paper className='mat-paper' elevation={2}>
           <Card>
             <Typography variant='h5'>Total Products ({formatNumbers(parseInt(inventoriesCount, 10))})</Typography>
@@ -70,9 +71,9 @@ const Inventory = () => {
                 label='Search by name'
                 variant='outlined'
               />
-              <div className='select'>
-                <SelectThresh setPrice={setPrice} setOperator={setOperator} />
-              </div>
+              <Box className='select'>
+                <SelectFilter setPrice={setPrice} setOperator={setOperator} />
+              </Box>
             </CardContent>
             <header className='card-seperator' />
             <Table
@@ -85,7 +86,7 @@ const Inventory = () => {
             />
           </Card>
         </Paper>
-      </div>
+      </Box>
     </>
   )
 }

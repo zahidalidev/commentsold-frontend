@@ -10,14 +10,21 @@
     padding: 3vh;
 
     .mat-card-header {
-      display: flex;
+      display: table;
       flex-direction: row;
       padding: 0px;
       margin-top: 2rem;
 
+      .text-field {
+        margin-top: 1rem;
+        float: left;
+        width: 17rem;
+        margin-right: 1rem;
+      }
+
       .select {
-        width: 30rem;
-        margin-left: 1rem;
+        float: left;
+        margin-top: 1rem;
       }
     }
 

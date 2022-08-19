@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Card from '@mui/joy/Card'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
@@ -7,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
 import { addProducts, getProduct, updateProducts } from 'api/products'
-import Form from 'components/form'
+import Form from 'container/form'
 import { getToken } from 'utils/helpers'
 import LoadingModal from 'components/loadingModal'
 import { productFields } from 'utils/constants'
@@ -71,9 +72,9 @@ const Product = () => {
   return (
     <>
       <AppBar />
-      <div className='container-fluid container'>
+      <Box className='container-fluid container'>
         <LoadingModal show={loading} />
-        <div className='container'>
+        <Box className='container'>
           <Paper className='mat-paper' elevation={2}>
             <Card className='mat-card'>
               <Typography className='heading' variant='h4'>
@@ -88,8 +89,8 @@ const Product = () => {
               />
             </Card>
           </Paper>
-        </div>
-      </div>
+        </Box>
+      </Box>
     </>
   )
 }

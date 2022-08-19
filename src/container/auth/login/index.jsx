@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Card from '@mui/joy/Card'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
@@ -5,7 +6,7 @@ import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Form from 'components/form'
+import Form from 'container/form'
 import { getToken } from 'utils/helpers'
 import LoadingModal from 'components/loadingModal'
 import login from 'api/user'
@@ -37,10 +38,9 @@ const Login = () => {
   }, [])
 
   return (
-    <div className='container-fluid container'>
+    <Box className='container-fluid container'>
       <LoadingModal show={loading} />
-
-      <div className='container'>
+      <Box className='container'>
         <Paper className='mat-paper' elevation={2}>
           <Card className='mat-card'>
             <Typography className='heading' variant='h3'>
@@ -55,8 +55,8 @@ const Login = () => {
             />
           </Card>
         </Paper>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

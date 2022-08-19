@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Card from '@mui/joy/Card'
 import CardContent from '@mui/material/CardContent'
 import Paper from '@mui/material/Paper'
@@ -67,45 +68,45 @@ const Orders = () => {
   return (
     <>
       <AppBar />
-      <div className='container-fluid inventory-container'>
+      <Box className='container-fluid inventory-container'>
         <Paper className='mat-paper' elevation={2}>
           <Card>
-            <div className='order-sale'>
+            <Box className='order-sale'>
               <Typography className='sale' variant='h5'>
                 Total Sale ({formatNumbers(parseInt(sales.totalSale, 10))} cents)
               </Typography>
               <Typography className='avg-sale sale' variant='h5'>
                 Average Sale ({formatNumbers(parseInt(sales.average, 10))} cents)
               </Typography>
-            </div>
+            </Box>
             <CardContent className='mat-card-header'>
-              <div className='order-select'>
-                <div className='select-wrapper'>
+              <Box className='order-select'>
+                <Box className='select-wrapper'>
                   <TextField
-                    className='text-field'
+                    className='text-field-order'
                     size='small'
                     label='Search'
                     variant='outlined'
                     onChange={(e) => setSearch(e.target.value)}
                   />
-                </div>
-                <div className='select-wrapper'>
-                  <div className='select-drop'>
+                </Box>
+                <Box className='select-wrapper'>
+                  <Box className='select-drop'>
                     <Select
                       placeHolder='Filter by order status'
                       setValue={setOrderStatus}
                       selectOptions={orderStatusOptions}
                     />
-                  </div>
-                  <div className='select-drop'>
+                  </Box>
+                  <Box className='select-drop'>
                     <Select
                       placeHolder='Filter by shipper name'
                       setValue={setShipper}
                       selectOptions={shipperNameOptions}
                     />
-                  </div>
-                </div>
-              </div>
+                  </Box>
+                </Box>
+              </Box>
             </CardContent>
             <header className='card-seperator' />
             <Table
@@ -118,7 +119,7 @@ const Orders = () => {
             />
           </Card>
         </Paper>
-      </div>
+      </Box>
     </>
   )
 }
