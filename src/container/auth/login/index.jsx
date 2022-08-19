@@ -39,7 +39,7 @@ const Login = () => {
     <Box className='container-fluid container login-container'>
       <LoadingModal show={loading} />
       <Box>
-        <Paper className='mat-paper'>
+        <Paper className='mat-paper login-paper'>
           <Card className='mat-card'>
             <Typography className='heading' variant='h3'>
               Login

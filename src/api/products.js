@@ -12,6 +12,24 @@ export const getProduct = (id) => (
     .catch(() => ({}))
 )
 
+export const getProductStyles = () => (
+  instance.get('/products/styles')
+    .then(response => response.data)
+    .catch(() => ({}))
+)
+
+export const getProductBrands = () => (
+  instance.get('/products/brands')
+    .then(response => response.data)
+    .catch(() => ({}))
+)
+
+export const getProductTypes = () => (
+  instance.get('/products/types')
+    .then(response => response.data)
+    .catch(() => ({}))
+)
+
 export const removeProducts = (id) => instance.delete(`/products/${id}`).then(response => response.data).catch(() => {})
 
 export const addProducts = (body) => instance.post('/products', body).then(response => response.data).catch(() => {})

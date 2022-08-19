@@ -30,6 +30,12 @@ export const productFields = [
     type: 'text',
   },
   {
+    id: 4,
+    label: 'Product type',
+    name: 'product_type',
+    type: 'select',
+  },
+  {
     id: 2,
     label: 'Style',
     name: 'style',
@@ -39,12 +45,6 @@ export const productFields = [
     id: 3,
     label: 'Brand',
     name: 'brand',
-    type: 'select',
-  },
-  {
-    id: 4,
-    label: 'Product type',
-    name: 'product_type',
     type: 'select',
   },
 ]

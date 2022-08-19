@@ -22,6 +22,9 @@
     padding: 2rem;
     width: 50vh;
     margin-bottom: 5rem;
+  }
+
+  .login-paper {
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
     border-radius: 5px;
     position: relative;
@@ -30,7 +33,7 @@
     overflow: hidden;
   }
 
-  .mat-paper:before {
+  .login-paper:before {
     content: "";
     position: absolute;
     background: inherit;

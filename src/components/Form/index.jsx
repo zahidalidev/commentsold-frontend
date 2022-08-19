@@ -47,6 +47,7 @@ const Form = ({
                   setValue={(value) => setFieldValue(field.name, value)}
                   selectOptions={selectList[field.name].options}
                   placeHolder={selectList[field.name].placeholder}
+                  value={values[field.name]}
                 />
               </Box>
               <Typography className='warn-typography'>

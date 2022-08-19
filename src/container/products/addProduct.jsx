@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import _ from 'lodash'
 
-import { addProducts, getProduct, updateProducts } from 'api/products'
+import {
+  addProducts, getProduct, updateProducts, getProductStyles, getProductBrands, getProductTypes,
+} from 'api/products'
 import { productFields } from 'utils/constants/product'
 import { AppBar, LoadingModal, Form } from 'components'
 import { validateProduct } from 'utils/validations'
@@ -13,29 +15,11 @@ import { validateProduct } from 'utils/validations'
 import 'container/auth/login/styles.scss'
 import './styles.scss'
 
-const productBrandOptions = [
-  { value: 'Girl next door', label: 'Girl next door' },
-  { value: 'Sports Wear', label: 'Sports Wear' },
-]
-
-const productStyleOptions = [
-  { value: 'Girl next door', label: 'Girl next door' },
-]
-
-const productTypeOptions = [{ value: 'clothing', label: 'clothing' }]
-
 const Product = () => {
   const [action, setAction] = useState()
   const [loading, setloading] = useState(false)
   const [currentProductId, setcurrentProductId] = useState('')
   const navigate = useNavigate()
-
-  const productSelectOptions = {
-    style: { options: productStyleOptions, placeholder: 'Select style' },
-    brand: { options: productBrandOptions, placeholder: 'Select brand' },
-    product_type: { options: productTypeOptions, placeholder: 'Select product type' },
-  }
-
   const [productFieldsInitialValues, setInitialValues] = useState({
     product_name: '',
     description: '',
@@ -46,6 +30,27 @@ const Product = () => {
     note: '',
     url: '',
   })
+  const [productSelectOptions, setProductSelectOptions] = useState({
+    style: { options: [], placeholder: 'Select style' },
+    brand: { options: [], placeholder: 'Select brand' },
+    product_type: { options: [], placeholder: 'Select product type' },
+  })
+
+  const handleProductOptions = async () => {
+    const tempOptions = { ...productSelectOptions }
+    const styles = await getProductStyles()
+    const brands = await getProductTypes()
+    const types = await getProductBrands()
+
+    const productStyleOptions = styles.map(item => ({ value: item, label: item }))
+    const productBrandOptions = brands.map(item => ({ value: item, label: item }))
+    const productTypeOptions = types.map(item => ({ value: item, label: item }))
+
+    tempOptions.style.options = productStyleOptions
+    tempOptions.brand.options = productBrandOptions
+    tempOptions.product_type.options = productTypeOptions
+    setProductSelectOptions(tempOptions)
+  }
 
   const getProductById = async (id) => {
     try {
@@ -61,6 +66,7 @@ const Product = () => {
   useEffect(() => {
     const params = window.location.pathname.split('/')
     setAction(params[2])
+    handleProductOptions()
     if (params[2] === 'update') {
       getProductById(params[3])
       setcurrentProductId(params[3])
