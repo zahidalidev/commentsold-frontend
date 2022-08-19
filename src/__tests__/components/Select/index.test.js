@@ -6,7 +6,7 @@ import Select from 'components/Select'
 import { TestApp } from 'utils/test'
 
 describe('Select Component', () => {
-  beforeEach(() => render(<Select show />, { wrapper: TestApp }))
+  beforeEach(() => render(<Select />, { wrapper: TestApp }))
 
   it('should render correctly', () => {
     expect.assertions(1)
