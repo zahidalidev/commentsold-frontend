@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom'
 import AppBar from 'components/appbar'
 import { addProducts, getProduct, updateProducts } from 'api/products'
 import Form from 'container/form'
-import { getToken } from 'utils/helpers'
 import LoadingModal from 'components/loadingModal'
 import { productFields } from 'utils/constants'
 import { validateProduct } from 'utils/validations'
@@ -35,8 +34,7 @@ const Product = () => {
 
   const getProductById = async (id) => {
     try {
-      const token = getToken()
-      const { data } = await getProduct(id, token)
+      const { data } = await getProduct(id)
       setInitialValues(data)
     } catch (error) {
       toast.error(error)
@@ -55,11 +53,10 @@ const Product = () => {
   const handleProduct = async (values) => {
     setloading(true)
     try {
-      const token = getToken()
       if (action === 'add') {
-        await addProducts(values, token)
+        await addProducts(values)
       } else {
-        await updateProducts(values, currentProductId, token)
+        await updateProducts(values, currentProductId)
       }
       toast.success(`Product ${action === 'add' ? 'added' : 'updated'}`)
       navigate('/products')
