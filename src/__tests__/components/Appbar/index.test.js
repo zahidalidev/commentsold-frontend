@@ -8,21 +8,18 @@ describe('Appbar Component', () => {
 
   it('should render correctly', () => {
     expect.assertions(1)
-
     expect(screen).toMatchSnapshot()
   })
 
   it('should have inventory button', async () => {
     await waitFor(() => {
-      const button = screen.getAllByRole('button')[0]
-      expect(button).toBeInTheDocument()
+      expect(screen.getAllByRole('button')[0]).toBeInTheDocument()
     })
   })
 
   it('should have four buttons', async () => {
     await waitFor(() => {
-      const button = screen.getAllByRole('button')
-      expect(button).toHaveLength(4)
+      expect(screen.getAllByRole('button')).toHaveLength(4)
     })
   })
 })

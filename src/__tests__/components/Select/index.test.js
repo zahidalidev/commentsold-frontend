@@ -1,6 +1,4 @@
-import {
-  render, screen,
-} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import Select from 'components/Select'
 import { TestApp } from 'utils/test'

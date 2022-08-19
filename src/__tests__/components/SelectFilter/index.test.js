@@ -1,6 +1,4 @@
-import {
-  render, screen, waitFor,
-} from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 
 import SelectFilter from 'components/SelectFilter'
 import { TestApp } from 'utils/test'

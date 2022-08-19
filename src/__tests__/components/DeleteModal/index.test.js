@@ -1,6 +1,4 @@
-import {
-  render, screen, waitFor,
-} from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 
 import DeleteModal from 'components/DeleteModal'
 import { TestApp } from 'utils/test'
@@ -12,21 +10,19 @@ describe('Delete Modal Component', () => {
 
   it('should render correctly', () => {
     expect.assertions(1)
-
     expect(screen).toMatchSnapshot()
   })
 
   it('should have 2 buttons', async () => {
     await waitFor(() => {
-      const button = screen.getAllByRole('button')
-      expect(button).toHaveLength(2)
+      expect(screen.getAllByRole('button')).toHaveLength(2)
     })
   })
 
   it('should have yes buttons', async () => {
     await waitFor(() => {
       const button = screen.getByRole('button', {
-        name: 'Yes'
+        name: 'Yes',
       })
       expect(button).toBeInTheDocument()
     })
@@ -35,7 +31,7 @@ describe('Delete Modal Component', () => {
   it('should have no buttons', async () => {
     await waitFor(() => {
       const button = screen.getByRole('button', {
-        name: 'No'
+        name: 'No',
       })
       expect(button).toBeInTheDocument()
     })

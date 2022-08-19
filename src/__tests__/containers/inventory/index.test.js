@@ -1,10 +1,12 @@
-import { render, screen, waitFor, act } from '@testing-library/react'
+import {
+  render, screen, waitFor, act,
+} from '@testing-library/react'
 
 import Inventory from 'container/inventory'
 import { TestApp } from 'utils/test'
 
 describe('Inventory Container', () => {
-  beforeEach(() => act(()=> (render(<Inventory />, { wrapper: TestApp }))))
+  beforeEach(() => act(() => render(<Inventory />, { wrapper: TestApp })))
 
   it('should render correctly', () => {
     expect.assertions(1)

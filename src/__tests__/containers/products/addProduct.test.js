@@ -1,4 +1,6 @@
-import { render, screen, waitFor, act } from '@testing-library/react'
+import {
+  render, screen, waitFor, act,
+} from '@testing-library/react'
 
 import AddProduct from 'container/products/addProduct'
 import { TestApp } from 'utils/test'

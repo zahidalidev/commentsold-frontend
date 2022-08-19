@@ -25,7 +25,6 @@ describe('Form Component', () => {
 
   it('should render correctly', () => {
     expect.assertions(1)
-
     expect(screen).toMatchSnapshot()
   })
 

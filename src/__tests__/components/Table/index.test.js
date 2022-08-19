@@ -1,6 +1,4 @@
-import {
-  render, screen, waitFor,
-} from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 
 import { orderColumns } from 'utils/constants/order'
 import Table from 'components/Table'
