@@ -15,7 +15,7 @@ export const productFields = [
     id: 5,
     label: 'Shipping price',
     name: 'shipping_price',
-    type: 'text',
+    type: 'number',
   },
   {
     id: 6,
