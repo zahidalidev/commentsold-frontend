@@ -16,6 +16,7 @@ import {
 import { getToken } from 'utils/helpers'
 
 import './styles.scss'
+import _ from 'lodash'
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -53,11 +54,12 @@ const Products = () => {
 
   const handleRemoveProduct = async () => {
     setloading(true)
-    try {
-      await removeProducts(currentProductId)
+    const data = await removeProducts(currentProductId)
+    if (!_.isEmpty(data)) {
       await handleProducts()
-    } catch (error) {
-      toast.error(error)
+      toast.success('Product removed')
+    } else {
+      toast.error('Error! product not removed')
     }
     setloading(false)
     setConfirmModal(false)

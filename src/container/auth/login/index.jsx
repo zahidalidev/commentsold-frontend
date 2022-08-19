@@ -19,11 +19,11 @@ const Login = () => {
 
   const handleLogin = async (values) => {
     setloading(true)
-    try {
-      await login(values)
+    const { token } = await login(values)
+    if (token) {
       navigate('/products')
-    } catch (error) {
-      toast.error(error)
+    } else {
+      toast.error('Login error')
     }
     setloading(false)
   }

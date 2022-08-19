@@ -53,13 +53,9 @@ const Product = () => {
   }
 
   const getProductById = async (id) => {
-    try {
-      const data = await getProduct(id)
-      if (!_.isEmpty(data)) {
-        setInitialValues(data)
-      }
-    } catch (error) {
-      toast.error(error)
+    const data = await getProduct(id)
+    if (!_.isEmpty(data)) {
+      setInitialValues(data)
     }
   }
 
@@ -75,16 +71,22 @@ const Product = () => {
 
   const handleProduct = async (values) => {
     setloading(true)
-    try {
-      if (action === 'add') {
-        await addProducts(values)
+    if (action === 'add') {
+      const data = await addProducts(values)
+      if (!_.isEmpty(data)) {
+        toast.success(`Product ${action === 'add' ? 'added' : 'updated'}`)
+        navigate('/products')
       } else {
-        await updateProducts(values, currentProductId)
+        toast.error('Error! product not added')
       }
-      toast.success(`Product ${action === 'add' ? 'added' : 'updated'}`)
-      navigate('/products')
-    } catch (error) {
-      toast.error(error)
+    } else {
+      const data = await updateProducts(values, currentProductId)
+      if (!_.isEmpty(data)) {
+        toast.success(`Product ${action === 'add' ? 'added' : 'updated'}`)
+        navigate('/products')
+      } else {
+        toast.error('Error! product not updated')
+      }
     }
     setloading(false)
   }

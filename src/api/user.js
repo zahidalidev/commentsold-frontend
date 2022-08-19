@@ -12,7 +12,7 @@ const login = (body) => (
 
       return data
     })
-    .catch(() => {})
+    .catch(() => ({}))
 )
 
 export default login

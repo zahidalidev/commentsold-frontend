@@ -30,8 +30,8 @@ export const getProductTypes = () => (
     .catch(() => ({}))
 )
 
-export const removeProducts = (id) => instance.delete(`/products/${id}`).then(response => response.data).catch(() => {})
+export const removeProducts = (id) => instance.delete(`/products/${id}`).then(response => response.data).catch(() => ({}))
 
-export const addProducts = (body) => instance.post('/products', body).then(response => response.data).catch(() => {})
+export const addProducts = (body) => instance.post('/products', body).then(response => response).catch(() => ({}))
 
-export const updateProducts = (body, id) => instance.put(`/products/${id}`, body).then(response => response.data).catch(() => {})
+export const updateProducts = (body, id) => instance.put(`/products/${id}`, body).then(response => response).catch(() => ({}))
