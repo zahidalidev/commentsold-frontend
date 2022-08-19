@@ -1,3 +1,5 @@
+import { formatNumbers } from 'utils/helpers'
+
 export const thresholdOptions = [
   { value: 'lt', label: '<' },
   { value: 'gt', label: '>' },
@@ -28,7 +30,7 @@ export const inventoryColumns = [
   },
   {
     name: 'Quantity',
-    selector: (row) => row.quantity,
+    selector: (row) => formatNumbers(row.quantity),
     sortable: true,
     wrap: true,
   },
@@ -46,13 +48,13 @@ export const inventoryColumns = [
   },
   {
     name: 'Price',
-    selector: (row) => row.price_cents,
+    selector: (row) => formatNumbers(row.price_cents),
     sortable: true,
     wrap: true,
   },
   {
     name: 'Cost',
-    selector: (row) => row.cost_cents,
+    selector: (row) => formatNumbers(row.cost_cents),
     sortable: true,
     wrap: true,
   },

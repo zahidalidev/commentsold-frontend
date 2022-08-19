@@ -1,3 +1,5 @@
+import { formatNumbers } from 'utils/helpers'
+
 export const orderColumnsKeys = {
   'Customer name': { columnName: 'name', tableName: 'orders' },
   'Email address': { columnName: 'email', tableName: 'orders' },
@@ -49,7 +51,7 @@ export const orderColumns = [
   },
   {
     name: 'Order total',
-    selector: (row) => row.total_cents,
+    selector: (row) => formatNumbers(row.total_cents),
     sortable: true,
     grow: 1.5,
     wrap: true,

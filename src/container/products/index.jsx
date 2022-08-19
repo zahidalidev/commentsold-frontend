@@ -13,7 +13,7 @@ import { productColumnsKeys } from 'utils/constants/product'
 import {
   AppBar, DeleteModal, LoadingModal, Table,
 } from 'components'
-import { getToken } from 'utils/helpers'
+import { formatNumbers, getToken } from 'utils/helpers'
 
 import './styles.scss'
 import _ from 'lodash'
@@ -116,22 +116,20 @@ const Products = () => {
         setConfirmModal={setConfirmModal}
         show={confirmModal}
       />
-      <Box className='container-fluid product-container'>
+      <Box className='container-fluid inventory-container'>
         <Paper className='mat-paper' elevation={2}>
-          <Card className='mat-card'>
+          <Card>
+            <Typography variant='h5'>
+              Products - Total Products ({formatNumbers(parseInt(productsCount, 10))})
+            </Typography>
             <CardContent className='mat-card-header'>
-              <Box className='card-heading'>
-                <Typography className='product-heading' variant='h5'>
-                  Products
-                </Typography>
-                <Button
-                  onClick={() => navigate('/product/add')}
-                  className='add-button'
-                  variant='outlined'
-                >
-                  Add Product
-                </Button>
-              </Box>
+              <Button
+                onClick={() => navigate('/product/add')}
+                className='add-button'
+                variant='outlined'
+              >
+                Add Product
+              </Button>
             </CardContent>
             <Table
               data={products}
