@@ -105,6 +105,16 @@ export const productFields = [
   },
 ]
 
+export const inventoryColumnsKeys = {
+  Name: 'product_name',
+  SKU: 'sku',
+  Quantity: 'quantity',
+  Color: 'color',
+  Size: 'size',
+  Price: 'price_cents',
+  Cost: 'cost_cents',
+}
+
 export const inventoryColumns = [
   {
     name: 'Name',
@@ -143,10 +153,21 @@ export const inventoryColumns = [
   },
 ]
 
-export const productColumns = {
+export const productColumnsKeys = {
   Name: 'product_name',
   Style: 'style',
   Brand: 'brand',
+}
+
+export const orderColumnsKeys = {
+  'Customer name': 'name',
+  'Email address': 'email',
+  'Product name': 'product_name',
+  'Order status': 'order_status',
+  'Order total': 'total_cents',
+  'Transaction id': 'transaction_id',
+  Shipper: 'shipper_name',
+  'Tracking number': 'tracking_number',
 }
 
 export const orderColumns = [
@@ -167,23 +188,18 @@ export const orderColumns = [
   {
     name: 'Product name',
     selector: (row) => row.product.product_name,
-    sortable: true,
     grow: 2,
     wrap: true,
   },
   {
     name: 'Color',
     selector: (row) => row.product.inventories.reduce((acc, item) => `${item.color}${acc && ','} ${acc}`, ''),
-    sortable: true,
     grow: 3,
-    wrap: true,
   },
   {
     name: 'Size',
     selector: (row) => row.product.inventories.reduce((acc, item) => `${item.size}${acc && ','} ${acc}`, ''),
-    sortable: true,
     width: '10rem',
-    wrap: true,
   },
   {
     name: 'Order status',

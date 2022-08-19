@@ -7,9 +7,11 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
-import { formatNumbers, getToken } from 'utils/helpers'
+import { formatNumbers } from 'utils/helpers'
 import getAllOrders from 'api/order'
-import { orderColumns, defaultPageCount, orderStatusOptions, shipperNameOptions } from 'utils/constants'
+import {
+  orderColumns, defaultPageCount, orderStatusOptions, shipperNameOptions, orderColumnsKeys,
+} from 'utils/constants'
 import Select from 'components/select'
 import Table from 'components/table'
 import { useEffect, useState } from 'react'
@@ -20,24 +22,31 @@ import 'container/inventory/styles.scss'
 const Orders = () => {
   const navigate = useNavigate()
   const [orders, setOrders] = useState({})
+  const [ordersCount, setOrdersCount] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(defaultPageCount)
   const [orderStatus, setOrderStatus] = useState('')
   const [shipper, setShipper] = useState('')
   const [search, setSearch] = useState('')
+  const [sortBy, setSortBy] = useState({
+    sortColumn: 'Customer name',
+    sortOrder: 'asc',
+  })
 
   const handleOrders = async () => {
     try {
-      const token = getToken()
-      const { data } = await getAllOrders(
-        token,
+      const tempSortBy = { ...sortBy }
+      tempSortBy.sortColumn = orderColumnsKeys[tempSortBy.sortColumn]
+      const { count, rows } = await getAllOrders(
         rowsPerPage,
         pageNumber,
         search,
         orderStatus,
         shipper,
+        tempSortBy,
       )
-      setOrders(data)
+      setOrders(rows)
+      setOrdersCount(count)
     } catch (error) {
       toast.error(error)
       navigate('/login')
@@ -46,7 +55,7 @@ const Orders = () => {
 
   useEffect(() => {
     handleOrders()
-  }, [rowsPerPage, pageNumber, search, orderStatus, shipper])
+  }, [rowsPerPage, pageNumber, search, orderStatus, shipper, sortBy])
 
   return (
     <>
@@ -94,9 +103,11 @@ const Orders = () => {
             <header className='card-seperator' />
             <Table
               data={orders}
+              count={ordersCount}
               columns={orderColumns}
               setPageNumber={setPageNumber}
               setRowsPerPage={setRowsPerPage}
+              setSortBy={setSortBy}
             />
           </Card>
         </Paper>

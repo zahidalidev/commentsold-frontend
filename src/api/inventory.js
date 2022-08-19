@@ -1,10 +1,8 @@
-import axios from 'axios'
+import instance from 'api'
 
-const inventoryEndpoint = `${process.env.REACT_APP_BASE_URL}v1`
-
-const getInventories = (token, rowsPerPage, pageNumber, name, operator, price) => {
+const getInventories = (rowsPerPage, pageNumber, name, operator, price, sortBy) => {
   const page = pageNumber - 1
-  let searchUrl = `${inventoryEndpoint}/inventories/?limit=${rowsPerPage}&page=${page}`
+  let searchUrl = `/inventories/?limit=${rowsPerPage}&page=${page}&sort_column=${sortBy.sortColumn}&sort_order=${sortBy.sortOrder}`
 
   if (name) {
     searchUrl += `&name=${name}`
@@ -18,11 +16,7 @@ const getInventories = (token, rowsPerPage, pageNumber, name, operator, price) =
     searchUrl += `&price=${price}`
   }
 
-  return axios.get(searchUrl, {
-    headers: {
-      'access-token': token,
-    },
-  })
+  return instance.get(searchUrl).then(response => response.data).catch(() => {})
 }
 
 export default getInventories

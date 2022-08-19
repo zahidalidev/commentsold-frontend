@@ -1,10 +1,8 @@
-import axios from 'axios'
+import instance from 'api'
 
-const orderEndpoint = `${process.env.REACT_APP_BASE_URL}v1`
-
-const getAllOrders = (token, rowsPerPage, pageNumber, name, orderStatus, shipper) => {
+const getAllOrders = (rowsPerPage, pageNumber, name, orderStatus, shipper, sortBy) => {
   const page = pageNumber - 1
-  let searchUrl = `${orderEndpoint}/orders/?limit=${rowsPerPage}&page=${page}`
+  let searchUrl = `/orders/?limit=${rowsPerPage}&page=${page}&sort_column=${sortBy.sortColumn}&sort_order=${sortBy.sortOrder}`
 
   if (name) {
     searchUrl += `&name=${name}`
@@ -18,10 +16,6 @@ const getAllOrders = (token, rowsPerPage, pageNumber, name, orderStatus, shipper
     searchUrl += `&shipper=${shipper}`
   }
 
-  return axios.get(searchUrl, {
-    headers: {
-      'access-token': token,
-    },
-  })
+  return instance.get(searchUrl).then(response => response.data).catch(() => {})
 }
 export default getAllOrders

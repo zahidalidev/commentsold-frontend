@@ -1,7 +1,7 @@
 import instance from 'api'
 
-export const getAllProducts = (rowsPerPage, pageNumber) => (
-  instance.get(`products/?limit=${rowsPerPage}&page=${pageNumber}`)
+export const getAllProducts = (rowsPerPage, pageNumber, sortBy) => (
+  instance.get(`products/?limit=${rowsPerPage}&page=${pageNumber}&sort_column=${sortBy.sortColumn}&sort_order=${sortBy.sortOrder}`)
     .then(response => response.data)
     .catch(() => {})
 )
@@ -12,20 +12,8 @@ export const getProduct = (id) => (
     .catch(() => {})
 )
 
-export const removeProducts = (id, token) => instance.delete(`/products/${id}`, {
-  headers: {
-    'access-token': token,
-  },
-})
+export const removeProducts = (id) => instance.delete(`/products/${id}`).then(response => response.data).catch(() => {})
 
-export const addProducts = (body, token) => instance.post('/products', body, {
-  headers: {
-    'access-token': token,
-  },
-})
+export const addProducts = (body) => instance.post('/products', body).then(response => response.data).catch(() => {})
 
-export const updateProducts = (body, id, token) => instance.put(`/products/${id}`, body, {
-  headers: {
-    'access-token': token,
-  },
-})
+export const updateProducts = (body, id) => instance.put(`/products/${id}`, body).then(response => response.data).catch(() => {})

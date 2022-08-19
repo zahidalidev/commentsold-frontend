@@ -5,6 +5,6 @@ const instance = axios.create({
   timeout: 1000000,
 })
 
-instance.defaults.headers.common['access-token'] = localStorage.getItem('token').replaceAll('"', '')
+instance.defaults.headers.common['access-token'] = localStorage.getItem('token')?.replaceAll('"', '')
 
 export default instance
