@@ -12,24 +12,6 @@ export const productFields = [
     type: 'text',
   },
   {
-    id: 2,
-    label: 'Style',
-    name: 'style',
-    type: 'text',
-  },
-  {
-    id: 3,
-    label: 'Brand',
-    name: 'brand',
-    type: 'text',
-  },
-  {
-    id: 4,
-    label: 'Product type',
-    name: 'product_type',
-    type: 'text',
-  },
-  {
     id: 5,
     label: 'Shipping price',
     name: 'shipping_price',
@@ -47,6 +29,24 @@ export const productFields = [
     name: 'url',
     type: 'text',
   },
+  {
+    id: 2,
+    label: 'Style',
+    name: 'style',
+    type: 'select',
+  },
+  {
+    id: 3,
+    label: 'Brand',
+    name: 'brand',
+    type: 'select',
+  },
+  {
+    id: 4,
+    label: 'Product type',
+    name: 'product_type',
+    type: 'select',
+  },
 ]
 
 export const productColumnsKeys = {
@@ -54,7 +54,3 @@ export const productColumnsKeys = {
   Style: { columnName: 'style', tableName: 'products' },
   Brand: { columnName: 'brand', tableName: 'products' },
 }
-
-export const productStyleOptions = [
-  { value: 'Pending', label: 'Pending' },
-]

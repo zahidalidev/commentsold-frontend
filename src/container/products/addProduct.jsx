@@ -15,11 +15,29 @@ import { validateProduct } from 'utils/validations'
 import 'container/auth/login/styles.scss'
 import './styles.scss'
 
+const productBrandOptions = [
+  { value: 'Girl next door', label: 'Girl next door' },
+  { value: 'Sports Wear', label: 'Sports Wear' },
+]
+
+const productStyleOptions = [
+  { value: 'Girl next door', label: 'Girl next door' },
+]
+
+const productTypeOptions = [{ value: 'clothing', label: 'clothing' }]
+
 const Product = () => {
   const [action, setAction] = useState()
   const [loading, setloading] = useState(false)
   const [currentProductId, setcurrentProductId] = useState('')
   const navigate = useNavigate()
+
+  const productSelectOptions = {
+    style: { options: productStyleOptions, placeholder: 'Select style' },
+    brand: { options: productBrandOptions, placeholder: 'Select brand' },
+    product_type: { options: productTypeOptions, placeholder: 'Select product type' },
+  }
+
   const [productFieldsInitialValues, setInitialValues] = useState({
     product_name: '',
     description: '',
@@ -84,6 +102,7 @@ const Product = () => {
                 action={action}
                 validate={validateProduct}
                 fields={productFields}
+                selectList={productSelectOptions}
               />
             </Card>
           </Paper>

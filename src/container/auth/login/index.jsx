@@ -36,10 +36,10 @@ const Login = () => {
   }, [])
 
   return (
-    <Box className='container-fluid container'>
+    <Box className='container-fluid container login-container'>
       <LoadingModal show={loading} />
-      <Box className='container'>
-        <Paper className='mat-paper' elevation={2}>
+      <Box>
+        <Paper className='mat-paper'>
           <Card className='mat-card'>
             <Typography className='heading' variant='h3'>
               Login

@@ -33,6 +33,8 @@ export const validateProduct = (values) => {
   }
   if (!values.shipping_price) {
     errors.shipping_price = 'Required'
+  } else if (!/^[0-9]+$/i.test(values.shipping_price)) {
+    errors.shipping_price = 'Price should be a number'
   }
   if (!values.note) {
     errors.note = 'Required'

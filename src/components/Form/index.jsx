@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import {
   Button, CardContent, TextField, Typography,
 } from '@mui/material'
@@ -6,9 +7,10 @@ import { Formik } from 'formik'
 import _ from 'lodash'
 
 import './styles.scss'
+import { Select } from 'components'
 
 const Form = ({
-  fieldsInitialValues, handleSubmition, action, validate, fields,
+  fieldsInitialValues, handleSubmition, action, validate, fields, selectList,
 }) => (
   <CardContent className='mat-card-content'>
     <Formik
@@ -18,10 +20,10 @@ const Form = ({
       onSubmit={handleSubmition}
     >
       {({
-        values, errors, touched, handleChange, handleBlur, handleSubmit,
+        values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue,
       }) => (
         <form className='mat-form' onSubmit={handleSubmit}>
-          {fields.map((field) => (
+          {fields.map((field) => (field.type !== 'select' ? (
             <Fragment key={field.name}>
               <TextField
                 className='text-field'
@@ -38,7 +40,21 @@ const Form = ({
                 {errors[field.name] && touched[field.name] && errors[field.name]}
               </Typography>
             </Fragment>
-          ))}
+          ) : (
+            <Fragment key={field.name}>
+              <Box className='product-dropdown'>
+                <Select
+                  setValue={(value) => setFieldValue(field.name, value)}
+                  selectOptions={selectList[field.name].options}
+                  placeHolder={selectList[field.name].placeholder}
+                />
+              </Box>
+              <Typography className='warn-typography'>
+                {errors[field.name] && touched[field.name] && errors[field.name]}
+              </Typography>
+            </Fragment>
+          )))}
+
           <Button
             className='submit-button'
             type='submit'

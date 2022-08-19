@@ -1,6 +1,8 @@
 import Select from 'react-select'
 
-const AppSelect = ({ selectOptions, placeHolder, setValue }) => (
+const AppSelect = ({
+  selectOptions, placeHolder, setValue,
+}) => (
   <Select
     placeholder={placeHolder}
     options={selectOptions}
