@@ -1,8 +1,6 @@
-import Box from '@mui/material/Box'
-import CircularProgress from '@mui/material/CircularProgress'
-import Modal from '@mui/material/Modal'
+import { Box, CircularProgress, Modal } from '@mui/material'
 
-import 'components/loadingModal/styles.scss'
+import './styles.scss'
 
 const LoadingModal = ({ show }) => (
   <Modal open={show}>

@@ -7,18 +7,16 @@ import TextField from '@mui/material/TextField'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
-import AppBar from 'components/appbar'
 import { defaultPageCount } from 'utils/constants/common'
 import { formatNumbers } from 'utils/helpers'
 import getAllOrders from 'api/order'
 import {
   orderColumns, orderColumnsKeys, orderStatusOptions, shipperNameOptions,
 } from 'utils/constants/order'
-import Select from 'components/select'
-import Table from 'components/table'
+import { AppBar, Select, Table } from 'components'
 import { useEffect, useState } from 'react'
 
-import 'container/orders/styles.scss'
+import './styles.scss'
 import 'container/inventory/styles.scss'
 
 const Orders = () => {

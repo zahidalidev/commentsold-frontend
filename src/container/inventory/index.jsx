@@ -7,16 +7,14 @@ import TextField from '@mui/material/TextField'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
-import AppBar from 'components/appbar'
-import Table from 'components/table'
+import { AppBar, Table, SelectFilter } from 'components'
 import { formatNumbers } from 'utils/helpers'
 import getInventories from 'api/inventory'
 import { inventoryColumns, inventoryColumnsKeys } from 'utils/constants/inventory'
 import { defaultPageCount } from 'utils/constants/common'
-import SelectFilter from 'components/selectFilter'
 import { useEffect, useState } from 'react'
 
-import 'container/inventory/styles.scss'
+import './styles.scss'
 
 const Inventory = () => {
   const [inventories, setInventories] = useState({})

@@ -1,19 +1,17 @@
-import Box from '@mui/material/Box'
-import Card from '@mui/joy/Card'
-import Paper from '@mui/material/Paper'
-import Typography from '@mui/material/Typography'
+import {
+  Box, Card, Paper, Typography,
+} from '@mui/material'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Form from 'container/form'
 import { getToken } from 'utils/helpers'
-import LoadingModal from 'components/loadingModal'
+import { Form, LoadingModal } from 'components'
 import login from 'api/user'
 import { loginFields, loginFieldsInitialValues } from 'utils/constants/login'
 import { validateLogin } from 'utils/validations'
 
-import 'container/auth/login/styles.scss'
+import './styles.scss'
 
 const Login = () => {
   const navigate = useNavigate()

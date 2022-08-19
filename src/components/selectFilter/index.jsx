@@ -1,6 +1,6 @@
 import { thresholdOptions } from 'utils/constants/inventory'
 
-import 'components/selectFilter/styles.scss'
+import './styles.scss'
 
 const SelectFilter = ({ setPrice, setOperator }) => (
   <div className='filter-select-container'>

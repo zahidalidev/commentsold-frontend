@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { menu } from 'utils/constants/common'
 import { removeToken } from 'utils/helpers'
 
-import 'components/appbar/styles.scss'
+import './styles.scss'
 
 const MatAppBar = () => {
   const navigate = useNavigate()

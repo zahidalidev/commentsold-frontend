@@ -45,6 +45,16 @@
   cursor: pointer;
 }
 
+.add-product-container {
+  .mat-paper {
+    margin-top: 3rem;
+
+    .upload-btn {
+      margin-top: 1rem !important;
+    }
+  }
+}
+
 @media screen and (max-width: 450px) {
   .product-container {
     width: 95% !important;
@@ -53,5 +63,15 @@
   .mat-paper {
     box-shadow: none !important;
     width: 94% !important;
+  }
+}
+
+.add-product-container {
+  .mat-paper {
+    margin-top: 5vh;
+
+    .upload-btn {
+      margin-top: 1rem !important;
+    }
   }
 }

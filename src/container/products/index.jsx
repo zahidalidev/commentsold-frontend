@@ -10,15 +10,14 @@ import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import AppBar from 'components/appbar'
-import DeleteModal from 'components/deleteModal'
 import { defaultPageCount } from 'utils/constants/common'
 import { getAllProducts, removeProducts } from 'api/products'
 import { productColumnsKeys } from 'utils/constants/product'
-import Table from 'components/table'
+import {
+  AppBar, DeleteModal, LoadingModal, Table,
+} from 'components'
 
-import 'container/products/styles.scss'
-import LoadingModal from 'components/loadingModal'
+import './styles.scss'
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -106,7 +105,7 @@ const Products = () => {
       <AppBar />
       <LoadingModal show={loading} />
       <DeleteModal
-        deleteProduct={handleRemoveProduct}
+        handleDelete={handleRemoveProduct}
         setConfirmModal={setConfirmModal}
         show={confirmModal}
       />

@@ -1,12 +1,11 @@
-import Button from '@mui/material/Button'
-import CardContent from '@mui/material/CardContent'
+import {
+  Button, CardContent, TextField, Typography,
+} from '@mui/material'
 import { Fragment } from 'react'
 import { Formik } from 'formik'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
 import _ from 'lodash'
 
-import 'container/form/styles.scss'
+import './styles.scss'
 
 const Form = ({
   fieldsInitialValues, handleSubmition, action, validate, fields,

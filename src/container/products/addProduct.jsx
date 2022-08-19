@@ -6,15 +6,13 @@ import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import AppBar from 'components/appbar'
 import { addProducts, getProduct, updateProducts } from 'api/products'
-import Form from 'container/form'
-import LoadingModal from 'components/loadingModal'
 import { productFields } from 'utils/constants/product'
+import { AppBar, LoadingModal, Form } from 'components'
 import { validateProduct } from 'utils/validations'
 
 import 'container/auth/login/styles.scss'
-import 'container/product/styles.scss'
+import './styles.scss'
 
 const Product = () => {
   const [action, setAction] = useState()
@@ -69,7 +67,7 @@ const Product = () => {
   return (
     <>
       <AppBar />
-      <Box className='container-fluid container'>
+      <Box className='add-product-container container-fluid container'>
         <LoadingModal show={loading} />
         <Box className='container'>
           <Paper className='mat-paper' elevation={2}>

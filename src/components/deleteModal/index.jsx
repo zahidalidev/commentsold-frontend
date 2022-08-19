@@ -1,22 +1,21 @@
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Modal from '@mui/material/Modal'
-import Typography from '@mui/material/Typography'
+import {
+  Box, Button, Modal, Typography,
+} from '@mui/material'
 
-import 'components/deleteModal/styles.scss'
+import './styles.scss'
 
-const DeleteModal = ({ show, deleteProduct, setConfirmModal }) => (
+const DeleteModal = ({ show, handleDelete, setConfirmModal }) => (
   <Modal open={show}>
     <Box className='modal-confirm-box'>
       <Box className='header'>
-        <Typography variant='h5'>Confirm Delete Product</Typography>
+        <Typography variant='h5'>Delete Confirmation</Typography>
         <Typography className='description'>
-          Are you sure you want to delete the product?
+          Are you sure you want to delete?
         </Typography>
       </Box>
       <Box className='button-container'>
         <Button
-          onClick={deleteProduct}
+          onClick={handleDelete}
           className='submit-button'
           type='submit'
           variant='text'
