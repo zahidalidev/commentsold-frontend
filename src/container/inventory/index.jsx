@@ -31,7 +31,6 @@ const Inventory = () => {
     const tempSortBy = { ...sortBy }
     tempSortBy.name = inventoryColumnsKeys[tempSortBy.sortColumn]
     const tempOperator = price ? operator : ''
-    debugger
     const { count, rows } = await getInventories(
       rowsPerPage,
       pageNumber,
@@ -40,7 +39,6 @@ const Inventory = () => {
       price,
       tempSortBy,
     )
-    debugger
 
     if (count !== undefined) {
       setInventoriesCount(count)
