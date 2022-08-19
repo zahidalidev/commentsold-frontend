@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import _ from 'lodash'
 
 import {
-  addProducts, getProduct, updateProducts, getProductStyles, getProductBrands, getProductTypes,
+  addProducts, fetchProduct, updateProducts, fetchProductStyles, fetchProductBrands,
+  fetchProductTypes,
 } from 'api/products'
 import { productFields } from 'utils/constants/product'
 import { AppBar, LoadingModal, Form } from 'components'
@@ -38,9 +39,9 @@ const Product = () => {
 
   const handleProductOptions = async () => {
     const tempOptions = { ...productSelectOptions }
-    const styles = await getProductStyles()
-    const brands = await getProductTypes()
-    const types = await getProductBrands()
+    const styles = await fetchProductStyles()
+    const brands = await fetchProductTypes()
+    const types = await fetchProductBrands()
 
     const productStyleOptions = styles.map(item => ({ value: item, label: item }))
     const productBrandOptions = brands.map(item => ({ value: item, label: item }))
@@ -53,7 +54,7 @@ const Product = () => {
   }
 
   const getProductById = async (id) => {
-    const data = await getProduct(id)
+    const data = await fetchProduct(id)
     if (!_.isEmpty(data)) {
       setInitialValues(data)
     }

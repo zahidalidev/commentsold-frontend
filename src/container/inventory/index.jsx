@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { AppBar, Table, SelectFilter } from 'components'
 import { formatNumbers, getToken } from 'utils/helpers'
-import getInventories from 'api/inventory'
+import fetchInventories from 'api/inventory'
 import { inventoryColumns, inventoryColumnsKeys } from 'utils/constants/inventory'
 import { defaultPageCount } from 'utils/constants/common'
 import { useEffect, useState } from 'react'
@@ -31,7 +31,7 @@ const Inventory = () => {
     const tempSortBy = { ...sortBy }
     tempSortBy.name = inventoryColumnsKeys[tempSortBy.sortColumn]
     const tempOperator = price ? operator : ''
-    const { count, rows } = await getInventories(
+    const { count, rows } = await fetchInventories(
       rowsPerPage,
       pageNumber,
       name,

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { defaultPageCount } from 'utils/constants/common'
 import { formatNumbers, getToken } from 'utils/helpers'
-import getAllOrders from 'api/order'
+import fetchAllOrders from 'api/order'
 import {
   orderColumns, orderColumnsKeys, orderStatusOptions, shipperNameOptions,
 } from 'utils/constants/order'
@@ -38,7 +38,7 @@ const Orders = () => {
     const shippName = shipper === 'All' ? '' : shipper
     const {
       count, rows, totalSale, average,
-    } = await getAllOrders(
+    } = await fetchAllOrders(
       rowsPerPage,
       pageNumber,
       search,

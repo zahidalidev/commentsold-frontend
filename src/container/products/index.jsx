@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { defaultPageCount } from 'utils/constants/common'
-import { getAllProducts, removeProducts } from 'api/products'
+import { fetchAllProducts, removeProducts } from 'api/products'
 import { productColumnsKeys } from 'utils/constants/product'
 import {
   AppBar, DeleteModal, LoadingModal, Table,
@@ -35,7 +35,7 @@ const Products = () => {
   const handleProducts = async () => {
     const tempSortBy = { ...sortBy }
     tempSortBy.name = productColumnsKeys[tempSortBy.sortColumn]
-    const { count, rows } = await getAllProducts(rowsPerPage, pageNumber, tempSortBy)
+    const { count, rows } = await fetchAllProducts(rowsPerPage, pageNumber, tempSortBy)
 
     if (count !== undefined) {
       setProducts(rows)

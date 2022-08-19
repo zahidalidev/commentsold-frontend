@@ -1,6 +1,6 @@
 import instance from 'api'
 
-const getAllOrders = (
+const fetchAllOrders = (
   rowsPerPage,
   pageNumber,
   searchValue,
@@ -27,4 +27,4 @@ const getAllOrders = (
     .then((response) => response.data)
     .catch(() => ({}))
 }
-export default getAllOrders
+export default fetchAllOrders
