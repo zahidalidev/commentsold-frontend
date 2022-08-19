@@ -79,6 +79,7 @@ export const orderColumns = [
 ]
 
 export const orderStatusOptions = [
+  { value: 'All', label: 'All' },
   { value: 'Pending', label: 'Pending' },
   { value: 'Paid', label: 'Paid' },
   { value: 'Fulfulled', label: 'Fulfulled' },
@@ -87,6 +88,7 @@ export const orderStatusOptions = [
 ]
 
 export const shipperNameOptions = [
+  { value: 'All', label: 'All' },
   { value: 'USPS', label: 'USPS' },
   { value: 'DHL', label: 'DHL' },
   { value: 'FedEx', label: 'FedEx' },

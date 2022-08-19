@@ -34,14 +34,16 @@ const Orders = () => {
   const handleOrders = async () => {
     const tempSortBy = { ...sortBy }
     tempSortBy.name = orderColumnsKeys[tempSortBy.sortColumn]
+    const status = orderStatus === 'All' ? '' : orderStatus
+    const shippName = shipper === 'All' ? '' : shipper
     const {
       count, rows, totalSale, average,
     } = await getAllOrders(
       rowsPerPage,
       pageNumber,
       search,
-      orderStatus,
-      shipper,
+      status,
+      shippName,
       tempSortBy,
     )
     if (count !== undefined) {
