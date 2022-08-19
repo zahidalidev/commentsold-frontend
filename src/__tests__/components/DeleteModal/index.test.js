@@ -7,7 +7,6 @@ import { TestApp } from 'utils/test'
 
 describe('Delete Modal Component', () => {
   const Modal = <DeleteModal show />
-  const {container} = render(Modal)
 
   beforeEach(() => render(Modal, { wrapper: TestApp }))
 
