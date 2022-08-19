@@ -5,7 +5,7 @@ import {
 import './styles.scss'
 
 const DeleteModal = ({ show, handleDelete, setConfirmModal }) => (
-  <Modal open={show}>
+  <Modal data-testid='modal-container' open={show}>
     <Box className='modal-confirm-box'>
       <Box className='header'>
         <Typography variant='h5'>Delete Confirmation</Typography>

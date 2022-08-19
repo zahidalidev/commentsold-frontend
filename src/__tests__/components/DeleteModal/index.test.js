@@ -1,10 +1,15 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import {
+  render, screen, waitFor,
+} from '@testing-library/react'
 
 import DeleteModal from 'components/DeleteModal'
 import { TestApp } from 'utils/test'
 
 describe('Delete Modal Component', () => {
-  beforeEach(() => render(<DeleteModal show={true} />, { wrapper: TestApp }))
+  const Modal = <DeleteModal show />
+  const {container} = render(Modal)
+
+  beforeEach(() => render(Modal, { wrapper: TestApp }))
 
   it('should render correctly', () => {
     expect.assertions(1)
@@ -12,10 +17,38 @@ describe('Delete Modal Component', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  // it('should have inventory button', async () => {
-  //   await waitFor(() => {
-  //     const button = screen.getAllByRole('button')[0]
-  //     expect(button).toBeInTheDocument()
-  //   })
-  // })
+  it('should have 2 buttons', async () => {
+    await waitFor(() => {
+      const button = screen.getAllByRole('button')
+      expect(button).toHaveLength(2)
+    })
+  })
+
+  it('should have yes buttons', async () => {
+    await waitFor(() => {
+      const button = screen.getByRole('button', {
+        name: 'Yes'
+      })
+      expect(button).toBeInTheDocument()
+    })
+  })
+
+  it('should have no buttons', async () => {
+    await waitFor(() => {
+      const button = screen.getByRole('button', {
+        name: 'No'
+      })
+      expect(button).toBeInTheDocument()
+    })
+  })
+
+  it('should have description', async () => {
+    const element = await screen.findAllByText(/Are you sure you want to delete?/i)
+    expect(element[0]).toHaveClass('description')
+  })
+
+  it('should have modal', async () => {
+    const modal = screen.getAllByTestId('modal-container')
+    expect(modal).toHaveLength(1)
+  })
 })
