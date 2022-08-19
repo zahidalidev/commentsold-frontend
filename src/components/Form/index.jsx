@@ -12,7 +12,7 @@ import { Select } from 'components'
 const Form = ({
   fieldsInitialValues, handleSubmition, action, validate, fields, selectList,
 }) => (
-  <CardContent className='mat-card-content'>
+  <CardContent data-testid='content-form' className='mat-card-content'>
     <Formik
       initialValues={fieldsInitialValues}
       enableReinitialize
