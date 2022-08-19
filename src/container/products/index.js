@@ -30,17 +30,28 @@ const Products = () => {
   })
   const navigate = useNavigate()
 
-  const handleRemoveProduct = async () => {
-    const oldProd = [...products]
+  const handleProducts = async () => {
     try {
-      const rows = oldProd.filter((item) => item.id !== currentProductId)
-
-      setProductsCount(productsCount - 1)
+      const tempSortBy = { ...sortBy }
+      tempSortBy.sortColumn = productColumnsKeys[tempSortBy.sortColumn]
+      const { count, rows } = await getAllProducts(rowsPerPage, pageNumber, tempSortBy)
       setProducts(rows)
-
-      await removeProducts(currentProductId)
+      setProductsCount(count)
     } catch (error) {
-      setProducts(oldProd)
+      toast.error(error)
+      navigate('/login')
+    }
+  }
+
+  useEffect(() => {
+    handleProducts()
+  }, [rowsPerPage, pageNumber, sortBy])
+
+  const handleRemoveProduct = async () => {
+    try {
+      await removeProducts(currentProductId)
+      await handleProducts()
+    } catch (error) {
       toast.error(error)
     }
     setConfirmModal(false)
@@ -83,23 +94,6 @@ const Products = () => {
       ),
     },
   ]
-
-  const handleProducts = async () => {
-    try {
-      const tempSortBy = { ...sortBy }
-      tempSortBy.sortColumn = productColumnsKeys[tempSortBy.sortColumn]
-      const { count, rows } = await getAllProducts(rowsPerPage, pageNumber, tempSortBy)
-      setProducts(rows)
-      setProductsCount(count)
-    } catch (error) {
-      toast.error(error)
-      navigate('/login')
-    }
-  }
-
-  useEffect(() => {
-    handleProducts()
-  }, [rowsPerPage, pageNumber, sortBy])
 
   return (
     <>

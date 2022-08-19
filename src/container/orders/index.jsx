@@ -28,6 +28,7 @@ const Orders = () => {
   const [orderStatus, setOrderStatus] = useState('')
   const [shipper, setShipper] = useState('')
   const [search, setSearch] = useState('')
+  const [sales, setSales] = useState({})
   const [sortBy, setSortBy] = useState({
     sortColumn: 'Customer name',
     sortOrder: 'asc',
@@ -37,7 +38,9 @@ const Orders = () => {
     try {
       const tempSortBy = { ...sortBy }
       tempSortBy.sortColumn = orderColumnsKeys[tempSortBy.sortColumn]
-      const { count, rows } = await getAllOrders(
+      const {
+        count, rows, totalSale, average,
+      } = await getAllOrders(
         rowsPerPage,
         pageNumber,
         search,
@@ -47,6 +50,10 @@ const Orders = () => {
       )
       setOrders(rows)
       setOrdersCount(count)
+      setSales({
+        totalSale,
+        average,
+      })
     } catch (error) {
       toast.error(error)
       navigate('/login')
@@ -65,10 +72,10 @@ const Orders = () => {
           <Card>
             <div className='order-sale'>
               <Typography className='sale' variant='h5'>
-                Total Sale ({formatNumbers(parseInt(orders.totalSale, 10))} cents)
+                Total Sale ({formatNumbers(parseInt(sales.totalSale, 10))} cents)
               </Typography>
               <Typography className='avg-sale sale' variant='h5'>
-                Average Sale ({formatNumbers(parseInt(orders.average, 10))} cents)
+                Average Sale ({formatNumbers(parseInt(sales.average, 10))} cents)
               </Typography>
             </div>
             <CardContent className='mat-card-header'>

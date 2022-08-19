@@ -2,7 +2,7 @@ import DataTable from 'react-data-table-component'
 import { defaultPageCount } from 'utils/constants'
 import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
 
-const CusTable = ({
+export default ({
   data, count, columns, setPageNumber, setRowsPerPage, setSortBy,
 }) => {
   const table = (
@@ -32,5 +32,3 @@ const CusTable = ({
 
   return data.length !== 0 ? table : skeleton
 }
-
-export default CusTable
