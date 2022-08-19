@@ -16,7 +16,7 @@ const MatAppBar = () => {
   }
 
   return (
-    <Box>
+    <Box data-testid='appbar'>
       <AppBar className='appbar-box' position='static'>
         <Toolbar>
           {menu.map((item) => (

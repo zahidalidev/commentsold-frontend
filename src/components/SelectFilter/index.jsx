@@ -3,7 +3,7 @@ import { thresholdOptions } from 'utils/constants/inventory'
 import './styles.scss'
 
 const SelectFilter = ({ setPrice, setOperator }) => (
-  <div className='filter-select-container'>
+  <div data-testid='select-filter' className='filter-select-container'>
     <select onChange={(e) => setOperator(e.target.value)} className='filter-select'>
       {thresholdOptions.map((item) => (
         <option key={item.label} value={item.value}>
