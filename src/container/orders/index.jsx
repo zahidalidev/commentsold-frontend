@@ -37,7 +37,7 @@ const Orders = () => {
   const handleOrders = async () => {
     try {
       const tempSortBy = { ...sortBy }
-      tempSortBy.sortColumn = orderColumnsKeys[tempSortBy.sortColumn]
+      tempSortBy.name = orderColumnsKeys[tempSortBy.sortColumn]
       const {
         count, rows, totalSale, average,
       } = await getAllOrders(

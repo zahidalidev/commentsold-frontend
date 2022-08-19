@@ -33,7 +33,7 @@ const Inventory = () => {
   const handleInventories = async () => {
     try {
       const tempSortBy = { ...sortBy }
-      tempSortBy.sortColumn = inventoryColumnsKeys[tempSortBy.sortColumn]
+      tempSortBy.name = inventoryColumnsKeys[tempSortBy.sortColumn]
       const tempOperator = price ? operator : ''
       const { count, rows } = await getInventories(
         rowsPerPage,

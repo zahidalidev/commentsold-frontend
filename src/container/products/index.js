@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import AppBar from 'components/appbar'
-import ConfirmModal from 'components/confirmationAlert'
+import DeleteModal from 'components/deleteModal'
 import { defaultPageCount, productColumnsKeys } from 'utils/constants'
 import { getAllProducts, removeProducts } from 'api/products'
 import Table from 'components/table'
@@ -33,7 +33,7 @@ const Products = () => {
   const handleProducts = async () => {
     try {
       const tempSortBy = { ...sortBy }
-      tempSortBy.sortColumn = productColumnsKeys[tempSortBy.sortColumn]
+      tempSortBy.name = productColumnsKeys[tempSortBy.sortColumn]
       const { count, rows } = await getAllProducts(rowsPerPage, pageNumber, tempSortBy)
       setProducts(rows)
       setProductsCount(count)
@@ -98,7 +98,7 @@ const Products = () => {
   return (
     <>
       <AppBar />
-      <ConfirmModal
+      <DeleteModal
         deleteProduct={handleRemoveProduct}
         setConfirmModal={setConfirmModal}
         show={confirmModal}

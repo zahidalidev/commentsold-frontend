@@ -1,7 +1,7 @@
 import instance from 'api'
 
-export const getAllProducts = (rowsPerPage, pageNumber, sortBy) => (
-  instance.get(`products/?limit=${rowsPerPage}&page=${pageNumber}&sort_column=${sortBy.sortColumn}&sort_order=${sortBy.sortOrder}`)
+export const getAllProducts = (rowsPerPage, pageNumber, { name, sortOrder }) => (
+  instance.get(`products/?limit=${rowsPerPage}&page=${pageNumber}&sort_column=${name.columnName}&sort_table_name=${name.tableName}&sort_order=${sortOrder}`)
     .then(response => response.data)
     .catch(() => {})
 )

@@ -1,11 +1,18 @@
 import instance from 'api'
 
-const getInventories = (rowsPerPage, pageNumber, name, operator, price, sortBy) => {
+const getInventories = (
+  rowsPerPage,
+  pageNumber,
+  searchValue,
+  operator,
+  price,
+  { name, sortOrder },
+) => {
   const page = pageNumber - 1
-  let searchUrl = `/inventories/?limit=${rowsPerPage}&page=${page}&sort_column=${sortBy.sortColumn}&sort_order=${sortBy.sortOrder}`
+  let searchUrl = `/inventories/?limit=${rowsPerPage}&page=${page}&sort_column=${name.columnName}&sort_table_name=${name.tableName}&sort_order=${sortOrder}`
 
-  if (name) {
-    searchUrl += `&name=${name}`
+  if (searchValue) {
+    searchUrl += `&name=${searchValue}`
   }
 
   if (operator) {
@@ -16,7 +23,10 @@ const getInventories = (rowsPerPage, pageNumber, name, operator, price, sortBy) 
     searchUrl += `&price=${price}`
   }
 
-  return instance.get(searchUrl).then(response => response.data).catch(() => {})
+  return instance
+    .get(searchUrl)
+    .then((response) => response.data)
+    .catch(() => {})
 }
 
 export default getInventories

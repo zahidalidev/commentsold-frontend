@@ -106,13 +106,13 @@ export const productFields = [
 ]
 
 export const inventoryColumnsKeys = {
-  Name: 'product_name',
-  SKU: 'sku',
-  Quantity: 'quantity',
-  Color: 'color',
-  Size: 'size',
-  Price: 'price_cents',
-  Cost: 'cost_cents',
+  Name: { columnName: 'product_name', tableName: 'products' },
+  SKU: { columnName: 'sku', tableName: 'products' },
+  Quantity: { columnName: 'quantity', tableName: 'products' },
+  Color: { columnName: 'color', tableName: 'products' },
+  Size: { columnName: 'size', tableName: 'products' },
+  Price: { columnName: 'price_cents', tableName: 'products' },
+  Cost: { columnName: 'cost_cents', tableName: 'products' },
 }
 
 export const inventoryColumns = [
@@ -154,20 +154,20 @@ export const inventoryColumns = [
 ]
 
 export const productColumnsKeys = {
-  Name: 'product_name',
-  Style: 'style',
-  Brand: 'brand',
+  Name: { columnName: 'product_name', tableName: 'products' },
+  Style: { columnName: 'style', tableName: 'products' },
+  Brand: { columnName: 'brand', tableName: 'products' },
 }
 
 export const orderColumnsKeys = {
-  'Customer name': 'name',
-  'Email address': 'email',
-  'Product name': 'product_name',
-  'Order status': 'order_status',
-  'Order total': 'total_cents',
-  'Transaction id': 'transaction_id',
-  Shipper: 'shipper_name',
-  'Tracking number': 'tracking_number',
+  'Customer name': { columnName: 'name', tableName: 'products' },
+  'Email address': { columnName: 'email', tableName: 'products' },
+  'Product name': { columnName: 'product_name', tableName: 'products' },
+  'Order status': { columnName: 'order_status', tableName: 'products' },
+  'Order total': { columnName: 'total_cents', tableName: 'products' },
+  'Transaction id': { columnName: 'transaction_id', tableName: 'products' },
+  Shipper: { columnName: 'shipper_name', tableName: 'products' },
+  'Tracking number': { columnName: 'tracking_number', tableName: 'products' },
 }
 
 export const orderColumns = [
