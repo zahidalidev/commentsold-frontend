@@ -2,13 +2,11 @@ import {
   render, screen,
 } from '@testing-library/react'
 
-import LoadingModal from 'components/LoadingModal'
+import Select from 'components/Select'
 import { TestApp } from 'utils/test'
 
-describe('Loading Modal Component', () => {
-  const Modal = <LoadingModal show />
-
-  beforeEach(() => render(Modal, { wrapper: TestApp }))
+describe('Select Component', () => {
+  beforeEach(() => render(<Select show />, { wrapper: TestApp }))
 
   it('should render correctly', () => {
     expect.assertions(1)
