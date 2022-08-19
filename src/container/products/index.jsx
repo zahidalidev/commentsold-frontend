@@ -121,8 +121,8 @@ const Products = () => {
           <Card className='mat-card'>
             <CardContent className='mat-card-header'>
               <Box className='card-heading'>
-                <Typography noWrap className='product-heading' variant='h4'>
-                  User Products
+                <Typography className='product-heading' variant='h5'>
+                  Products
                 </Typography>
                 <Button
                   onClick={() => navigate('/product/add')}

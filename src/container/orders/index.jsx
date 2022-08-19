@@ -71,7 +71,7 @@ const Orders = () => {
           <Card>
             <Box className='order-sale'>
               <Typography className='sale' variant='h5'>
-                Total Sale ({formatNumbers(parseInt(sales.totalSale, 10)) && 0 } cents)
+                Orders - Total Sale ({formatNumbers(parseInt(sales.totalSale, 10)) && 0 } cents)
               </Typography>
               <Typography className='avg-sale sale' variant='h5'>
                 Average Sale ({formatNumbers(parseInt(sales.average, 10)) && 0 } cents)

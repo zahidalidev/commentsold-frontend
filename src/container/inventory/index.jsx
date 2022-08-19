@@ -62,7 +62,7 @@ const Inventory = () => {
         <Paper className='mat-paper' elevation={2}>
           <Card>
             <Typography variant='h5'>
-              Total Products ({formatNumbers(parseInt(inventoriesCount, 10))})
+              Inventory - Total Products ({formatNumbers(parseInt(inventoriesCount, 10))})
             </Typography>
             <CardContent className='mat-card-header'>
               <TextField

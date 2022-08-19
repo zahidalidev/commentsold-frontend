@@ -19,13 +19,13 @@ export const productFields = [
   },
   {
     id: 6,
-    label: 'Note',
+    label: 'Note (optional)',
     name: 'note',
     type: 'text',
   },
   {
     id: 6,
-    label: 'Image url',
+    label: 'Image url (optional)',
     name: 'url',
     type: 'text',
   },
