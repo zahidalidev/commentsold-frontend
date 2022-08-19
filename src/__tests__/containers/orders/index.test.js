@@ -17,6 +17,12 @@ describe('Orders Container', () => {
     })
   })
 
+  it('should have table', async () => {
+    await waitFor(() => {
+      expect(screen.getByTestId('table')).toBeInTheDocument()
+    })
+  })
+
   // it('should have 2 headings', async () => {
   //   await waitFor(() => {
   //     expect(screen.getAllByRole('heading').length).toBe(2)

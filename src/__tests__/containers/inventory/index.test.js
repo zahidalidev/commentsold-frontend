@@ -35,4 +35,10 @@ describe('Inventory Container', () => {
       expect(screen.getAllByRole('heading').length).toBe(1)
     })
   })
+
+  it('should have table', async () => {
+    await waitFor(() => {
+      expect(screen.getByTestId('table')).toBeInTheDocument()
+    })
+  })
 })
