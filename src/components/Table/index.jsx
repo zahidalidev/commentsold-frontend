@@ -28,7 +28,7 @@ export default ({
 
   const skeleton = (
     <Skeleton>
-      <Table rows={5} cols={[<u key='a' />]} />
+      <Table rows={5} />
     </Skeleton>
   )
 
