@@ -9,7 +9,7 @@ export const removeToken = () => localStorage.removeItem(TOKEN)
 export const formatNumbers = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
 export const orderSearchUrl = ({
-  rowsPerPage, pageNumber, tempSortBy, search, status, shipperName,
+  rowsPerPage, pageNumber, search, status, shippName, tempSortBy,
 }) => {
   let searchUrl = `/orders?limit=${rowsPerPage}&page=${pageNumber}&sort_column=${tempSortBy.name.columnName}&sort_table_name=${tempSortBy.name.tableName}&sort_order=${tempSortBy.sortOrder}`
 
@@ -21,19 +21,19 @@ export const orderSearchUrl = ({
     searchUrl += `&order_status=${status}`
   }
 
-  if (shipperName) {
-    searchUrl += `&shipper=${shipperName}`
+  if (shippName) {
+    searchUrl += `&shipper=${shippName}`
   }
   return searchUrl
 }
 
 export const inventorySearchUrl = ({
-  rowsPerPage, pageNumber, tempSortBy, search, tempOperator, price,
+  rowsPerPage, pageNumber, tempSortBy, name, tempOperator, price,
 }) => {
   let searchUrl = `/inventories?limit=${rowsPerPage}&page=${pageNumber}&sort_column=${tempSortBy.name.columnName}&sort_table_name=${tempSortBy.name.tableName}&sort_order=${tempSortBy.sortOrder}`
 
-  if (search) {
-    searchUrl += `&name=${search}`
+  if (name) {
+    searchUrl += `&name=${name}`
   }
 
   if (tempOperator) {
