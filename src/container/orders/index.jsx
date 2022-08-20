@@ -26,12 +26,14 @@ const Orders = () => {
   const [shipper, setShipper] = useState('')
   const [search, setSearch] = useState('')
   const [sales, setSales] = useState({ totalSale: 0, average: 0 })
+  const [loading, setLoading] = useState(false)
   const [sortBy, setSortBy] = useState({
     sortColumn: 'Customer name',
     sortOrder: 'asc',
   })
 
   const handleOrders = async () => {
+    setLoading(true)
     const tempSortBy = { ...sortBy }
     tempSortBy.name = orderColumnsKeys[tempSortBy.sortColumn]
     const status = orderStatus === 'All' ? '' : orderStatus
@@ -59,6 +61,7 @@ const Orders = () => {
         navigate('/login')
       }
     }
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -118,6 +121,7 @@ const Orders = () => {
               setPageNumber={setPageNumber}
               setRowsPerPage={setRowsPerPage}
               setSortBy={setSortBy}
+              loading={loading}
             />
           </Card>
         </Paper>

@@ -33,6 +33,7 @@ const Products = () => {
   const navigate = useNavigate()
 
   const handleProducts = async () => {
+    setloading(true)
     const tempSortBy = { ...sortBy }
     tempSortBy.name = productColumnsKeys[tempSortBy.sortColumn]
     const { count, rows } = await fetchAllProducts(rowsPerPage, pageNumber, tempSortBy)
@@ -46,6 +47,7 @@ const Products = () => {
         navigate('/login')
       }
     }
+    setloading(false)
   }
 
   useEffect(() => {
@@ -138,6 +140,7 @@ const Products = () => {
               setPageNumber={setPageNumber}
               setRowsPerPage={setRowsPerPage}
               setSortBy={setSortBy}
+              loading={loading}
             />
           </Card>
         </Paper>

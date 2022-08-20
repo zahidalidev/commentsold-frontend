@@ -21,6 +21,7 @@ const Inventory = () => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
   const [operator, setOperator] = useState('lt')
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const [sortBy, setSortBy] = useState({
     sortColumn: 'Name',
@@ -28,6 +29,7 @@ const Inventory = () => {
   })
 
   const handleInventories = async () => {
+    setLoading(true)
     const tempSortBy = { ...sortBy }
     tempSortBy.name = inventoryColumnsKeys[tempSortBy.sortColumn]
     const tempOperator = price ? operator : ''
@@ -49,6 +51,7 @@ const Inventory = () => {
         navigate('/login')
       }
     }
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -84,6 +87,7 @@ const Inventory = () => {
               setPageNumber={setPageNumber}
               setRowsPerPage={setRowsPerPage}
               setSortBy={setSortBy}
+              loading={loading}
             />
           </Card>
         </Paper>

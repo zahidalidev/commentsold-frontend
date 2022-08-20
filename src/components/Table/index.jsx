@@ -4,7 +4,7 @@ import { defaultPageCount } from 'utils/constants/common'
 import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
 
 export default ({
-  data, count, columns, setPageNumber, setRowsPerPage, setSortBy,
+  data, count, columns, setPageNumber, setRowsPerPage, setSortBy, loading,
 }) => {
   const table = (
     <Box data-testid='table'>
@@ -25,11 +25,14 @@ export default ({
       />
     </Box>
   )
+
   const skeleton = (
     <Skeleton>
       <Table rows={5} cols={[<u key='a' />]} />
     </Skeleton>
   )
 
-  return data.length !== 0 ? table : skeleton
+  const load = loading ? skeleton : table
+
+  return data.length !== 0 ? table : load
 }

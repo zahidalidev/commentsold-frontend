@@ -13,17 +13,12 @@ export const orderSearchUrl = ({
 }) => {
   let searchUrl = `/orders?limit=${rowsPerPage}&page=${pageNumber}&sort_column=${tempSortBy.name.columnName}&sort_table_name=${tempSortBy.name.tableName}&sort_order=${tempSortBy.sortOrder}`
 
-  if (search) {
-    searchUrl += `&name=${search}`
-  }
+  if (search) searchUrl += `&name=${search}`
 
-  if (status) {
-    searchUrl += `&order_status=${status}`
-  }
+  if (status) searchUrl += `&order_status=${status}`
 
-  if (shippName) {
-    searchUrl += `&shipper=${shippName}`
-  }
+  if (shippName) searchUrl += `&shipper=${shippName}`
+
   return searchUrl
 }
 
@@ -32,16 +27,11 @@ export const inventorySearchUrl = ({
 }) => {
   let searchUrl = `/inventories?limit=${rowsPerPage}&page=${pageNumber}&sort_column=${tempSortBy.name.columnName}&sort_table_name=${tempSortBy.name.tableName}&sort_order=${tempSortBy.sortOrder}`
 
-  if (name) {
-    searchUrl += `&name=${name}`
-  }
+  if (name) searchUrl += `&name=${name}`
 
-  if (tempOperator) {
-    searchUrl += `&operator=${tempOperator}`
-  }
+  if (tempOperator) searchUrl += `&operator=${tempOperator}`
 
-  if (price) {
-    searchUrl += `&price=${price}`
-  }
+  if (price) searchUrl += `&price=${price}`
+
   return searchUrl
 }
