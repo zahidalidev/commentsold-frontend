@@ -31,6 +31,7 @@ export const orderColumns = [
     selector: (row) => row.product.product_name,
     grow: 2,
     wrap: true,
+    sortable: true,
   },
   {
     name: 'Color',

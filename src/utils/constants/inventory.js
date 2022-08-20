@@ -21,6 +21,7 @@ export const inventoryColumns = [
     name: 'Name',
     selector: (row) => row.product?.product_name,
     wrap: true,
+    sortable: true,
   },
   {
     name: 'SKU',
