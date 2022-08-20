@@ -31,14 +31,14 @@ const Inventory = () => {
     const tempSortBy = { ...sortBy }
     tempSortBy.name = inventoryColumnsKeys[tempSortBy.sortColumn]
     const tempOperator = price ? operator : ''
-    const { count, rows } = await fetchInventories(
+    const { count, rows } = await fetchInventories({
       rowsPerPage,
       pageNumber,
       name,
       tempOperator,
       price,
       tempSortBy,
-    )
+    })
 
     if (count !== undefined) {
       setInventoriesCount(count)

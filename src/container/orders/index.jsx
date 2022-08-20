@@ -38,14 +38,14 @@ const Orders = () => {
     const shippName = shipper === 'All' ? '' : shipper
     const {
       count, rows, totalSale, average,
-    } = await fetchAllOrders(
+    } = await fetchAllOrders({
       rowsPerPage,
       pageNumber,
       search,
       status,
       shippName,
       tempSortBy,
-    )
+    })
     if (count !== undefined) {
       setOrders(rows)
       setOrdersCount(count)
