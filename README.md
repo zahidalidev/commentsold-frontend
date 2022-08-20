@@ -73,19 +73,21 @@ If everything when fine, you should run
 - [SCSS](https://sass-lang.com/) is used to write futureproof CSS in nested form.
 
 ## Notes
-- Implemented a proper signup system where user can login to access the dashboard.
+- Implemented a proper login system where user can login to access the dashboard.
 - Properly handle UI with mobile responsiveness.
 - Added Data Table with proper pagination.
-- Implemented Inventory CRUD.
-- Added validation on Inventory and Login Form.
+- Implemented Product CRUD.
+- Added validation on Product and Login Form.
 - Added ESLint and Stylelint for consistency and better code quality.
 - Added Skeletons for better User Experience while waiting for response.
-- Added toastr for proper notifications.
-- Implemented Recoil for state management.
+- Added toast for proper notifications.
 - Added Basic Test Cases for components.
 
 ## Future Work
 - We can add proper Authentication Process where user can signup.
-- We can add sorting on the data table.
-- We can add detailed test cases including snapshot testing.
-- We can add lazy loading using Suspend for better performance.
+- We can add detailed test cases.
+- We can add Inventory CRUD.
+- We can add Cart page.
+- We can add Checkout page.
+- We can add Profile page.
+- We can add profile CRUD.
