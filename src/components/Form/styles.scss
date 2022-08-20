@@ -22,6 +22,11 @@
       width: 45vh;
     }
 
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
     .warn-typography {
       color: $error;
       align-self: flex-start;
