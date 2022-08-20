@@ -21,6 +21,7 @@ export default ({
         onChangePage={(number) => setPageNumber(number - 1)}
         onChangeRowsPerPage={(number) => setRowsPerPage(number)}
         sortServer
+        persistTableHead
         onSort={(column, order) => setSortBy({ sortColumn: column.name, sortOrder: order })}
       />
     </Box>
